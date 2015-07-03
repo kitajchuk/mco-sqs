@@ -6,7 +6,7 @@
  *
  *
  */
-import { emitter, hammered, getTransitionDuration } from "app/util";
+import { emitter, getTransitionDuration } from "app/util";
 import "app/dom";
 import "app/preload";
 import "app/scrolls";

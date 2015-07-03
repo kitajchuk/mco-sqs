@@ -1,11 +1,18 @@
 // Grid
 .grid {
     font-size: 0;
+    margin: 0 -25px;
     position: relative;
     text-align: center;
     }
 .grid__item {
     display: inline-block;
+    margin-bottom: 50px;
+    padding: 0 25px;
+    @include ani-lift-block();
+    }
+.grid__image {
+    background-color: $grey-light;
     }
 
 

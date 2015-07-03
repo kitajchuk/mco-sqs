@@ -15,3 +15,36 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+
+
+// Animations
+@mixin ani-lift-block() {
+    transition: transform $ease-duration $soft-ease,
+                opacity $ease-duration $soft-ease;
+
+    &.is-below {
+        opacity: 0;
+        transform: translate3d( 0, 100px, 0 );
+        }
+
+    &.is-above {
+        opacity: 0;
+        transform: translate3d( 0, -100px, 0 );
+        }
+
+    &.is-entering {
+        opacity: 1;
+        transform: translate3d( 0, 0, 0 );
+        }
+
+    &.is-leaving-top {
+        opacity: 0;
+        transform: translate3d( 0, -100px, 0 );
+        }
+
+    &.is-leaving-bottom {
+        opacity: 0;
+        transform: translate3d( 0, 100px, 0 );
+        }
+}
