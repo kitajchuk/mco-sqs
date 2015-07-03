@@ -1,0 +1,81 @@
+// Fonts
+$serif-text: "Lyon Text Web";
+$serif-display: "Lyon Display Web";
+$sans-serif-text: "Founders Grotesk Text Web";
+$sans-serif-display: "Founders Grotesk Web";
+$icon-font: "midnight-collective";
+$icon-uuid: "-zc5de1";
+
+
+// Colors
+$black: #000;
+$white: #fff;
+$dark: #111;
+$spot: #2414cc;
+$grey-dark: #807e7e;
+$grey-medium: #bfbfbf;
+$grey-light: #f0f0f0;
+$grey-ultralight: #e1e1e1;
+
+
+
+// Grid
+$grid-length: 12;
+$grid-columns: 12 11 10 9 8 7 6 5 4 3 2 1;
+$grid-max-width: 1600px;
+
+
+// Sizes
+$item-padding: 60px;
+$mobile-padding: 30px;
+
+
+
+// Font sizes
+$title-size: 32px;
+$title-size-big: 46px;
+$title-size-serif: 30px;
+$meta-size: 18px;
+$mobile-title-size: 21px;
+
+
+
+// Breakpoints
+$break-max-width: 1600px;
+$break-laptop-medium: 1440px;
+$break-tablet-full: 1280px;
+$break-tablet-medium: 1024px;
+$break-tablet-small: 768px;
+$break-mobile-full: 640px;
+$break-mobile-medium: 480px;
+$break-mobile-small: 320px;
+$break-mobile-height: 628px;
+
+
+// Animations
+$cubic-bezier-linear: cubic-bezier( 0, 0, 1, 1 );
+$cubic-bezier-ease: cubic-bezier( .25, .1, .25, 1 );
+$cubic-bezier-ease-in: cubic-bezier( .42, 0, 1, 1 );
+$cubic-bezier-ease-out: cubic-bezier( 0, 0, .58, 1 );
+$cubic-bezier-ease-in-out: cubic-bezier( .42, 0, .58, 1 );
+$cubic-ease: cubic-bezier( 0.77, 0, 0.175, 1 );
+$anim-duration: 1000ms;
+$ease-duration: 600ms;
+$midi-duration: 400ms;
+$fast-duration: 200ms;
+$soft-ease: ease;
+
+
+// Z-Layers
+$z_layer_10: 100;
+$z_layer_09: 90;
+$z_layer_08: 80;
+$z_layer_07: 70;
+$z_layer_06: 60;
+$z_layer_05: 50;
+$z_layer_04: 40;
+$z_layer_03: 30;
+$z_layer_02: 20;
+$z_layer_01: 10;
+$z_layer_behind: -1;
+$z_layer_infront: 1000;

@@ -1,0 +1,17 @@
+// Icon font
+@mixin icon-layout() {
+    color: inherit;
+    display: inline-block;
+    font-family: $icon-font;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    speak: none;
+    text-transform: none;
+    vertical-align: middle;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

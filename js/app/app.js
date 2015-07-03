@@ -6,6 +6,12 @@
  *
  *
  */
+import "jquery/dist/jquery";
+import "node_modules/hammerjs/hammer";
+import "app/resizes";
+
+
 window.onload = function () {
-    console.log( "Hellow World, I'm Midnight Collective!" );
+    // Global resize element initializer
+    resizes.init();
 };

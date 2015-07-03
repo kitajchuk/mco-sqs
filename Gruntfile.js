@@ -47,7 +47,12 @@ module.exports = function ( grunt ) {
                 jsLibRoot: libRoot,
                 jsRoot: jsRoot,
                 pubRoot: pubRoot,
-                jsGlobals: {},
+                jsGlobals: {
+                    $: true,
+                    jQuery: true,
+                    Hammer: true,
+                    DocumentTouch: true
+                },
                 hintOn: [
                     "watch",
                     "build",
