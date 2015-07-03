@@ -1,0 +1,36 @@
+{
+    "title": "Midnight Collective",
+    "name": "midnight-collective",
+    "description": "",
+    "version": "0.1.0",
+    "dependencies": {
+        "grunt-nautilus": "~0.7",
+        "hammerjs": "~2.0",
+        "properjs": "~0.1"
+    },
+    "devDependencies": {},
+    "properjs": {
+        "output": "js/lib/proper.js",
+        "dependencies": [
+            "properjs-hammered",
+            "properjs-controller",
+            "properjs-scrollcontroller",
+            "properjs-resizecontroller",
+            "properjs-imageloader",
+            "properjs-mediabox",
+            "properjs-debounce",
+            "properjs-stagger",
+            "properjs-pagecontroller",
+            "properjs-tween",
+            "properjs-scroll2"
+        ]
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {},
+    "keywords": [],
+    "license": "MIT",
+    "author": "",
+    "readmeFilename": "README.md"
+}
