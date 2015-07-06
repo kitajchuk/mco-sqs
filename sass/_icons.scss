@@ -1,3 +1,26 @@
 .icon {
     @include icon-layout();
+    font-size: 20px;
+    }
+
+
+
+.icon--brand:before {
+    content: "\e600";
+    font-size: 50px;
+    }
+.icon--cart:before {
+    content: "\e601";
+    font-size: 30px;
+    }
+.icon--exit:before {
+    content: "\e602";
+    font-size: 25px;
+    }
+.icon--mark:before {
+    content: "\e603";
+    font-size: 40px;
+    }
+.icon--menu:before {
+    content: "\e604";
     }

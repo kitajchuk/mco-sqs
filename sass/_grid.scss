@@ -12,7 +12,7 @@
     @include ani-lift-block();
     }
 .grid__image {
-    background-color: $grey-light;
+    background-color: $light;
     }
 
 
@@ -26,6 +26,12 @@
 .col--1of3 { width: 33.33333%; }
 .col--2of4 { width: 50%; }
 .col--2of3 { width: 66.66666%; }
+
+
+// Wrappers
+.wrapper {
+    padding: 100px;
+    }
 
 
 // Alignment

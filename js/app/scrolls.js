@@ -167,13 +167,13 @@ onScrollerUp = function () {
         bounds = $items[ i ].getBoundingClientRect();
 
         // Entering from the top
-        if ( bounds.top < window.innerHeight && bounds.bottom > window.innerHeight ) {
-            $item.addClass( "is-leaving-bottom" ).removeClass( "is-entering is-leaving-top" );
+        if ( bounds.bottom > 0 && bounds.top < 0 ) {
+            $item.addClass( "is-entering" ).removeClass( "is-above is-below is-leaving-bottom is-leaving-top" );
         }
 
         // Exiting from the bottom
-        if ( (bounds.top + (bounds.height / 2)) < 0 && bounds.bottom > 0 ) {
-            $item.addClass( "is-entering" ).removeClass( "is-leaving-bottom is-leaving-top" );
+        if ( (bounds.top + (bounds.height / 2)) > window.innerHeight && bounds.top < window.innerHeight ) {
+            $item.addClass( "is-leaving-bottom" ).removeClass( "is-above is-below is-entering is-leaving-top" );
         }
     }
 };

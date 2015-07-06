@@ -106,8 +106,9 @@ changePageOut = function () {
  *
  */
 changePageIn = function ( data ) {
+    console.log( data );
     var $doc = $( data.response ),
-        res = $doc.find( ".js-page" )[ 0 ].innerHTML;
+        res = $doc.filter( ".js-page" )[ 0 ].innerHTML;
 
     document.title = $doc.filter( "title" ).text();
 

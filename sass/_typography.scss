@@ -1,22 +1,77 @@
-
-// Elements
-.p {
-    }
-
-
-.a {
-    }
-
-.i {
-    font-style: italic;
-    }
-
-
-
 .h6,
 .h5,
 .h4,
 .h3,
 .h2,
 .h1 {
+    font-family: $font-sans;
     }
+
+
+
+.h1 {
+    font-size: 48px;
+    }
+.h2 {
+    font-size: 36px;
+    }
+.h3 {
+    font-size: 24px;
+    }
+.h4 {
+    font-size: 21px;
+    }
+.h5 {
+    font-size: 12px;
+    }
+
+
+
+.p, p {
+    font-size: 18px;
+    line-height: 28 / 18;
+    }
+.a, a {
+    color: $dark;
+    text-decoration: none;
+    }
+
+
+
+// Tablet
+@media only screen and ( max-width: $break-tablet-medium ) {
+    .h1 {
+        font-size: 36px;
+        }
+    .h2 {
+        font-size: 32px;
+        }
+    .h3 {
+        font-size: 21px;
+        }
+    .h4 {
+        font-size: 18px;
+        }
+
+    .p, p {
+        font-size: 16px;
+        line-height: 24 / 16;
+        }
+}
+
+
+
+// Mobile
+@media only screen and ( max-width: $break-tablet-small ) {
+    .h1 {
+        font-size: 32px;
+        }
+    .h2 {
+        font-size: 24px;
+        }
+
+    .p, p {
+        font-size: 14px;
+        line-height: 21 / 14;
+        }
+}

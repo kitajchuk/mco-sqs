@@ -1,0 +1,27 @@
+.nav {
+    font-family: $font-sans;
+    padding: 100px;
+    text-align: center;
+    text-transform: uppercase;
+    }
+.nav__ul {
+    font-size: 0;
+    }
+.nav__li {
+    display: inline-block;
+    }
+.nav__a {
+    color: $dark;
+    font-size: 12px;
+    padding: 0 15px;
+    }
+
+
+
+.footerbar {
+    background-color: $dark;
+
+    .nav__a {
+        color: $white;
+        }
+    }

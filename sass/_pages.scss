@@ -1,3 +1,12 @@
 .page {
     position: relative;
+    transition: opacity $ease-duration $cubic-ease,
+                transform $ease-duration $soft-ease;
+
+    &.is-reactive {
+        transform: translate3d( 0, 100px, 0 );
+        }
+    &.is-inactive {
+        opacity: 0;
+        }
     }

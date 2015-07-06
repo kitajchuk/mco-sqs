@@ -1,21 +1,18 @@
 // Fonts
-$serif-text: "Lyon Text Web";
-$serif-display: "Lyon Display Web";
-$sans-serif-text: "Founders Grotesk Text Web";
-$sans-serif-display: "Founders Grotesk Web";
+$font-sans: "Helvetica Neue", Sans-serif;
+$font-serif: Georgia, Serif;
 $icon-font: "midnight-collective";
-$icon-uuid: "-zc5de1";
+$icon-uuid: "xd7bf4";
 
 
 // Colors
 $black: #000;
 $white: #fff;
-$dark: #111;
-$spot: #2414cc;
-$grey-dark: #807e7e;
-$grey-medium: #bfbfbf;
-$grey-light: #f0f0f0;
-$grey-ultralight: #e1e1e1;
+$grey: #e6e6e6;
+$dark: #32344d;
+$medium: #4d4d66;
+$light: #6e6c80;
+$border: rgba( 110, 108, 128, 0.2 );
 
 
 
@@ -41,7 +38,6 @@ $mobile-title-size: 21px;
 
 
 // Breakpoints
-$break-max-width: 1600px;
 $break-laptop-medium: 1440px;
 $break-tablet-full: 1280px;
 $break-tablet-medium: 1024px;
@@ -49,7 +45,6 @@ $break-tablet-small: 768px;
 $break-mobile-full: 640px;
 $break-mobile-medium: 480px;
 $break-mobile-small: 320px;
-$break-mobile-height: 628px;
 
 
 // Animations
