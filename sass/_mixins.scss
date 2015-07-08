@@ -1,19 +1,36 @@
-// Icon font
-@mixin icon-layout() {
-    color: inherit;
-    display: inline-block;
-    font-family: $icon-font;
+// Sans-serif text
+@mixin font-sans() {
+    font-family: $font-sans;
+    font-stretch: normal;
     font-style: normal;
-    font-variant: normal;
-    font-weight: normal;
-    line-height: 1;
-    speak: none;
-    text-transform: none;
-    vertical-align: middle;
+}
 
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+
+
+// Serif text
+@mixin font-serif() {
+    font-family: $font-serif;
+    font-stretch: normal;
+    font-style: normal;
+}
+
+
+
+// Text regular weights/styles
+@mixin text-regular() {
+    font-weight: 400;
+}
+@mixin text-medium() {
+    font-weight: 500;
+}
+@mixin text-bold() {
+    font-weight: 700;
+}
+@mixin text-black() {
+    font-weight: 900;
+}
+@mixin text-italic() {
+    font-style: italic;
 }
 
 
