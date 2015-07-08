@@ -60,14 +60,6 @@ module.exports = function ( grunt ) {
                     "build",
                     "deploy"
                 ]
-                /*
-                compass: {
-                    cssRoot: cssRoot,
-                    sassRoot: sassRoot,
-                    imgRoot: imgRoot,
-                    fontsRoot: fontsRoot
-                }
-                */
             }
         },
 

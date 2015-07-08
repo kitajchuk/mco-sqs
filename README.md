@@ -12,7 +12,6 @@ The required dependencies and known working versions for this project.
 - [npm](https://www.npmjs.com/) @2.10.0 ( packaged with node install )
 - [grunt](http://gruntjs.com/) @~0.4.5
 - [sass](http://sass-lang.com/install) @3.4.13
-- [compass](http://compass-style.org/) @1.0.3
 - [properjs](https://github.com/ProperJS/) @~0.1
 
 
@@ -23,8 +22,6 @@ Install all global project dependencies. This list denotes starting from a blank
 npm install -g grunt-cli
 
 npm install -g properjs-cli
-
-gem install compass
 
 gem install sass
 ```
