@@ -40,6 +40,8 @@ scrolls = {
         emitter.on( "app--do-scroll", onScroller );
 
         onScroller();
+        onScrollerUp();
+        onScrollerDown();
 
         this.topout();
     },
@@ -59,6 +61,8 @@ scrolls = {
 
     teardown: function () {
         scroller.off( "scroll", onScroller );
+        scroller.off( "scrollup", onScrollerUp );
+        scroller.off( "scrolldown", onScrollerDown );
         emitter.off( "app--do-scroll", onScroller );
     }
 },
@@ -98,84 +102,37 @@ suppressEvents = function ( scrollPos ) {
  *
  */
 onScroller = function () {
-    var scrollPos = scroller.getScrollY(),
-        bounds,
-        $items = $( ".js-grid" ).children(),
-        $item,
-        i;
+    var scrollPos = scroller.getScrollY();
 
     if ( !detect.isTouch() ) {
         suppressEvents( scrollPos );
     }
 
     emitter.fire( "app--scroll", scrollPos );
-
-
-    for ( i = $items.length; i--; ) {
-        $item = $items.eq( i );
-        bounds = $items[ i ].getBoundingClientRect();
-
-        // In the visible viewport
-        if ( bounds.top > 0 && bounds.bottom < window.innerHeight ) {
-            $item.addClass( "is-entering" ).removeClass( "is-above is-below is-leaving-bottom is-leaving-top" );
-        }
-
-        // Out of the visible viewport above
-        if ( bounds.top < 0 && bounds.bottom < 0 ) {
-            $item.addClass( "is-above" ).removeClass( "is-below is-entering is-leaving-bottom is-leaving-top" );
-        }
-
-        // Out of the visible viewport below
-        if ( bounds.top > window.innerHeight && bounds.bottom > window.innerHeight ) {
-            $item.addClass( "is-below" ).removeClass( "is-above is-entering is-leaving-bottom is-leaving-top" );
-        }
-    }
 },
 
 
-onScrollerDown = function () {
-    var bounds,
-        $items = $( ".js-grid" ).children(),
-        $item,
-        i;
-
-    for ( i = $items.length; i--; ) {
-        $item = $items.eq( i );
-        bounds = $items[ i ].getBoundingClientRect();
-
-        // Entering from the bottom
-        if ( bounds.top < window.innerHeight && bounds.bottom > window.innerHeight ) {
-            $item.addClass( "is-entering" ).removeClass( "is-above is-below is-leaving-bottom is-leaving-top" );
-        }
-
-        // Exiting from the top
-        if ( (bounds.top + (bounds.height / 2)) < 0 && bounds.bottom > 0 ) {
-            $item.addClass( "is-leaving-top" ).removeClass( "is-above is-below is-entering is-leaving-bottom" );
-        }
-    }
-},
-
-
+/**
+ *
+ * @private
+ *
+ */
 onScrollerUp = function () {
-    var bounds,
-        $items = $( ".js-grid" ).children(),
-        $item,
-        i;
+    var scrollPos = scroller.getScrollY();
 
-    for ( i = $items.length; i--; ) {
-        $item = $items.eq( i );
-        bounds = $items[ i ].getBoundingClientRect();
+    emitter.fire( "app--scroll-up", scrollPos );
+},
 
-        // Entering from the top
-        if ( bounds.bottom > 0 && bounds.top < 0 ) {
-            $item.addClass( "is-entering" ).removeClass( "is-above is-below is-leaving-bottom is-leaving-top" );
-        }
 
-        // Exiting from the bottom
-        if ( (bounds.top + (bounds.height / 2)) > window.innerHeight && bounds.top < window.innerHeight ) {
-            $item.addClass( "is-leaving-bottom" ).removeClass( "is-above is-below is-entering is-leaving-top" );
-        }
-    }
+/**
+ *
+ * @private
+ *
+ */
+onScrollerDown = function () {
+    var scrollPos = scroller.getScrollY();
+
+    emitter.fire( "app--scroll-down", scrollPos );
 };
 
 

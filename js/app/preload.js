@@ -7,14 +7,12 @@
  *
  */
 import "app/dom";
-import { easeDuration } from "app/config";
 import { noop, loadImages, emitter, isImageLoadable } from "app/util";
 
 
 var $_images = null,
     $_visible = null,
 
-    _isActive = false,
     _imgLoader = null,
 
 
@@ -55,6 +53,8 @@ preload = {
 
 
     doPreload: function ( $images, callback ) {
+        var done = 0;
+
         $_images = ($images || dom.page.find( ".js-lazy-image" ));
         $_visible = $( [] );
 
@@ -64,13 +64,22 @@ preload = {
             }
         }
 
-        //console.log( $_visible.length, "vs", $_images.length );
+        console.log( "preload will load", $_visible.length, "out of", $_images.length, "images" );
 
         if ( !$_visible.length ) {
             delayedLoad( callback );
 
         } else {
-            _imgLoader = loadImages( $_visible, noop );
+            _imgLoader = loadImages( $_visible, function () {
+                done++;
+
+                emitter.fire( "app--preload-data", {
+                    total: $_visible.length,
+                    done: done
+                });
+
+                return true;
+            });
             _imgLoader.on( "done", function () {
                 delayedLoad( callback );
             });
@@ -91,25 +100,16 @@ delayedLoad = function ( callback ) {
         _imgLoader = null;
         _imgLoader = loadImages( $notVisible, isImageLoadable );
         _imgLoader.on( "done", function () {
-            console.log( "lazyloaded " + $notVisible.length + " images" );
+            console.log( "lazyloaded", $notVisible.length, "images" );
         });
     }
 
-    console.log( "preloaded " + $_visible.length + " images" );
+    console.log( "preloaded", $_visible.length, "images" );
 
-    emitter.fire( "app--preload" );
+    emitter.fire( "app--preload-done" );
 
     if ( $.isFunction( callback ) ) {
         callback();
-    }
-
-    if ( !_isActive ) {
-        _isActive = true;
-
-        setTimeout(function () {
-            dom.body.addClass( "is-active" );
-
-        }, easeDuration );
     }
 };
 

@@ -6,7 +6,12 @@
  *
  *
  */
+import "app/config";
 import { emitter, resizer, resizeElems } from "app/util";
+
+
+var _isSmallOn = false,
+    _isSmall = (window.innerWidth <= config.mobileWidth),
 
 
 /**
@@ -14,7 +19,7 @@ import { emitter, resizer, resizeElems } from "app/util";
  * @public
  *
  */
-var resizes = {
+resizes = {
     init: function () {
         resizer.on( "resize", onResizer );
         emitter.on( "app--do-resize", onResizer );
@@ -22,6 +27,11 @@ var resizes = {
         onResizer();
 
         console.log( "resizes initialized" );
+    },
+
+
+    isSmall: function () {
+        return _isSmall;
     },
 
 
@@ -39,6 +49,19 @@ var resizes = {
  */
 onResizer = function () {
     resizeElems();
+
+    _isSmall = (window.innerWidth <= config.mobileWidth);
+
+    if ( _isSmall && !_isSmallOn ) {
+        _isSmallOn = true;
+
+        emitter.fire( "app--resize-small" );
+
+    } else if ( !_isSmall && _isSmallOn ) {
+        _isSmallOn = false;
+
+        emitter.fire( "app--resize-normal" );
+    }
 
     emitter.fire( "app--resize" );
 };

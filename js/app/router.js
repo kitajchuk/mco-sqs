@@ -11,6 +11,8 @@ import "app/dom";
 import "app/preload";
 import "app/scrolls";
 import "app/navmenu";
+import "app/cover";
+import "app/grid";
 
 
 var PageController = require( "PageController" ),
@@ -35,7 +37,10 @@ router = {
 
         _pageController.setModules([
             scrolls,
-            preload
+            preload,
+
+            cover,
+            grid
         ]);
 
         _pageController.initPage();

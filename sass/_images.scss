@@ -4,12 +4,42 @@
 .image--square {
     padding-bottom: 100%;
     }
-.image--portrait {
-    padding-bottom: 150.834879%
-    }
-.image--landscape {
-    padding-bottom: 66.2337662%;
+.image--cover {
+    padding-bottom: 50%;
     }
 .image--cinema {
     padding-bottom: 56.25%;
     }
+
+
+
+// Laptop
+@media only screen and ( max-width: $break-laptop-medium ) {
+    .image--cover {
+        padding-bottom: 57.2222222%;
+        }
+}
+
+
+
+// Tablet
+@media only screen and ( max-width: $break-tablet-full ) {
+    .image--cover {
+        padding-bottom: 66.6992188%;
+        }
+}
+
+@media only screen and ( max-width: $break-tablet-small ) {
+    .image--cover {
+        padding-bottom: 83.3333333%;
+        }
+}
+
+
+
+// Mobile
+@media only screen and ( max-width: $break-mobile-full ) {
+    .image--cover {
+        padding-bottom: 120.3125%;
+        }
+}
