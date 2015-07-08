@@ -18,18 +18,39 @@
 
 
 
-.icon--brand:before {
+.icon--void {
+    color: $light;
+    }
+.icon--arrow-down:before {
     content: "\e600";
     }
-.icon--cart:before {
+.icon--arrow-left:before {
     content: "\e601";
     }
-.icon--exit:before {
+.icon--arrow-right:before {
     content: "\e602";
     }
-.icon--mark:before {
+.icon--arrow-up:before {
     content: "\e603";
     }
-.icon--menu:before {
+.icon--cart:before {
     content: "\e604";
+    }
+.icon--exit:before {
+    content: "\e605";
+    }
+.icon--grid:before {
+    content: "\e606";
+    }
+.icon--mco:before {
+    content: "\e607";
+    }
+.icon--menu:before {
+    content: "\e608";
+    }
+.icon--minus:before {
+    content: "\e60a";
+    }
+.icon--plus:before {
+    content: "\e60c";
     }

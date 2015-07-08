@@ -1,14 +1,14 @@
 // Grid
 .grid {
     font-size: 0;
-    margin: 0 -25px;
+    margin: 0 -$grid-gutter;
     position: relative;
     text-align: center;
     }
 .grid__item {
     display: inline-block;
-    margin-bottom: 50px;
-    padding: 0 25px;
+    margin-bottom: $grid-gutter;
+    padding: 0 ($grid-gutter / 2);
     @include ani-lift-block();
     }
 .grid__image {
@@ -30,7 +30,7 @@
 
 // Wrappers
 .wrapper {
-    padding: 100px;
+    padding: $grid-padding;
     }
 
 
@@ -45,3 +45,21 @@
     vertical-align: middle;
     width: 100%;
     }
+
+
+
+// Laptop
+@media only screen and ( max-width: $break-laptop-medium ) {
+    .wrapper {
+        padding: $grid-padding-laptop;
+        }
+}
+
+
+
+// Mobile
+@media only screen and ( max-width: $break-mobile-full ) {
+    .wrapper {
+        padding: $mobile-padding;
+        }
+}

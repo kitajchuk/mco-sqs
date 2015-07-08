@@ -9,7 +9,8 @@
  */
 var config = {
     easeDuration: 600,
-    mobileWidth: 640
+    mobileWidth: 640,
+    tabletWidth: 1280
 };
 
 

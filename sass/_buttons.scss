@@ -1,5 +1,5 @@
 .btn {
-    background-color: $dark;
+    background-color: $medium-dark;
     border: 0;
     color: $white;
     cursor: pointer;
@@ -22,13 +22,70 @@
     }
 .btn--cta {
     background-color: transparent;
-    color: $dark;
+    color: $medium-dark;
     padding: 0;
     }
 .btn--nav {
     background-color: transparent;
-    color: $dark;
+    color: $medium-dark;
     font-size: 12px;
     padding: 0;
     @include text-black();
     }
+.btn--navbar {
+    background-color: transparent;
+    color: $medium-dark;
+    opacity: 0;
+    padding: 0;
+    position: fixed;
+    top: $navbar-padding;
+    transition: opacity $ease-duration $soft-ease,
+                visibility $ease-duration $soft-ease;
+    visibility: hidden;
+    }
+.btn--menu {
+    left: $navbar-padding;
+    }
+.btn--mco {
+    left: 50%;
+    margin-left: -($icon-size / 2);
+    }
+.btn--exit {
+    left: auto;
+    opacity: 1;
+    right: $navbar-padding;
+    visibility: visible;
+    }
+
+
+
+// Tablet
+@media only screen and ( max-width: $break-tablet-full ) {
+    .btn--menu {
+        opacity: 1;
+        visibility: visible;
+        }
+}
+
+
+
+// Mobile
+@media only screen and ( max-width: $break-mobile-full ) {
+    .btn--navbar {
+        top: $mobile-padding;
+        }
+    .btn--menu {
+        left: $mobile-padding;
+        }
+    .btn--exit {
+        right: $mobile-padding;
+        }
+    .btn--mco {
+        opacity: 1;
+        visibility: visible;
+        }
+    .nav__a--home {
+        opacity: 0;
+        visibility: hidden;
+        }
+}

@@ -2,15 +2,17 @@
 $font-sans: "brandon-grotesque", Sans-serif;
 $font-serif: "garamond-premier-pro", Serif;
 $icon-font: "midnight-collective";
-$icon-uuid: "xd7bf4";
-$icon-size: 32px;
+$icon-uuid: "izj3pt";
+$icon-size: 34px;
+
 
 
 // Colors
 $black: #000;
 $white: #fff;
 $grey: #e6e6e6;
-$dark: #32344d;
+$dark: #262733;
+$medium-dark: #32344d;
 $medium: #4d4d66;
 $light: #6e6c80;
 $border: rgba( 110, 108, 128, 0.2 );
@@ -20,12 +22,15 @@ $border: rgba( 110, 108, 128, 0.2 );
 // Grid
 $grid-length: 12;
 $grid-columns: 12 11 10 9 8 7 6 5 4 3 2 1;
-$grid-max-width: 1600px;
+
 
 
 // Sizes
-$item-padding: 60px;
-$mobile-padding: 30px;
+$grid-padding: 280px;
+$grid-padding-laptop: 84px;
+$grid-gutter: 16px;
+$navbar-padding: 40px;
+$mobile-padding: 20px;
 
 
 
@@ -48,6 +53,7 @@ $break-mobile-medium: 480px;
 $break-mobile-small: 320px;
 
 
+
 // Animations
 $cubic-bezier-linear: cubic-bezier( 0, 0, 1, 1 );
 $cubic-bezier-ease: cubic-bezier( .25, .1, .25, 1 );
@@ -60,6 +66,7 @@ $ease-duration: 600ms;
 $midi-duration: 400ms;
 $fast-duration: 200ms;
 $soft-ease: ease;
+
 
 
 // Z-Layers

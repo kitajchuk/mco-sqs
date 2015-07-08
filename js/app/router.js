@@ -10,6 +10,7 @@ import { emitter, getTransitionDuration } from "app/util";
 import "app/dom";
 import "app/preload";
 import "app/scrolls";
+import "app/navbar";
 
 
 var PageController = require( "PageController" ),
@@ -94,6 +95,8 @@ onPreloadDone = function () {
  *
  */
 changePageOut = function () {
+    navbar.close();
+
     dom.page.removeClass( "is-reactive" ).addClass( "is-inactive" );
 
     emitter.on( "app--preload", onPreloadDone );
