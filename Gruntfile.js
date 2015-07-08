@@ -18,12 +18,14 @@ module.exports = function ( grunt ) {
 
 
     // Default project paths.
-    var pubRoot = ".",
-    
-        sassRoot = "./sass",
-        cssRoot = "./sqs_template/styles",
-        fontsRoot = "./sqs_template/assets/fonts",
-        imgRoot = "./sqs_template/assets/images",
+    var autoprefixer = require( "autoprefixer-core" ),
+
+        pubRoot = ".",
+
+        //sassRoot = "./sass",
+        //cssRoot = "./sqs_template/styles",
+        //fontsRoot = "./sqs_template/assets/fonts",
+        //imgRoot = "./sqs_template/assets/images",
     
         jsRoot = "./js",
         appRoot = jsRoot + "/app",
@@ -57,14 +59,49 @@ module.exports = function ( grunt ) {
                     "watch",
                     "build",
                     "deploy"
-                ],
+                ]
+                /*
                 compass: {
                     cssRoot: cssRoot,
                     sassRoot: sassRoot,
                     imgRoot: imgRoot,
                     fontsRoot: fontsRoot
                 }
-                
+                */
+            }
+        },
+
+
+         sass: {
+            styles: {
+                options: {
+                    style: "expanded"
+                },
+
+                files: {
+                    "./sqs_template/styles/screen.css": "sass/screen.scss"
+                }
+            }
+        },
+
+
+        postcss: {
+            options: {
+                processors: [
+                    autoprefixer( {browsers: "last 2 versions"} )
+                ]
+            },
+
+            dist: {
+                src: "./sqs_template/styles/*.css"
+            }
+        },
+
+
+        "nautilus-watch": {
+            styles: {
+                files: ["sass/**/*.scss"],
+                tasks: ["sass", "postcss"]
             }
         }
 
@@ -74,10 +111,12 @@ module.exports = function ( grunt ) {
 
     // Load the nautilus plugin.
     grunt.loadNpmTasks( "grunt-nautilus" );
+    grunt.loadNpmTasks( "grunt-contrib-sass" );
+    grunt.loadNpmTasks( "grunt-postcss" );
 
 
     // Register default task.
-    grunt.registerTask( "default", ["nautilus:build"] );
+    grunt.registerTask( "default", ["nautilus:build", "sass", "postcss"] );
 
 
 };

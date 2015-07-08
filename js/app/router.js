@@ -10,7 +10,7 @@ import { emitter, getTransitionDuration } from "app/util";
 import "app/dom";
 import "app/preload";
 import "app/scrolls";
-import "app/navbar";
+import "app/navmenu";
 
 
 var PageController = require( "PageController" ),
@@ -95,7 +95,7 @@ onPreloadDone = function () {
  *
  */
 changePageOut = function () {
-    navbar.close();
+    navmenu.close();
 
     dom.page.removeClass( "is-reactive" ).addClass( "is-inactive" );
 
@@ -109,7 +109,6 @@ changePageOut = function () {
  *
  */
 changePageIn = function ( data ) {
-    console.log( data );
     var $doc = $( data.response ),
         res = $doc.filter( ".js-page" )[ 0 ].innerHTML;
 

@@ -45,7 +45,13 @@
     width: 100%;
     z-index: $z_layer_10;
     }
-.navbar__small__a {
+
+
+
+.navmenu {
+    text-align: center;
+    }
+.navmenu__a {
     color: $medium-dark;
     display: block;
     margin-bottom: $navbar-padding;
@@ -73,7 +79,7 @@
 }
 
 @media only screen and ( max-width: $break-tablet-small ) {
-    .navbar__small__a {
+    .navmenu__a {
         margin-bottom: 30px;
         }
 }
@@ -82,7 +88,24 @@
 
 // Mobile
 @media only screen and ( max-width: $break-mobile-full ) {
-    .navbar__small__a {
+    .navmenu__a {
         margin-bottom: $mobile-padding;
+        }
+
+    .footerbar .nav__li {
+        display: block;
+        margin: 0;
+        padding: 0;
+
+        &:last-child .nav__a {
+            margin-bottom: 0;
+            }
+        }
+    .footerbar .nav__a {
+        margin: 0 0 $mobile-padding 0;
+        padding: 0;
+        }
+    .nav__a--mco {
+        display: none;
         }
 }

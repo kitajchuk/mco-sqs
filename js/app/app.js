@@ -11,7 +11,7 @@ import "node_modules/hammerjs/hammer";
 import "app/resizes";
 import "app/router";
 import "app/detect";
-import "app/navbar";
+import "app/navmenu";
 
 
 window.onload = function () {
@@ -27,6 +27,6 @@ window.onload = function () {
     resizes.init();
 
 
-    // Primary navbar initializer
-    navbar.init();
+    // Primary navmenu initializer
+    navmenu.init();
 };

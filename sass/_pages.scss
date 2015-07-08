@@ -1,4 +1,5 @@
 .page {
+    padding-top: $page-padding;
     position: relative;
     transition: opacity $ease-duration $cubic-ease,
                 transform $ease-duration $soft-ease;

@@ -10,8 +10,8 @@
     right: 0;
     top: 0;
     visibility: hidden;
-    transition: opacity $ease-duration $soft-ease,
-                visibility $ease-duration $soft-ease;
+    transition: opacity $fast-duration $soft-ease,
+                visibility $fast-duration $soft-ease;
     z-index: $z_layer_infront;
     -webkit-overflow-scrolling: touch;
 
@@ -30,8 +30,8 @@
     height: 100%;
     opacity: 0;
     transform: translate3d( 0, $navbar-padding, 0 );
-    transition: opacity $ease-duration $soft-ease $fast-duration,
-                transform $ease-duration $soft-ease $fast-duration;
+    transition: opacity $ease-duration $soft-ease,
+                transform $ease-duration $soft-ease;
     }
 .screen.is-active {
     .screen__wrap {
