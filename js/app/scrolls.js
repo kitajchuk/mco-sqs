@@ -30,9 +30,6 @@ scrolls = {
     isActive: noop,
 
 
-    isLoaded: noop,
-
-
     onload: function () {
         scroller.on( "scroll", onScroller );
         scroller.on( "scrollup", onScrollerUp );
@@ -74,6 +71,10 @@ scrolls = {
  *
  */
 suppressEvents = function ( scrollPos ) {
+    if ( detect.isTouch() ) {
+        return;
+    }
+
     try {
         clearTimeout( _timeout );
 
@@ -104,9 +105,7 @@ suppressEvents = function ( scrollPos ) {
 onScroller = function () {
     var scrollPos = scroller.getScrollY();
 
-    if ( !detect.isTouch() ) {
-        suppressEvents( scrollPos );
-    }
+    suppressEvents( scrollPos );
 
     emitter.fire( "app--scroll", scrollPos );
 },
@@ -120,6 +119,10 @@ onScroller = function () {
 onScrollerUp = function () {
     var scrollPos = scroller.getScrollY();
 
+    if ( scrollPos <= 0 || detect.isTouch() ) {
+        return;
+    }
+
     emitter.fire( "app--scroll-up", scrollPos );
 },
 
@@ -131,6 +134,10 @@ onScrollerUp = function () {
  */
 onScrollerDown = function () {
     var scrollPos = scroller.getScrollY();
+
+    if ( scrollPos <= 0 || detect.isTouch() ) {
+        return;
+    }
 
     emitter.fire( "app--scroll-down", scrollPos );
 };

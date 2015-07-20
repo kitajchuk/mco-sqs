@@ -15,7 +15,6 @@ var $_jsGrid = null,
     $_jsItems = null,
 
     _isActive = false,
-    _isLoaded = false,
 
 
 /**
@@ -30,27 +29,11 @@ grid = {
 
 
     isActive: function () {
-        return _isActive;
-    },
-
-
-    isLoaded: function () {
-        return _isLoaded;
+        return (_isActive = this.getElements() > 0);
     },
 
 
     onload: function () {
-        _isActive = this.getElements();
-
-        if ( _isLoaded ) {
-            return;
-
-        } else if ( !_isActive ) {
-            return;
-        }
-
-        _isLoaded = true;
-
         emitter.on( "app--resize-small", unbindAnimateGrid );
         emitter.on( "app--resize-normal", bindAnimateGrid );
 
@@ -61,9 +44,7 @@ grid = {
 
 
     unload: function () {
-        if ( _isLoaded ) {
-            this.teardown();
-        }
+        this.teardown();
     },
 
 
@@ -82,7 +63,6 @@ grid = {
         $_jsItems = null;
 
         _isActive = false;
-        _isLoaded = false;
     }
 },
 

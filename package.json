@@ -10,7 +10,7 @@
     "grunt-nautilus": "~0.7",
     "grunt-postcss": "^0.5.4",
     "hammerjs": "~2.0",
-    "properjs": "~0.1"
+    "properjs": "~0.3"
   },
   "properjs": {
     "output": "js/lib/proper.js",

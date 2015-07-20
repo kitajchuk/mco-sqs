@@ -12,7 +12,6 @@ import "app/dom";
 var $_jsCover = null,
 
     _isActive = false,
-    _isLoaded = false,
 
 
 /**
@@ -27,35 +26,17 @@ cover = {
 
 
     isActive: function () {
-        return _isActive;
-    },
-
-
-    isLoaded: function () {
-        return _isLoaded;
+        return (_isActive = this.getElements() > 0);
     },
 
 
     onload: function () {
-        _isActive = this.getElements();
-
-        if ( _isLoaded ) {
-            return;
-
-        } else if ( !_isActive ) {
-            return;
-        }
-
-        _isLoaded = true;
-
         dom.html.addClass( "is-cover-page" );
     },
 
 
     unload: function () {
-        if ( _isLoaded ) {
-            this.teardown();
-        }
+        this.teardown();
     },
 
 
@@ -72,7 +53,6 @@ cover = {
 
         dom.html.removeClass( "is-cover-page" );
 
-        _isLoaded = false;
         _isActive = false;
     }
 };
