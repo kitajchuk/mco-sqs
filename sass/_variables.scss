@@ -56,17 +56,12 @@ $break-mobile-small: 320px;
 
 
 // Animations
-$cubic-bezier-linear: cubic-bezier( 0, 0, 1, 1 );
-$cubic-bezier-ease: cubic-bezier( .25, .1, .25, 1 );
-$cubic-bezier-ease-in: cubic-bezier( .42, 0, 1, 1 );
-$cubic-bezier-ease-out: cubic-bezier( 0, 0, .58, 1 );
-$cubic-bezier-ease-in-out: cubic-bezier( .42, 0, .58, 1 );
-$cubic-ease: cubic-bezier( 0.77, 0, 0.175, 1 );
-$anim-duration: 1000ms;
+$anim-duration: 600ms;
 $ease-duration: 600ms;
 $midi-duration: 400ms;
 $fast-duration: 200ms;
 $soft-ease: ease;
+$cubic-ease: ease-in;
 
 
 

@@ -45,8 +45,8 @@
 
 // Animations
 @mixin ani-lift-block() {
-    transition: transform $ease-duration $soft-ease,
-                opacity $ease-duration $soft-ease;
+    transition: transform $anim-duration $soft-ease,
+                opacity $anim-duration $soft-ease;
 
     &.is-below {
         opacity: 0;
