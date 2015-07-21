@@ -23,6 +23,9 @@ var $_jsGrid = null,
  *
  */
 grid = {
+    name: "grid",
+
+
     init: function () {
         console.log( "grid initialized" );
     },

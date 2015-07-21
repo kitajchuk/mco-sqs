@@ -26,8 +26,7 @@ $grid-columns: 12 11 10 9 8 7 6 5 4 3 2 1;
 
 
 // Sizes
-$grid-padding: 280px;
-$grid-padding-laptop: 84px;
+$grid-padding: 84px;
 $grid-gutter: 16px;
 $navbar-padding: 40px;
 $mobile-padding: 20px;
@@ -45,6 +44,7 @@ $mobile-title-size: 21px;
 
 
 // Breakpoints
+$break-laptop-full: 1680px;
 $break-laptop-medium: 1440px;
 $break-tablet-full: 1280px;
 $break-tablet-medium: 1024px;

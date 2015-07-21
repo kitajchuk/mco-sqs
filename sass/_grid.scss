@@ -9,10 +9,11 @@
     display: inline-block;
     margin-bottom: $grid-gutter;
     padding: 0 ($grid-gutter / 2);
+    width: 25%;
     @include ani-lift-block();
     }
 .grid__image {
-    background-color: $light;
+    background-color: $border;
     }
 
 
@@ -49,9 +50,14 @@
 
 
 // Laptop
-@media only screen and ( max-width: $break-laptop-medium ) {
-    .wrapper {
-        padding: $grid-padding-laptop;
+@media only screen and ( max-width: $break-laptop-full ) {
+    .grid__item {
+        width: 33.33333%;
+        }
+}
+@media only screen and ( max-width: $break-tablet-medium ) {
+    .grid__item {
+        width: 50%;
         }
 }
 

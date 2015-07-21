@@ -30,10 +30,9 @@
     .navmenu {
         opacity: 1;
         visibility: visible;
-
-        .screen__wrap {
-            opacity: 1;
-            transform: translate3d( 0, 0, 0 );
-            }
+        }
+    .navmenu__li {
+        opacity: 1;
+        transform: translate3d( 0, 0, 0 ) !important;
         }
 }

@@ -28,16 +28,6 @@
     }
 .screen__wrap {
     height: 100%;
-    opacity: 0;
-    transform: translate3d( 0, $navbar-padding, 0 );
-    transition: opacity $ease-duration $soft-ease,
-                transform $ease-duration $soft-ease;
-    }
-.screen.is-active {
-    .screen__wrap {
-        opacity: 1;
-        transform: translate3d( 0, 0, 0 );
-        }
     }
 .screen__exit {
     cursor: pointer;

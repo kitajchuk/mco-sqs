@@ -22,15 +22,15 @@ var $_images = null,
  *
  */
 preload = {
+    name: "preload",
+
+
     init: function () {
         console.log( "preload initialized" );
     },
 
 
     isActive: noop,
-
-
-    isLoaded: noop,
 
 
     onload: function () {

@@ -88,3 +88,23 @@
         visibility: hidden;
         }
 }
+
+
+
+// Squarespace Hacks
+.sqs-add-to-cart-button {
+    background-color: $medium-dark !important;
+    border: 0 !important;
+    color: $white !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+    font-size: 14px !important;
+    line-height: 1 !important;
+    outline: 0 !important;
+    padding: 20px 72px !important;
+    text-transform: uppercase !important;
+    width: 100% !important;
+    -webkit-appearance: none !important;
+    @include sqs-hack-font-sans();
+    @include sqs-hack-text-bold();
+    }

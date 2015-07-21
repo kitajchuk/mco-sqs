@@ -1,7 +1,7 @@
 .page {
-    padding-top: $page-padding;
+    padding-top: /* $page-padding */0;
     position: relative;
-    transition: opacity $ease-duration $cubic-ease,
+    transition: opacity $ease-duration $soft-ease,
                 transform $ease-duration $soft-ease;
 
     &.is-reactive {

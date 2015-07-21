@@ -51,6 +51,24 @@
 .navmenu {
     text-align: center;
     }
+.navmenu__li {
+    opacity: 0;
+    transform: translate3d( 0, ($grid-padding / 2), 0 );
+    transition: opacity $ease-duration $cubic-ease,
+                transform $ease-duration $soft-ease;
+    }
+.navmenu__li:nth-child(1) {
+    transition-delay: 0;
+    }
+.navmenu__li:nth-child(2) {
+    transition-delay: 50ms;
+    }
+.navmenu__li:nth-child(3) {
+    transition-delay: 150ms;
+    }
+.navmenu__li:nth-child(4) {
+    transition-delay: 200ms;
+    }
 .navmenu__a {
     color: $medium-dark;
     display: block;

@@ -20,6 +20,9 @@ var $_jsCover = null,
  *
  */
 cover = {
+    name: "cover",
+
+
     init: function () {
         console.log( "cover initialized" );
     },

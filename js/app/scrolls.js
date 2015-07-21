@@ -22,6 +22,9 @@ var _timeout = null,
  *
  */
 scrolls = {
+    name: "scrolls",
+
+
     init: function () {
         console.log( "scrolls initialized" );
     },

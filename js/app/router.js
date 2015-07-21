@@ -46,11 +46,15 @@ router = {
         _pageController.initPage();
 
         _pageController.on( "page-controller-router-samepage", function () {
-            console.log( "samepage" );
+            navmenu.close();
         });
 
         _pageController.on( "page-controller-router-transition-out", function () {
             changePageOut();
+        });
+
+        _pageController.on( "page-controller-router-refresh-document", function ( html ) {
+            changeContent( html );
         });
 
         _pageController.on( "page-controller-router-transition-in", function ( data ) {
@@ -86,11 +90,12 @@ onPreloadDone = function () {
     preload.triggerEvents();
 
     setTimeout(function () {
+        dom.html.removeClass( "is-routing" );
         dom.page.removeClass( "is-reactive is-inactive" );
 
     }, _pageDuration );
 
-    emitter.off( "app--preload", onPreloadDone );
+    emitter.off( "app--preload-done", onPreloadDone );
 },
 
 
@@ -102,9 +107,10 @@ onPreloadDone = function () {
 changePageOut = function () {
     navmenu.close();
 
+    dom.html.addClass( "is-routing" );
     dom.page.removeClass( "is-reactive" ).addClass( "is-inactive" );
 
-    emitter.on( "app--preload", onPreloadDone );
+    emitter.on( "app--preload-done", onPreloadDone );
 },
 
 
@@ -113,13 +119,23 @@ changePageOut = function () {
  * @private
  *
  */
-changePageIn = function ( data ) {
-    var $doc = $( data.response ),
+changeContent = function ( html ) {
+    var $doc = $( html ),
         res = $doc.filter( ".js-page" )[ 0 ].innerHTML;
 
     document.title = $doc.filter( "title" ).text();
 
-    dom.page.addClass( "is-reactive" )[ 0 ].innerHTML = res;
+    dom.page[ 0 ].innerHTML = res;
+},
+
+
+/**
+ *
+ * @private
+ *
+ */
+changePageIn = function () {
+    dom.page.addClass( "is-reactive" );
 };
 
 
