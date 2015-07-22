@@ -1,11 +1,9 @@
 .page {
-    padding-top: /* $page-padding */0;
     position: relative;
-    transition: opacity $anim-duration $soft-ease,
-                transform $anim-duration $soft-ease;
+    transition: opacity $anim-duration $ease-in;
 
     &.is-reactive {
-        transform: translate3d( 0, 100px, 0 );
+        transition-timing-function: $ease-out;
         }
     &.is-inactive {
         opacity: 0;

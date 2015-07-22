@@ -10,8 +10,8 @@
     right: 0;
     top: 0;
     visibility: hidden;
-    transition: opacity $fast-duration $soft-ease,
-                visibility $fast-duration $soft-ease;
+    transition: opacity $anim-duration $ease,
+                visibility $anim-duration $ease;
     z-index: $z_layer_infront;
     -webkit-overflow-scrolling: touch;
 

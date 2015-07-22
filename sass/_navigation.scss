@@ -25,8 +25,8 @@
     font-size: 12px;
     margin: 0 15px;
     text-decoration: none;
-    transition: opacity $ease-duration $soft-ease,
-                visibility $ease-duration $soft-ease;
+    transition: opacity $ease-duration $ease,
+                visibility $ease-duration $ease;
     @include font-sans();
     @include text-black();
     }
@@ -54,8 +54,8 @@
 .navmenu__li {
     opacity: 0;
     transform: translate3d( 0, ($grid-padding / 2), 0 );
-    transition: opacity $anim-duration $soft-ease,
-                transform $anim-duration $soft-ease;
+    transition: opacity $anim-duration $ease,
+                transform $anim-duration $ease;
     }
 .navmenu__li:nth-child(1) {
     transition-delay: 0;

@@ -37,6 +37,9 @@
 @mixin text-black() {
     font-weight: 900;
 }
+@mixin sqs-hack-text-black() {
+    font-weight: 900 !important;
+}
 @mixin text-italic() {
     font-style: italic;
 }
@@ -45,8 +48,8 @@
 
 // Animations
 @mixin ani-lift-block() {
-    transition: transform $anim-duration $soft-ease,
-                opacity $anim-duration $soft-ease;
+    transition: transform $anim-duration $ease,
+                opacity $anim-duration $ease;
 
     &.is-below {
         opacity: 0;

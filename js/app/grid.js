@@ -37,6 +37,7 @@ grid = {
 
 
     onload: function () {
+        emitter.on( "app--resize", onResizer );
         emitter.on( "app--resize-small", unbindAnimateGrid );
         emitter.on( "app--resize-normal", bindAnimateGrid );
 
@@ -61,6 +62,10 @@ grid = {
 
     teardown: function () {
         unbindAnimateGrid();
+
+        emitter.off( "app--resize", onResizer );
+        emitter.off( "app--resize-small", unbindAnimateGrid );
+        emitter.off( "app--resize-normal", bindAnimateGrid );
 
         $_jsGrid = null;
         $_jsItems = null;
@@ -99,6 +104,16 @@ unbindAnimateGrid = function () {
     $_jsItems.removeClass( "is-above is-below is-entering is-leaving-bottom is-leaving-top" );
 
     console.log( "unbind animate grid" );
+},
+
+
+/**
+ *
+ * @private
+ *
+ */
+onResizer = function () {
+    onScroller();
 },
 
 

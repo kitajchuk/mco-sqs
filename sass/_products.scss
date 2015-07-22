@@ -25,11 +25,74 @@
     font-size: 14px !important;
     line-height: 1 !important;
     outline: 0 !important;
-    padding: 20px 72px !important;
+    padding: 18px 72px !important;
     text-align: center !important;
     text-transform: uppercase !important;
     width: 100% !important;
     -webkit-appearance: none !important;
     @include sqs-hack-font-sans();
     @include sqs-hack-text-bold();
+    }
+.absolute-cart-box,
+.sqs-pill-shopping-cart {
+    bottom: auto !important;
+    left: auto !important;
+    position: fixed !important;
+    right: $navbar-padding !important;
+    top: $navbar-padding !important;
+    }
+.sqs-pill-shopping-cart {
+    width: auto !important;
+    }
+.sqs-pill-shopping-cart-content {
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 2px solid $medium-dark !important;
+    border-radius: 50% !important;
+    box-shadow: none !important;
+    color: $medium-dark !important;
+    font-size: 0 !important;
+    height: 34px !important;
+    line-height: 38px !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    width: 34px !important;
+
+    .icon,
+    .suffix ,
+    .subtotal {
+        display: none !important;
+        }
+
+    .details {
+        font-size: 0 !important;
+        }
+
+    .total-quantity {
+        font-size: 12px !important;
+        @include sqs-hack-font-sans();
+        @include sqs-hack-text-black();
+        }
+    }
+
+
+
+// Mobile
+@media only screen and ( max-width: $break-mobile-full ) {
+    .product__image,
+    .product__utility {
+        display: block;
+        width: 100%;
+        }
+    .product__utility {
+        padding: $grid-padding;
+        }
+
+    // Squarespace Hacks
+    .absolute-cart-box,
+    .sqs-pill-shopping-cart {
+        right: $mobile-padding !important;
+        top: $mobile-padding !important;
+        }
 }

@@ -22,7 +22,7 @@
     opacity: 0;
     }
 .-is-lazy-transition {
-    transition: opacity $ease-duration $cubic-ease;
+    transition: opacity $ease-duration $ease;
     }
 .-is-lazy-loaded {
     opacity: 1;

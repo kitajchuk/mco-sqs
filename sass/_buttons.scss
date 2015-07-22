@@ -39,8 +39,8 @@
     padding: 0;
     position: fixed;
     top: $navbar-padding;
-    transition: opacity $ease-duration $soft-ease,
-                visibility $ease-duration $soft-ease;
+    transition: opacity $ease-duration $ease,
+                visibility $ease-duration $ease;
     visibility: hidden;
     }
 .btn--menu {
@@ -107,4 +107,10 @@
     -webkit-appearance: none !important;
     @include sqs-hack-font-sans();
     @include sqs-hack-text-bold();
+    }
+.sqs-add-to-cart-button-inner {
+    letter-spacing: normal !important;
+    }
+.quantity-label {
+    display: none !important;
     }
