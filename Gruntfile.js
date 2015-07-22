@@ -53,7 +53,9 @@ module.exports = function ( grunt ) {
                     $: true,
                     jQuery: true,
                     Hammer: true,
-                    DocumentTouch: true
+                    DocumentTouch: true,
+                    Squarespace: true,
+                    Y: true
                 },
                 hintOn: [
                     "watch",

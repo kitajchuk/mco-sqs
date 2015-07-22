@@ -13,6 +13,7 @@ import "app/scrolls";
 import "app/navmenu";
 import "app/cover";
 import "app/grid";
+import "app/product";
 
 
 var PageController = require( "PageController" ),
@@ -40,7 +41,8 @@ router = {
             preload,
 
             cover,
-            grid
+            grid,
+            product
         ]);
 
         _pageController.initPage();
