@@ -53,12 +53,26 @@
 
 // Mobile
 @media only screen and ( max-width: $break-mobile-full ) {
+    .product {
+        min-height: 0;
+        padding-top: $grid-padding;
+        height: auto;
+        }
     .product__image,
     .product__utility {
         display: block;
         width: 100%;
         }
     .product__utility {
-        padding: $grid-padding;
+        max-width: 100%;
+        text-align: center;
+        }
+    .product__title,
+    .product__checkout {
+        max-width: 100%;
+        }
+    .product__title,
+    .product__desc {
+        padding: 0 ($mobile-padding * 2);
         }
 }

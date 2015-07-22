@@ -2,7 +2,7 @@
  * Add To Cart Button
 *******************************************************************************/
 .sqs-add-to-cart-button {
-    background-color: $medium-dark !important;
+    background-color: $medium !important;
     border: 0 !important;
     color: $white !important;
     cursor: pointer !important;
@@ -12,6 +12,7 @@
     margin-top: 24px !important;
     outline: 0 !important;
     padding: 20px 72px !important;
+    transition: background-color $ease-duration $ease !important;
     text-transform: uppercase !important;
     width: 100% !important;
     -webkit-appearance: none !important;
@@ -20,6 +21,9 @@
     }
 .sqs-add-to-cart-button * {
     display: inline-block !important;
+    }
+.sqs-add-to-cart-button .sqs-spin {
+    display: none !important;
     }
 .sqs-add-to-cart-button div + div {
     margin-left: 20px !important;
@@ -31,6 +35,12 @@
 .quantity-label {
     display: none !important;
     }
+
+.is-hoverable {
+    .sqs-add-to-cart-button:hover {
+        background-color: $medium-dark !important;
+        }
+}
 
 
 
@@ -111,6 +121,10 @@ input::-webkit-inner-spin-button {
 
 
 @media only screen and ( max-width: $break-mobile-full ) {
+    .sqs-add-to-cart-button {
+        margin-top: 0 !important;
+        }
+
     .absolute-cart-box,
     .sqs-pill-shopping-cart {
         right: $mobile-padding !important;

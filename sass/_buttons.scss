@@ -1,5 +1,5 @@
 .btn {
-    background-color: $medium-dark;
+    background-color: $medium;
     border: 0;
     color: $white;
     cursor: pointer;
@@ -9,15 +9,15 @@
     outline: 0;
     padding: 20px 72px;
     text-transform: uppercase;
+    transition: background-color $ease-duration $ease;
     -webkit-appearance: none;
     @include font-sans();
     @include text-bold();
     }
-.btn--medium {
-    background-color: $medium;
+.btn--dark {
+    background-color: $medium-dark;
     }
 .btn--light {
-    background-color: $medium;
     color: $light;
     }
 .btn--cta {
