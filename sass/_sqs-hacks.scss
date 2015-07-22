@@ -37,11 +37,13 @@
 /******************************************************************************
  * Quantity Input
 *******************************************************************************/
+.product-quantity-input {
+    position: relative !important;
+    }
 .product-quantity-input input {
     background-color: $white !important;
     border: 1px solid $border !important;
-    color: $medium !important;
-    cursor: pointer !important;
+    color: $medium-dark !important;
     display: inline-block !important;
     font-size: 14px !important;
     line-height: 1 !important;
@@ -53,6 +55,9 @@
     -webkit-appearance: none !important;
     @include sqs-hack-font-sans();
     @include sqs-hack-text-bold();
+    }
+input::-webkit-inner-spin-button {
+    display: none !important;
     }
 
 

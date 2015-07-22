@@ -10,6 +10,10 @@ import "app/dom";
 
 
 var $_jsProduct = null,
+    $_jsInputWrap = null,
+    $_jsInput = null,
+    $_jsDec = $( '<div class="product__dec"><span class="icon icon--minus icon--void"></span></div>' ),
+    $_jsInc = $( '<div class="product__inc"><span class="icon icon--plus"></span></div>' ),
 
     _isActive = false,
     _isCommerce = false,
@@ -25,8 +29,6 @@ product = {
 
 
     init: function () {
-        this.tryInitCommerce();
-
         console.log( "product initialized" );
     },
 
@@ -38,6 +40,11 @@ product = {
 
     onload: function () {
         this.tryInitCommerce();
+
+        $_jsDec.on( "click", onDecClick );
+        $_jsInc.on( "click", onIncClick );
+
+        $_jsInputWrap.append( $_jsDec, $_jsInc );
     },
 
 
@@ -48,6 +55,8 @@ product = {
 
     getElements: function () {
         $_jsProduct = dom.body.find( ".js-product" );
+        $_jsInputWrap = dom.body.find( ".product-quantity-input" );
+        $_jsInput = $_jsInputWrap.find( "input" );
 
         return ( $_jsProduct.length );
     },
@@ -55,6 +64,11 @@ product = {
 
     teardown: function () {
         $_jsProduct = null;
+        $_jsInputWrap = null;
+        $_jsInput = null;
+
+        $_jsDec.off( "click", onDecClick );
+        $_jsInc.off( "click", onIncClick );
 
         _isActive = false;
         _isCommerce = false;
@@ -68,6 +82,40 @@ product = {
             Y.Squarespace.Commerce.initializeCommerce( Y );
         }
     }
+},
+
+
+voidDecIcon = function ( val ) {
+    var $ic = $_jsDec.find( ".icon" );
+
+    if ( val > 1 ) {
+        $ic.removeClass( "icon--void" );
+
+    } else {
+        $ic.addClass( "icon--void" );
+    }
+},
+
+
+onIncClick = function () {
+    var val = $_jsInput.val();
+
+    val++;
+
+    voidDecIcon( val );
+
+    $_jsInput.val( Math.max( 1, val ) );
+},
+
+
+onDecClick = function () {
+    var val = $_jsInput.val();
+
+    val--;
+
+    voidDecIcon( val );
+
+    $_jsInput.val( Math.max( 1, val ) );
 };
 
 

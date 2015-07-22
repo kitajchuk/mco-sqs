@@ -1,6 +1,7 @@
 .product {
     font-size: 0;
     height: 100vh;
+    min-height: $break-tablet-small;
     width: 100vw;
     }
 .product__image,
@@ -24,6 +25,28 @@
     }
 .product__checkout {
     max-width: 250px;
+    }
+
+.product__inc,
+.product__dec {
+    background-color: $white;
+    bottom: 1px;
+    color: $medium-dark;
+    cursor: pointer;
+    line-height: 58px;
+    position: absolute;
+    text-align: center;
+    top: 1px;
+    user-select: none;
+    width: 58px;
+    }
+.product__dec {
+    border-right: 1px solid $border;
+    left: 1px;
+    }
+.product__inc {
+    border-left: 1px solid $border;
+    right: 1px;
     }
 
 
