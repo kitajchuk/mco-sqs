@@ -132,6 +132,60 @@ isElementInViewport = function ( el ) {
 
 /**
  *
+ * Get nearest value from an array of numbers given a control number
+ * @method closestValue
+ * @param {number} num The control Number
+ * @param {object} arr The array to check
+ * @returns Number
+ * @memberof util
+ *
+ */
+closestValue = function ( num, arr ) {
+    var curr = arr[ 0 ],
+        diff = Math.abs( num - curr );
+
+    for ( var val = arr.length; val--; ) {
+        var newdiff = Math.abs( num - arr[ val ] );
+
+        if ( newdiff < diff ) {
+            diff = newdiff;
+            curr = arr[ val ];
+        }
+    }
+
+    return curr;
+},
+
+
+/**
+ *
+ * Get next highest value from the original closest value
+ * @method closestValueUp
+ * @param {number} num The control Number
+ * @param {object} arr The array to check
+ * @returns Number
+ * @memberof util
+ *
+ */
+closestValueUp = function ( num, arr ) {
+    var curr = arr[ 0 ],
+        diff = Math.abs( num - curr );
+
+    for ( var val = arr.length; val--; ) {
+        var newdiff = Math.abs( num - arr[ val ] );
+
+        if ( arr[ val ] > num && newdiff < diff ) {
+            diff = newdiff;
+            curr = arr[ val ];
+        }
+    }
+
+    return curr;
+},
+
+
+/**
+ *
  * Fresh query to lazyload images on page
  * @method loadImages
  * @param {object} images Optional collection of images to load
@@ -149,6 +203,45 @@ loadImages = function ( images, handler, loadType ) {
 
     // Normalize loadType
     loadType = (loadType || "async");
+
+    // Get the right size image for the job
+    for ( var i = images.length; i--; ) {
+        var $img = images.eq( i ),
+            data = $img.data(),
+            //width = Math.min( ($img[ 0 ].clientWidth || $img.parentNode.clientWidth), window.innerWidth ),
+            //width = window.innerWidth,
+            width = 2200,
+            nextSize,
+            variant,
+            variants,
+            j;
+
+        if ( data.variants ) {
+            variants = data.variants.split( "," );
+
+            for ( j = variants.length; j--; ) {
+                variants[ j ] = parseInt( variants[ j ], 10 );
+            }
+
+            variant = closestValue( width, variants );
+            nextSize = closestValueUp( variant, variants );
+
+            // Test out the size, maybe we need to bump it up
+            // Consequently, Squarespace will not serve over 1500w
+            // so this may just really be a test in futility.
+            if ( variant < width && nextSize ) {
+                variant = nextSize;
+            }
+
+            // Test and bump again, mobile size needs a boost
+            // since our primary focus deals in the retina arena.
+            if ( window.innerWidth <= 480 ) {
+                variant = closestValueUp( variant, variants );
+            }
+
+            $img.attr( "data-img-src", data.imgSrc + "?format=" + variant + "w" );
+        }
+    }
 
     return new ImageLoader({
         elements: images,
@@ -372,5 +465,7 @@ export {
     translate3d,
     calculateAspectRatioFit,
     getTransitionDuration,
-    getTransformValues
+    getTransformValues,
+    closestValue,
+    closestValueUp
 };

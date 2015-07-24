@@ -13,6 +13,22 @@
 
 
 
+// Covers
+.cover {
+    position: relative;
+    }
+.cover__image {
+    
+    }
+.cover__text {
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    }
+
+
+
 // Laptop
 @media only screen and ( max-width: $break-laptop-medium ) {
     .image--cover {

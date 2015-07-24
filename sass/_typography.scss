@@ -1,35 +1,40 @@
-.h6,
-.h5,
-.h4,
-.h3,
-.h2,
-.h1 {
+.h6, h6,
+.h5, h5,
+.h4, h4,
+.h3, h3,
+.h2, h2,
+.h1, h1 {
+    letter-spacing: 1.25px;
     text-transform: uppercase;
     }
 
 
 
-.h1 {
+.h1, h1 {
     font-size: 48px;
     @include font-sans();
     @include text-regular();
     }
-.h2 {
+.h2, h2 {
     font-size: 36px;
     @include font-sans();
     @include text-regular();
     }
-.h3 {
+.h3, h3 {
     font-size: 24px;
     @include font-sans();
-    @include text-regular();
+    @include text-medium();
+
+    & + p {
+        margin-top: 26px;
+        }
     }
-.h4 {
+.h4, h4 {
     font-size: 21px;
     @include font-sans();
-    @include text-regular();
+    @include text-medium();
     }
-.h5 {
+.h5, h5 {
     font-size: 12px;
     @include font-sans();
     @include text-bold();
@@ -39,7 +44,7 @@
 
 .p, p {
     font-size: 18px;
-    line-height: 28 / 18;
+    line-height: 1.55555556;
     @include font-serif();
     @include text-regular();
     
@@ -55,16 +60,16 @@
 
 // Tablet
 @media only screen and ( max-width: $break-tablet-medium ) {
-    .h1 {
+    .h1, h1 {
         font-size: 36px;
         }
-    .h2 {
+    .h2, h2 {
         font-size: 32px;
         }
-    .h3 {
+    .h3, h3 {
         font-size: 21px;
         }
-    .h4 {
+    .h4, h4 {
         font-size: 18px;
         }
 
@@ -78,16 +83,16 @@
 
 // Mobile
 @media only screen and ( max-width: $break-tablet-small ) {
-    .h1 {
+    .h1, h1 {
         font-size: 32px;
         }
-    .h2 {
+    .h2, h2 {
         font-size: 24px;
         @include text-medium();
         }
 
     .p, p {
         font-size: 14px;
-        line-height: 21 / 14;
+        line-height: 1.5;
         }
 }

@@ -1,4 +1,37 @@
 /******************************************************************************
+ * Layout Engine Overrides
+*******************************************************************************/
+.sqs-block {
+    padding: 0 !important;
+    }
+.sqs-layout > .sqs-row {
+    margin: 0 !important;
+    }
+.col {
+    padding: 0 ($grid-padding / 2) !important;
+    }
+
+
+
+@media only screen and ( max-width: $break-mobile-full ) {
+    .col {
+        display: block;
+        float: none;
+        width: 100%;
+
+        & + .col {
+            margin-top: $grid-padding;
+            }
+        }
+    .wrapper > .sqs-layout {
+        padding-top: $grid-padding !important;
+        padding-bottom: $grid-padding !important;
+        }
+}
+
+
+
+/******************************************************************************
  * Add To Cart Button
 *******************************************************************************/
 .sqs-add-to-cart-button {
@@ -94,12 +127,12 @@ input::-webkit-inner-spin-button {
     box-shadow: none !important;
     color: $medium-dark !important;
     font-size: 0 !important;
-    height: 34px !important;
-    line-height: 38px !important;
+    height: 22px !important;
+    line-height: 26px !important;
     min-width: 0 !important;
     padding: 0 !important;
     text-align: center !important;
-    width: 34px !important;
+    width: 22px !important;
 
     .icon,
     .suffix ,
@@ -112,7 +145,7 @@ input::-webkit-inner-spin-button {
         }
 
     .total-quantity {
-        font-size: 12px !important;
+        font-size: 11px !important;
         @include sqs-hack-font-sans();
         @include sqs-hack-text-black();
         }
