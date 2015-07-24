@@ -8,8 +8,16 @@
     margin: 0 !important;
     }
 .col {
-    padding: 0 ($grid-padding / 2) !important;
+    padding: 0 $grid-padding !important;
     }
+
+
+
+@media only screen and ( max-width: $break-laptop-full ) {
+    .col {
+        padding: 0 ($grid-padding / 2) !important;
+        }
+}
 
 
 
@@ -74,6 +82,12 @@
         background-color: $medium-dark !important;
         }
 }
+
+
+// Price / weight
+.sqs-money-native:before {
+    content: "$" !important;
+    }
 
 
 

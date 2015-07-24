@@ -12,6 +12,7 @@ import "app/resizes";
 import "app/router";
 import "app/detect";
 import "app/navmenu";
+import "app/footerbar";
 
 
 window.onload = function () {
@@ -29,4 +30,8 @@ window.onload = function () {
 
     // Primary navmenu initializer
     navmenu.init();
+
+
+    // Primary footerbar initializer
+    footerbar.init();
 };

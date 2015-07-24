@@ -11,7 +11,8 @@ var dom = {
     doc: $( document ),
     html: $( document.documentElement ),
     body: $( document.body ),
-    page: $( ".js-page" )
+    page: $( ".js-page" ),
+    footerbar: $( ".js-footerbar" )
 };
 
 

@@ -120,10 +120,10 @@
             }
         }
     .footerbar .nav__a {
-        margin: 0 0 $mobile-padding 0;
+        margin: 0 0 ($mobile-padding * 2) 0;
         padding: 0;
         }
     .nav__a--mco {
-        display: none;
+        display: block;
         }
 }

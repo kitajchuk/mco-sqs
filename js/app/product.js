@@ -14,6 +14,7 @@ var $_jsProduct = null,
     $_jsInput = null,
     $_jsDec = $( '<div class="product__dec"><span class="icon icon--minus icon--void"></span></div>' ),
     $_jsInc = $( '<div class="product__inc"><span class="icon icon--plus"></span></div>' ),
+    $_jsWeight = null,
 
     _isActive = false,
     _isCommerce = false,
@@ -44,6 +45,8 @@ product = {
         $_jsDec.on( "click", onDecClick );
         $_jsInc.on( "click", onIncClick );
 
+        $_jsWeight.text( parseFloat( $_jsWeight.text() ) * 16 );
+
         $_jsInputWrap.append( $_jsDec, $_jsInc );
     },
 
@@ -57,6 +60,7 @@ product = {
         $_jsProduct = dom.body.find( ".js-product" );
         $_jsInputWrap = dom.body.find( ".product-quantity-input" );
         $_jsInput = $_jsInputWrap.find( "input" );
+        $_jsWeight = dom.body.find( ".js-weight" );
 
         return ( $_jsProduct.length );
     },
@@ -66,6 +70,7 @@ product = {
         $_jsProduct = null;
         $_jsInputWrap = null;
         $_jsInput = null;
+        $_jsWeight = null;
 
         $_jsDec.off( "click", onDecClick );
         $_jsInc.off( "click", onIncClick );
