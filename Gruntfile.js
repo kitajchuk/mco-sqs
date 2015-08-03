@@ -18,15 +18,9 @@ module.exports = function ( grunt ) {
 
 
     // Default project paths.
-    var autoprefixer = require( "autoprefixer-core" ),
-
-        pubRoot = ".",
-
-        //sassRoot = "./sass",
-        //cssRoot = "./sqs_template/styles",
-        //fontsRoot = "./sqs_template/assets/fonts",
-        //imgRoot = "./sqs_template/assets/images",
-    
+    var pubRoot = ".",
+        sassRoot = "./sass",
+        cssRoot = "./sqs_template/styles",
         jsRoot = "./js",
         appRoot = jsRoot + "/app",
         libRoot = jsRoot + "/lib",
@@ -44,11 +38,15 @@ module.exports = function ( grunt ) {
         // Nautilus config.
         nautilus: {
             options: {
+                cssRoot: cssRoot,
+                hintOn: [
+                    "watch",
+                    "build",
+                    "deploy"
+                ],
                 jsAppRoot: appRoot,
                 jsDistRoot: distRoot,
-                jsLibRoot: libRoot,
-                jsRoot: jsRoot,
-                pubRoot: pubRoot,
+                jsdocs: false,
                 jsGlobals: {
                     $: true,
                     jQuery: true,
@@ -57,45 +55,10 @@ module.exports = function ( grunt ) {
                     Squarespace: true,
                     Y: true
                 },
-                hintOn: [
-                    "watch",
-                    "build",
-                    "deploy"
-                ]
-            }
-        },
-
-
-         sass: {
-            styles: {
-                options: {
-                    style: "expanded"
-                },
-
-                files: {
-                    "./sqs_template/styles/screen.css": "sass/screen.scss"
-                }
-            }
-        },
-
-
-        postcss: {
-            options: {
-                processors: [
-                    autoprefixer( {browsers: "last 2 versions"} )
-                ]
-            },
-
-            dist: {
-                src: "./sqs_template/styles/*.css"
-            }
-        },
-
-
-        "nautilus-watch": {
-            styles: {
-                files: ["sass/**/*.scss"],
-                tasks: ["sass", "postcss"]
+                jsLibRoot: libRoot,
+                jsRoot: jsRoot,
+                pubRoot: pubRoot,
+                sassRoot: sassRoot
             }
         }
 
@@ -104,9 +67,15 @@ module.exports = function ( grunt ) {
 
 
     // Load the nautilus plugin.
-    grunt.loadNpmTasks( "grunt-nautilus" );
+    grunt.loadNpmTasks( "grunt-contrib-jshint" );
+    grunt.loadNpmTasks( "grunt-contrib-concat" );
+    grunt.loadNpmTasks( "grunt-contrib-uglify" );
+    grunt.loadNpmTasks( "grunt-contrib-watch" );
     grunt.loadNpmTasks( "grunt-contrib-sass" );
+    grunt.loadNpmTasks( "grunt-contrib-clean" );
+    grunt.loadNpmTasks( "grunt-jsdoc" );
     grunt.loadNpmTasks( "grunt-postcss" );
+    grunt.loadNpmTasks( "grunt-nautilus" );
 
 
     // Register default task.
