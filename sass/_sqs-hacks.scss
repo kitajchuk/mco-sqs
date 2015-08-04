@@ -25,15 +25,12 @@
     .col {
         display: block;
         float: none;
+        padding: 0 !important;
         width: 100%;
 
         & + .col {
             margin-top: $grid-padding;
             }
-        }
-    .wrapper > .sqs-layout {
-        padding-top: $grid-padding !important;
-        padding-bottom: $grid-padding !important;
         }
 }
 

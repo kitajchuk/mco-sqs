@@ -12,7 +12,8 @@ var dom = {
     html: $( document.documentElement ),
     body: $( document.body ),
     page: $( ".js-page" ),
-    footerbar: $( ".js-footerbar" )
+    footerbar: $( ".js-footerbar" ),
+    navmenu: $( ".js-navmenu" )
 };
 
 

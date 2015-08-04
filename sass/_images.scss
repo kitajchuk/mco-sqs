@@ -4,10 +4,6 @@
 .image--square {
     padding-bottom: 100%;
     }
-.image--cover:after {
-    content: "";
-    padding-bottom: 50%;
-    }
 .image--cinema {
     padding-bottom: 56.25%;
     }
@@ -16,47 +12,19 @@
 
 // Covers
 .cover {
+    background-color: $grey;
+    height: 100vh;
     position: relative;
+    width: 100%;
     }
 .cover__image {
-    
-    }
-.cover__text {
+    bottom: 0;
     left: 0;
     position: absolute;
-    text-align: center;
+    right: 0;
     top: 0;
     }
-
-
-
-// Laptop
-@media only screen and ( max-width: $break-laptop-medium ) {
-    .image--cover:after {
-        padding-bottom: 57.2222222%;
-        }
-}
-
-
-
-// Tablet
-@media only screen and ( max-width: $break-tablet-full ) {
-    .image--cover:after {
-        padding-bottom: 66.6992188%;
-        }
-}
-
-@media only screen and ( max-width: $break-tablet-small ) {
-    .image--cover:after {
-        padding-bottom: 83.3333333%;
-        }
-}
-
-
-
-// Mobile
-@media only screen and ( max-width: $break-mobile-full ) {
-    .image--cover:after {
-        padding-bottom: 120.3125%;
-        }
-}
+.cover__text {
+    text-align: center;
+    width: 100%;
+    }

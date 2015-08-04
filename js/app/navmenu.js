@@ -11,11 +11,10 @@ import "app/config";
 import { hammered, toggleMouseWheel, toggleTouchMove, getTransitionDuration } from "app/util";
 
 
-var $_jsNavmenu = dom.body.find( ".js-navmenu" ),
-    $_jsNavmenuParent = $_jsNavmenu.parent(),
+var $_jsNavmenuParent = dom.navmenu.parent(),
 
     _isActive = false,
-    _transitionTime = getTransitionDuration( $_jsNavmenu[ 0 ] ),
+    _transitionTime = getTransitionDuration( dom.navmenu[ 0 ] ),
 
 
 /**
@@ -25,10 +24,12 @@ var $_jsNavmenu = dom.body.find( ".js-navmenu" ),
  */
 navmenu = {
     init: function () {
-        $_jsNavmenu.detach();
+        dom.navmenu.detach();
 
         hammered.on( "tap", ".js-navmenu", onToggleNavmenu );
         hammered.on( "tap", ".js-controller--navmenu", onToggleNavmenu );
+
+        dom.body.on( "click", ".js-navbar-shop", onShopNavbar );
 
         console.log( "navmenu initialized" );
     },
@@ -52,9 +53,21 @@ closeNavmenu = function () {
     toggleMouseWheel( true );
 
     setTimeout(function () {
-        $_jsNavmenu.detach();
+        dom.navmenu.detach();
 
     }, _transitionTime );
+},
+
+
+/**
+ *
+ * @private
+ *
+ */
+onShopNavbar = function ( e ) {
+    e.preventDefault();
+
+    console.log( "shop nav" );
 },
 
 
@@ -70,7 +83,7 @@ onToggleNavmenu = function () {
         toggleTouchMove( false );
         toggleMouseWheel( false );
 
-        $_jsNavmenuParent.append( $_jsNavmenu );
+        $_jsNavmenuParent.append( dom.navmenu );
 
         setTimeout(function () {
             dom.html.addClass( "is-navmenu-open" );
