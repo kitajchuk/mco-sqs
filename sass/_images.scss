@@ -1,11 +1,11 @@
 .image {
-    position: relative;
     width: 100%;
     }
 .image--square {
     padding-bottom: 100%;
     }
 .image--cover:after {
+    content: "";
     padding-bottom: 50%;
     }
 .image--cinema {
