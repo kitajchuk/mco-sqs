@@ -8,12 +8,16 @@
  */
 import "app/dom";
 import "app/detect";
-import { scroller, emitter, noop } from "app/util";
+import { easeDuration } from "app/config";
+import { hammered, scroller, emitter, noop } from "app/util";
 
 
 var _timeout = null,
     _idleout = 300,
     _isNones = false,
+
+    scroll2 = require( "scroll2" ),
+    Easing = require( "Easing" ),
 
 
 /**
@@ -38,6 +42,7 @@ scrolls = {
         scroller.on( "scrollup", onScrollerUp );
         scroller.on( "scrolldown", onScrollerDown );
         emitter.on( "app--do-scroll", onScroller );
+        hammered.on( "tap", ".js-scroll2", onScroll2 );
 
         onScroller();
         onScrollerUp();
@@ -64,6 +69,7 @@ scrolls = {
         scroller.off( "scrollup", onScrollerUp );
         scroller.off( "scrolldown", onScrollerDown );
         emitter.off( "app--do-scroll", onScroller );
+        hammered.off( "tap", ".js-scroll2", onScroll2 );
     }
 },
 
@@ -97,6 +103,24 @@ suppressEvents = function ( scrollPos ) {
         }
 
     }, _idleout );
+},
+
+
+/**
+ *
+ * @private
+ *
+ */
+onScroll2 = function () {
+    var $targ = this.hash ? $( this.hash ) : [];
+
+    if ( $targ.length ) {
+        scroll2({
+            y: $targ[ 0 ].offsetTop,
+            ease: Easing.easeInOutCubic,
+            duration: easeDuration
+        });
+    }
 },
 
 
