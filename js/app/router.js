@@ -67,6 +67,9 @@ router = {
 
         captureLinks();
 
+        // Don't do this, ideally :-/
+        this.pageController = _pageController;
+
         console.log( "router initialized" );
     }
 },

@@ -157,13 +157,10 @@ stopViews = function () {
 loadView = function ( $view ) {
     var $navs = $view.find( ".js-views-nav" ),
         $boxes = $view.find( ".js-views-box" ),
-        hammered = new Hammered( $view[ 0 ], config.hammerDefaults ),
-        minHeight = 100;
+        hammered = new Hammered( $view[ 0 ], config.hammerDefaults );
 
     $navs.first().addClass( "is-active" );
     $boxes.first().addClass( "is-active" );
-
-    console.log( minHeight );
 
     $view.data({
         index: 0,
@@ -176,7 +173,7 @@ loadView = function ( $view ) {
 
 /* Note: Not sure what to do yet :-/
     setTimeout(function () {
-        minHeight = $boxes.toArray().map(function ( el ) {
+        var minHeight = $boxes.toArray().map(function ( el ) {
             return el.clientHeight;
 
         });

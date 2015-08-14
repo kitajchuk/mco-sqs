@@ -13,6 +13,7 @@ var dom = {
     body: $( document.body ),
     page: $( ".js-page" ),
     footerbar: $( ".js-footerbar" ),
+    navbar: $( ".js-navbar" ),
     navmenu: $( ".js-navmenu" )
 };
 

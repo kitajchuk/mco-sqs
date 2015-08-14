@@ -7,6 +7,7 @@
  *
  */
 import "app/dom";
+import "app/util";
 
 
 var $_jsProduct = null,
@@ -48,6 +49,8 @@ product = {
         $_jsWeight.text( parseFloat( $_jsWeight.text() ) * 16 );
 
         $_jsInputWrap.append( $_jsDec, $_jsInc );
+
+        util.emitter.fire( "app--product-detail-on" );
     },
 
 
@@ -77,6 +80,8 @@ product = {
 
         _isActive = false;
         _isCommerce = false;
+
+        util.emitter.fire( "app--product-detail-off" );
     },
 
 
