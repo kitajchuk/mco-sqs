@@ -21,6 +21,9 @@
 .icon--void {
     color: $light;
     }
+.icon--remove:before {
+    content: "\e609";
+    }
 .icon--arrow-down:before {
     content: "\e600";
     }

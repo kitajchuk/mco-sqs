@@ -18,6 +18,11 @@
     font-stretch: normal;
     font-style: normal;
 }
+@mixin sqs-hack-font-serif() {
+    font-family: $font-serif !important;
+    font-stretch: normal !important;
+    font-style: normal !important;
+}
 
 
 
@@ -25,8 +30,14 @@
 @mixin text-regular() {
     font-weight: 400;
 }
+@mixin sqs-hack-text-regular() {
+    font-weight: 400 !important;
+}
 @mixin text-medium() {
     font-weight: 500;
+}
+@mixin sqs-hack-text-medium() {
+    font-weight: 500 !important;
 }
 @mixin text-bold() {
     font-weight: 700;

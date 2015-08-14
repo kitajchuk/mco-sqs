@@ -47,7 +47,6 @@
     line-height: 1.55555556;
     @include font-serif();
     @include text-regular();
-    
     }
 .a, .p a, p a {
     border-bottom: 1px solid $light;

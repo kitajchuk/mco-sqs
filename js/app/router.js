@@ -85,6 +85,15 @@ captureLinks = function () {
     dom.body.on( "click", "[href^='#']", function ( e ) {
         e.preventDefault();
     });
+
+
+    dom.body.on( "click", ".absolute-cart-box", function ( e ) {
+        console.log( this );
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        return false;
+    });
 },
 
 

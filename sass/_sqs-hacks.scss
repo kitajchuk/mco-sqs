@@ -37,6 +37,129 @@
 
 
 /******************************************************************************
+ * Show Cart Page
+*******************************************************************************/
+.sqs-fullpage-shopping-cart-content .cart-container {
+    font-size: 0 !important;
+    padding: $cart-padding $grid-padding !important;
+    }
+.sqs-fullpage-shopping-cart-content > h2 {
+    display: none !important;
+    }
+.sqs-fullpage-shopping-cart-content .cart-container table tr .item img {
+    margin-right: 0 !important;
+    width: 142px !important;
+    }
+.sqs-fullpage-shopping-cart-content .cart-container table tr .item-desc a {
+    color: $medium !important;
+    font-size: 18px !important;
+    line-height: 1.55555556 !important;
+    @include sqs-hack-font-serif();
+    @include sqs-hack-text-regular();
+    }
+.sqs-fullpage-shopping-cart-content .cart-container table thead {
+    display: none !important;
+    }
+.sqs-fullpage-shopping-cart-content .cart-container table tr,
+.sqs-fullpage-shopping-cart-content .cart-container table tr td {
+    padding: 0 !important;
+    }
+.sqs-fullpage-shopping-cart-content .cart-container table tr td {
+    border-bottom-color: $border !important;
+    }
+.sqs-fullpage-shopping-cart-content .checkout .checkout-button {
+    background-color: $medium !important;
+    border: 0 !important;
+    color: $white !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+    font-size: 14px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    outline: 0 !important;
+    padding: 20px 72px !important;
+    transition: background-color $ease-duration $ease !important;
+    text-transform: uppercase !important;
+    width: auto !important;
+    -webkit-appearance: none !important;
+    @include sqs-hack-font-sans();
+    @include sqs-hack-text-bold();
+    }
+.sqs-fullpage-shopping-cart-content .checkout,
+.sqs-fullpage-shopping-cart-content .cart-container .subtotal {
+    border: 0 !important;
+    display: inline-block !important;
+    float: none !important;
+    padding: 0 !important;
+    width: 50% !important;
+    }
+.sqs-fullpage-shopping-cart-content .checkout {
+    text-align: right !important;
+    padding: 70px 0 !important;
+    }
+.sqs-fullpage-shopping-cart-content .cart-container .subtotal {
+    padding-left: 142px !important;
+    text-align: left !important;
+    font-size: 21px !important;
+    text-transform: uppercase !important;
+    @include sqs-hack-font-sans();
+    @include sqs-hack-text-medium();
+    }
+.sqs-fullpage-shopping-cart-content .cart-container table tr .quantity input,
+.sqs-fullpage-shopping-cart-content .cart-container table tr .price .sqs-money-native,
+.sqs-fullpage-shopping-cart-content .cart-container table tr .quantity:before {
+    color: $medium-dark !important;
+    display: inline-block !important;
+    font-size: 12px !important;
+    margin: 0 !important;
+    text-decoration: none !important;
+    letter-spacing: 1.5px !important;
+    @include sqs-hack-font-sans();
+    @include sqs-hack-text-black();
+    }
+.sqs-fullpage-shopping-cart-content .cart-container table tr .quantity input {
+    text-align: center !important;
+    margin: 0 !important;
+    border: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    float: none !important;
+    -webkit-appearance: none !important;
+    }
+.sqs-fullpage-shopping-cart-content .cart-container table tr .quantity {
+    &:before {
+        content: "QTY ";
+        }
+    }
+.sqs-fullpage-shopping-cart-content .cart-container table tr .remove .remove-item {
+    color: $medium-dark !important;
+    font-size: 0 !important;
+    opacity: 1 !important;
+    margin: 0 !important;
+
+    &:before {
+        color: $medium-dark !important;
+        content: "\e609";
+        display: inline-block !important;
+        font-family: $icon-font !important;
+        font-size: $icon-size !important;
+        font-style: normal !important;
+        font-variant: normal !important;
+        font-weight: normal !important;
+        line-height: 1 !important;
+        speak: none !important;
+        text-transform: none !important;
+        transform: rotate(90deg) !important;
+        vertical-align: middle !important;
+
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        }
+    }
+
+
+/******************************************************************************
  * Add To Cart Button
 *******************************************************************************/
 .sqs-add-to-cart-button {
