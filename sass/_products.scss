@@ -19,6 +19,7 @@
     }
 .product__info {
     margin-bottom: 24px;
+    //min-height: 300px;
     }
 .product__meta {
     margin-bottom: 24px;
@@ -47,6 +48,10 @@
 .product__inc {
     border-left: 1px solid $border;
     right: 1px;
+    }
+
+.product__labels {
+    margin-bottom: 24px;
     }
 
 

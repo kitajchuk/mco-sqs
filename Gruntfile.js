@@ -79,7 +79,7 @@ module.exports = function ( grunt ) {
 
 
     // Register default task.
-    grunt.registerTask( "default", ["nautilus:build", "sass", "postcss"] );
+    grunt.registerTask( "default", ["nautilus:build"] );
 
 
 };

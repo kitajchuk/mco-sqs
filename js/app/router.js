@@ -14,6 +14,7 @@ import "app/navmenu";
 import "app/cover";
 import "app/grid";
 import "app/product";
+import "app/views";
 
 
 var PageController = require( "PageController" ),
@@ -42,7 +43,8 @@ router = {
 
             cover,
             grid,
-            product
+            product,
+            views
         ]);
 
         _pageController.initPage();
