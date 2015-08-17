@@ -157,6 +157,33 @@
         -moz-osx-font-smoothing: grayscale !important;
         }
     }
+.sqs-fullpage-shopping-cart-content {
+    height: 100vh !important;
+    position: relative !important;
+    width: 100% !important;
+    }
+.sqs-fullpage-shopping-cart-content.empty .empty-message {
+    color: $medium !important;
+    font-size: 18px !important;
+    line-height: 1.55555556 !important;
+    text-align: center !important;
+    padding: $cart-padding $grid-padding !important;
+    @include sqs-hack-font-serif();
+    @include sqs-hack-text-regular();
+
+    a {
+        color: $medium-dark !important;
+        display: block !important;
+        font-size: 12px !important;
+        margin: 0 !important;
+        text-decoration: none !important;
+        letter-spacing: 1.5px !important;
+        text-transform: uppercase !important;
+        padding-top: 20px !important;
+        @include sqs-hack-font-sans();
+        @include sqs-hack-text-black();
+        }
+    }
 
 
 /******************************************************************************

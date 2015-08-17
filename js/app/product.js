@@ -17,6 +17,7 @@ var $_jsProduct = null,
     $_jsInc = $( '<div class="product__inc"><span class="icon icon--plus"></span></div>' ),
     $_jsWeight = null,
 
+    _pillBox = null,
     _isActive = false,
     _isCommerce = false,
 
@@ -31,6 +32,9 @@ product = {
 
 
     init: function () {
+        _pillBox = Y.one( ".sqs-pill-shopping-cart-content" );
+        _pillBox.detach( "click" ).on( "click", onPillBoxClick );
+
         console.log( "product initialized" );
     },
 
@@ -41,7 +45,7 @@ product = {
 
 
     onload: function () {
-        this.tryInitCommerce();
+        this.initCommerce();
 
         $_jsDec.on( "click", onDecClick );
         $_jsInc.on( "click", onIncClick );
@@ -85,13 +89,22 @@ product = {
     },
 
 
-    tryInitCommerce: function () {
-        if ( this.isActive() && !_isCommerce ) {
-            _isCommerce = true;
-
-            Y.Squarespace.Commerce.initializeCommerce( Y );
-        }
+    initCommerce: function () {
+        Y.Squarespace.Commerce.initializeCommerce( Y );
     }
+},
+
+
+onPillBoxClick = function () {
+    var onInitComm = function () {
+        product.initCommerce();
+
+        util.emitter.off( "app--preload-done", onInitComm );
+    };
+
+    util.emitter.on( "app--preload-done", onInitComm );
+
+    app.router.pageController.getRouter().trigger( "/commerce/show-cart/" );
 },
 
 
