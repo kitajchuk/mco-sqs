@@ -53,7 +53,8 @@ module.exports = function ( grunt ) {
                     Hammer: true,
                     DocumentTouch: true,
                     Squarespace: true,
-                    Y: true
+                    Y: true,
+                    sqs: true
                 },
                 jsLibRoot: libRoot,
                 jsRoot: jsRoot,

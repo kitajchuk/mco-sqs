@@ -18,9 +18,9 @@
 
 .views__box {
     position: relative;
+    transition: height $ease-duration $ease;
     }
 .views__box__item {
-    height: 100%;
     left: 0;
     opacity: 0;
     position: absolute;

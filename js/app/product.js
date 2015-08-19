@@ -19,7 +19,6 @@ var $_jsProduct = null,
 
     _pillBox = null,
     _isActive = false,
-    _isCommerce = false,
 
 
 /**
@@ -45,7 +44,7 @@ product = {
 
 
     onload: function () {
-        this.initCommerce();
+        sqs.initCommerce();
 
         $_jsDec.on( "click", onDecClick );
         $_jsInc.on( "click", onIncClick );
@@ -83,21 +82,15 @@ product = {
         $_jsInc.off( "click", onIncClick );
 
         _isActive = false;
-        _isCommerce = false;
 
         util.emitter.fire( "app--product-detail-off" );
-    },
-
-
-    initCommerce: function () {
-        Y.Squarespace.Commerce.initializeCommerce( Y );
     }
 },
 
 
 onPillBoxClick = function () {
     var onInitComm = function () {
-        product.initCommerce();
+        sqs.initCommerce();
 
         util.emitter.off( "app--preload-done", onInitComm );
     };

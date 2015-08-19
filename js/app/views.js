@@ -125,6 +125,9 @@ onTapView = function () {
     $curr.removeClass( "is-active" ).addClass( "is-exiting" );
     $next.addClass( "is-entering" );
 
+    // Tweak view box height
+    data.$box[ 0 ].style.height = util.px( $next[ 0 ].clientHeight );
+
     $view.data({
         index: data.index,
         timeout: setTimeout(function () {
@@ -157,10 +160,12 @@ stopViews = function () {
 loadView = function ( $view ) {
     var $navs = $view.find( ".js-views-nav" ),
         $boxes = $view.find( ".js-views-box" ),
+        $box = $view.find( ".js-views-boxes" ),
         hammered = new Hammered( $view[ 0 ], config.hammerDefaults );
 
     $navs.first().addClass( "is-active" );
     $boxes.first().addClass( "is-active" );
+    $box[ 0 ].style.height = util.px( $boxes.first()[ 0 ].clientHeight );
 
     $view.data({
         index: 0,
@@ -168,20 +173,9 @@ loadView = function ( $view ) {
         duration: util.getTransitionDuration( $boxes[ 0 ] ),
         hammered: hammered,
         $navs: $navs,
-        $boxes: $boxes
+        $boxes: $boxes,
+        $box: $box
     });
-
-/* Note: Not sure what to do yet :-/
-    setTimeout(function () {
-        var minHeight = $boxes.toArray().map(function ( el ) {
-            return el.clientHeight;
-
-        });
-
-        console.log( minHeight );
-
-    }, 0 );
-*/
 
     hammered.on( "tap", ".js-views-nav", onTapView );
 },

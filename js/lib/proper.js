@@ -3928,14 +3928,6 @@ if ( !Hammer ) {
 
 /**
  *
- * Single instanceof Hammer
- *
- */
-var _instance = null;
-
-
-/**
- *
  * Hammerjs event delegation wrapper
  * @constructor Hammered
  * @requires matchElement
@@ -3943,7 +3935,7 @@ var _instance = null;
  *
  */
 var Hammered = function () {
-    return (_instance || this.init.apply( this, arguments ));
+    return this.init.apply( this, arguments );
 };
 
 
@@ -3953,7 +3945,7 @@ Hammered.prototype = {
     /**
      *
      * Hammered constructor method
-     * {@link https://github.com/EightMedia/hammer.js/wiki/Getting-Started#gesture-options}
+     * {@link http://hammerjs.github.io/getting-started/
      * @memberof Hammered
      * @param {object} element DOMElement to delegate from, default is document.body
      * @param {object} options Hammerjs options to be passed to instance
@@ -3961,8 +3953,6 @@ Hammered.prototype = {
      *
      */
     init: function ( element, options ) {
-        _instance = this;
-
         /**
          *
          * Match version of hammerjs for compatibility
@@ -3971,7 +3961,7 @@ Hammered.prototype = {
          * @private
          *
          */
-        this._version = "1.1.2";
+        this._version = "0.2.0";
     
         /**
          *
@@ -4073,34 +4063,6 @@ Hammered.prototype = {
 
                 break;
             }
-        }
-    },
-
-    /**
-     *
-     * Effectively trigger an event through Hammer-js
-     * @method trigger
-     * @param {string} event The Hammer event
-     * @param {object} element The DOMElement to invoke event on
-     * @memberof Hammered
-     *
-     */
-    trigger: function ( event, element ) {
-        element = ( typeof element === "object" && element.nodeType === 1 ) ? element : null;
-
-        // Only proceed if the element is legit
-        if ( element ) {
-            var eventObject = document.createEvent( "CustomEvent" ),
-                eventData = Hammer.event.collectEventData(
-                    element,
-                    Hammer.EVENT_END,
-                    Hammer.event.getTouchList( eventObject, Hammer.EVENT_END ),
-                    eventObject
-                );
-
-            eventData.target = element;
-
-            this._hammer.trigger( event, eventData );
         }
     }
 };

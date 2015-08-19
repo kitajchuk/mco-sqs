@@ -6,6 +6,7 @@
  *
  *
  */
+import "node_modules/squarespace-yui-block-initializers/sqs";
 import "jquery/dist/jquery";
 import "node_modules/hammerjs/hammer";
 import "app/resizes";
