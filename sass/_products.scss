@@ -8,6 +8,7 @@
     font-size: 0;
     height: 100vh;
     min-height: $break-tablet-small;
+    position: relative;
     width: 100vw;
     }
 .product__image,
@@ -58,6 +59,20 @@
 
 .product__labels {
     margin-bottom: 24px;
+    }
+
+.product__nav {
+    color: $medium-dark;
+    position: absolute;
+    top: calc( ~"50% - (#{$icon-size} / 2)" );
+    }
+.product__prev {
+    left: 0;
+    padding-left: $navbar-padding;
+    }
+.product__next {
+    padding-right: $navbar-padding;
+    right: 0;
     }
 
 
