@@ -4,6 +4,9 @@
 .cover + .products .products__label {
     display: inline-block;
     }
+.product + .products .products__headline {
+    display: none;
+    }
 .product {
     font-size: 0;
     height: 100vh;
