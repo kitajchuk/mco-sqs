@@ -98,9 +98,11 @@
     padding: 70px 0 !important;
     }
 .sqs-fullpage-shopping-cart-content .cart-container .subtotal {
+    color: $medium;
+    letter-spacing: 1.5px;
     padding-left: 142px !important;
     text-align: left !important;
-    font-size: 21px !important;
+    font-size: 18px !important;
     text-transform: uppercase !important;
     @include sqs-hack-font-sans();
     @include sqs-hack-text-medium();
@@ -323,5 +325,9 @@ input::-webkit-inner-spin-button {
     .sqs-pill-shopping-cart {
         right: $mobile-padding !important;
         top: $mobile-padding !important;
+        }
+
+    .product-quantity-input {
+        margin-bottom: $mobile-padding;
         }
 }

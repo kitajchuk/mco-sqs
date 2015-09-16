@@ -16,6 +16,7 @@ var $_jsProduct = null,
     $_jsDec = $( '<div class="product__dec"><span class="icon icon--minus icon--void"></span></div>' ),
     $_jsInc = $( '<div class="product__inc"><span class="icon icon--plus"></span></div>' ),
     $_jsWeight = null,
+    $_jsTitle = null,
 
     _pillBox = null,
     _isActive = false,
@@ -53,6 +54,12 @@ product = {
 
         $_jsInputWrap.append( $_jsDec, $_jsInc );
 
+        var title = $_jsTitle[ 0 ].innerHTML.split( " " ),
+            top = title.slice( 0, title.length - 2 ),
+            bot = title.slice( title.length - 2, title.length );
+
+        $_jsTitle[ 0 ].innerHTML = (top.join( "&nbsp;" ) + "<br />" + bot.join( "&nbsp;" ));
+
         util.emitter.fire( "app--product-detail-on" );
     },
 
@@ -64,9 +71,10 @@ product = {
 
     getElements: function () {
         $_jsProduct = dom.body.find( ".js-product" );
-        $_jsInputWrap = dom.body.find( ".product-quantity-input" );
+        $_jsInputWrap = $_jsProduct.find( ".product-quantity-input" );
         $_jsInput = $_jsInputWrap.find( "input" );
-        $_jsWeight = dom.body.find( ".js-weight" );
+        $_jsWeight = $_jsProduct.find( ".js-weight" );
+        $_jsTitle = $_jsProduct.find( ".js-product-title" );
 
         return ( $_jsProduct.length );
     },
@@ -77,6 +85,7 @@ product = {
         $_jsInputWrap = null;
         $_jsInput = null;
         $_jsWeight = null;
+        $_jsTitle = null;
 
         $_jsDec.off( "click", onDecClick );
         $_jsInc.off( "click", onIncClick );

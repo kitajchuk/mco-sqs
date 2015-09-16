@@ -55,6 +55,8 @@ views = {
      */
     onload: function () {
         loadViews();
+
+        util.emitter.on( "app--resize", onResize );
     },
 
 
@@ -83,6 +85,8 @@ views = {
         stopViews();
 
         $_jsViews = null;
+
+        util.emitter.off( "app--resize", onResize );
     },
 
 
@@ -90,6 +94,15 @@ views = {
         $_jsViews = dom.page.find( ".js-views" );
 
         return ($_jsViews.length);
+    }
+},
+
+
+onResize = function () {
+    var i;
+
+    for ( i = $_jsViews.length; i--; ) {
+        resizeView( $_jsViews.eq( i ) );
     }
 },
 
@@ -136,6 +149,13 @@ onTapView = function () {
 
         }, data.duration )
     });
+},
+
+
+resizeView = function ( $view ) {
+    var data = $view.data();
+
+    data.$box[ 0 ].style.height = util.px( data.$boxes.filter( ".is-active" )[ 0 ].clientHeight );
 },
 
 

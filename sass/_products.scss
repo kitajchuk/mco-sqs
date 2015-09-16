@@ -1,8 +1,11 @@
-.products__label {
+.products__headline {
     display: none;
     }
-.cover + .products .products__label {
-    display: inline-block;
+.cover + .products .products__headline {
+    display: block;
+    }
+.cover + .products .products__headline {
+    padding-bottom: 0;
     }
 .product + .products .products__headline {
     display: none;
@@ -24,12 +27,11 @@
     max-width: 480px;
     }
 .product__title {
+    line-height: 1.16666667;
     margin-bottom: 24px;
-    max-width: 265px;
     }
 .product__info {
     margin-bottom: 24px;
-    //min-height: 300px;
     }
 .product__meta {
     margin-bottom: 24px;
@@ -80,12 +82,15 @@
 
 
 
-// Mobile
-@media only screen and ( max-width: $break-mobile-full ) {
+// Tablet
+@media only screen and ( max-width: $break-tablet-full ) {
     .product {
         min-height: 0;
-        padding-top: $grid-padding;
+        padding-top: 70px;
         height: auto;
+        }
+    .product + .products {
+        margin-top: 70px;
         }
     .product__image,
     .product__utility {
@@ -93,15 +98,59 @@
         width: 100%;
         }
     .product__utility {
+        margin-top: -70px;
         max-width: 100%;
         text-align: center;
         }
-    .product__title,
-    .product__checkout {
-        max-width: 100%;
+    .product__utility__inner {
+        display: inline-block;
+        width: 480px;
         }
-    .product__title,
+    .product__title {
+        display: none;
+        }
+    .product__checkout {
+        display: inline-block;
+        max-width: none;
+        width: 340px;
+        }
+    .product__meta {
+        margin-bottom: 30px;
+        }
+}
+
+
+
+// Mobile
+@media only screen and ( max-width: $break-mobile-full ) {
     .product__desc {
-        padding: 0 ($mobile-padding * 2);
+        padding: 0;
+
+        .p {
+            display: inline-block;
+            width: 340px;
+            }
+        }
+    .product__utility {
+        margin-top: 0;
+        }
+    .product__utility__inner {
+        width: 100%;
+        }
+    .product__checkout {
+        padding: 0 $mobile-padding;
+        width: 100%;
+        }
+}
+
+@media only screen and ( max-width: 340px ) {
+    .product__desc {
+        .p {
+            padding: 0 $mobile-padding;
+            width: 100%;
+            }
+        }
+    .product__checkout {
+        width: 100%;
         }
 }

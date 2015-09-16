@@ -20,6 +20,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: rgba( 0, 0, 0, 0 );
     -webkit-touch-callout: none;
+
+    opacity: 0;
+    transition: opacity $anim-duration $ease;
+
+    &.is-active {
+        opacity: 1;
+        }
+
     @include font-sans();
     @include text-regular();
     }

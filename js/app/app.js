@@ -14,15 +14,23 @@ import "app/router";
 import "app/detect";
 import "app/navmenu";
 import "app/footerbar";
+import "app/dom";
+import "app/util";
 
 
 window.onload = function () {
-    // Global detection initializer
-    detect.init();
+    util.emitter.on( "app--preload-done", function appInit () {
+        util.emitter.off( "app--preload-done", appInit );
+
+        dom.body.addClass( "is-active" );
+    });
 
 
     // Global router initializer
     router.init();
+
+    // Global detection initializer
+    detect.init();
 
 
     // Global resize element initializer
