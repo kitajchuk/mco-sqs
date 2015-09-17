@@ -37,7 +37,8 @@
     @include font-sans();
     @include text-medium();
     }
-.h5, h5 {
+.h5, h5,
+.h5 p, h5 p {
     font-size: 12px;
     line-height: 1.75;
     @include font-sans();

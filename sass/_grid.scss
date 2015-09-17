@@ -4,6 +4,11 @@
     position: relative;
     text-align: center;
     }
+.grid--info {
+    margin: 0 auto;
+    max-width: $break-tablet-medium;
+    width: 100%;
+    }
 .grid__item {
     display: inline-block;
     width: 25%;
@@ -11,6 +16,9 @@
     }
 .grid__image {
     background-color: $border;
+    }
+.grid__pad {
+    padding: $grid-padding;
     }
 
 
@@ -29,6 +37,14 @@
 // Wrappers
 .wrapper {
     padding: $grid-padding;
+    }
+.wrapper--h {
+    padding-bottom: 0;
+    padding-top: 0;
+    }
+.wrapper--v {
+    padding-left: 0;
+    padding-right: 0;
     }
 
 
@@ -79,7 +95,9 @@
         transform: translate3d( 0, 0, 0 );
         }
 
+/*
     .wrapper:not(.wrapper--h) {
         padding: $mobile-padding;
         }
+*/
 }

@@ -21,39 +21,66 @@
 .icon--void {
     color: $light;
     }
+.icon--36 {
+    font-size: 36px;
+    }
+.icon--animals:before {
+    content: "\e60b";
+}
+.icon--botanicals:before {
+    content: "\e60d";
+}
+.icon--ethical:before {
+    content: "\e60e";
+}
+.icon--nobullshit:before {
+    content: "\e60f";
+}
+.icon--recycle:before {
+    content: "\e610";
+}
+.icon--synthetics:before {
+    content: "\e611";
+}
 .icon--remove:before {
     content: "\e609";
-    }
+}
 .icon--arrow-down:before {
     content: "\e600";
-    }
+}
 .icon--arrow-left:before {
     content: "\e601";
-    }
+}
 .icon--arrow-right:before {
     content: "\e602";
-    }
+}
 .icon--arrow-up:before {
     content: "\e603";
-    }
+}
 .icon--cart:before {
     content: "\e604";
-    }
+}
 .icon--exit:before {
     content: "\e605";
-    }
+}
 .icon--grid:before {
     content: "\e606";
-    }
+}
 .icon--mco:before {
     content: "\e607";
-    }
+}
 .icon--menu:before {
     content: "\e608";
-    }
+}
 .icon--minus:before {
     content: "\e60a";
-    }
+}
 .icon--plus:before {
     content: "\e60c";
+}
+
+
+
+.icon--lock {
+    margin-bottom: $mobile-padding;
     }
