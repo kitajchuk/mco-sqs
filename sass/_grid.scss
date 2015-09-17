@@ -9,16 +9,20 @@
     max-width: $break-tablet-medium;
     width: 100%;
     }
+.grid--blog {
+    padding: $grid-padding;
+    }
+.grid__item--blog {
+    padding: $grid-item-padding;
+    }
 .grid__item {
     display: inline-block;
+    vertical-align: middle;
     width: 25%;
     @include ani-lift-block();
     }
 .grid__image {
     background-color: $border;
-    }
-.grid__pad {
-    padding: $grid-padding;
     }
 
 
