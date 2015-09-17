@@ -30,12 +30,16 @@
         }
     }
 .h4, h4, .h4 p {
-    font-size: 21px;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 1.55555556;
+    max-width: 660px;
     @include font-sans();
     @include text-medium();
     }
 .h5, h5 {
     font-size: 12px;
+    line-height: 1.75;
     @include font-sans();
     @include text-bold();
     }
@@ -69,7 +73,8 @@
         font-size: 21px;
         }
     .h4, h4, .h4 p {
-        font-size: 18px;
+        font-size: 14px;
+        @include text-bold();
         }
 
     .p, p {

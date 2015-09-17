@@ -25,6 +25,14 @@
     top: 0;
     }
 .cover__text {
+    position: relative;
     text-align: center;
     width: 100%;
+    }
+
+
+
+// Figures
+.figure {
+    margin: $navbar-padding 0;
     }

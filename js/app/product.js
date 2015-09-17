@@ -51,14 +51,9 @@ product = {
         $_jsInc.on( "click", onIncClick );
 
         $_jsWeight.text( parseFloat( $_jsWeight.text() ) * 16 );
-
         $_jsInputWrap.append( $_jsDec, $_jsInc );
 
-        var title = $_jsTitle[ 0 ].innerHTML.split( " " ),
-            top = title.slice( 0, title.length - 2 ),
-            bot = title.slice( title.length - 2, title.length );
-
-        $_jsTitle[ 0 ].innerHTML = (top.join( "&nbsp;" ) + "<br />" + bot.join( "&nbsp;" ));
+        fixTitle();
 
         util.emitter.fire( "app--product-detail-on" );
     },
@@ -97,9 +92,28 @@ product = {
 },
 
 
+fixTitle = function () {
+    var title = $_jsTitle[ 0 ].innerHTML.split( " " ),
+        top = title.slice( 0, title.length - 2 ),
+        bot = title.slice( title.length - 2, title.length );
+
+    $_jsTitle[ 0 ].innerHTML = (top.join( "&nbsp;" ) + "<br />" + bot.join( "&nbsp;" ));
+},
+
+
 onPillBoxClick = function () {
     var onInitComm = function () {
         sqs.initCommerce();
+
+        var $imgs = $( "img" ),
+            i = $imgs.length,
+            f = function () {
+                this.src = this.src.replace( window.location.href, "" ).replace( "format=100w", "format=500w" ).replace( /^https:|^http:/g, "" );
+            };
+
+        for ( i; i--; ) {
+            $imgs[ i ].onload = f;
+        }
 
         util.emitter.off( "app--preload-done", onInitComm );
     };
