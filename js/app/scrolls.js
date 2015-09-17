@@ -93,6 +93,8 @@ suppressEvents = function ( scrollPos ) {
         _isNones = true;
 
         dom.html.addClass( "is-scrolling" );
+
+        util.emitter.fire( "app--scroll-start" );
     }
 
     _timeout = setTimeout(function () {
@@ -100,6 +102,8 @@ suppressEvents = function ( scrollPos ) {
             _isNones = false;
 
             dom.html.removeClass( "is-scrolling" );
+
+            util.emitter.fire( "app--scroll-end" );
         }
 
     }, _idleout );

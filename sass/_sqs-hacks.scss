@@ -7,32 +7,19 @@
 .sqs-layout > .sqs-row {
     margin: 0 !important;
     }
-.col {
-    padding: 0 $grid-padding !important;
-    }
-
-
-
-@media only screen and ( max-width: $break-laptop-full ) {
-    .col {
-        padding: 0 ($grid-padding / 2) !important;
-        }
-}
-
-
-
-@media only screen and ( max-width: $break-tablet-medium ) {
-    .col {
-        display: block;
-        float: none;
-        padding: 0 !important;
+.sqs-block-content {
+    p {
+        max-width: 630px;
+        margin: 0 auto;
         width: 100%;
-
-        & + .col {
-            margin-top: $grid-padding;
-            }
+        }
+    p + p {
+        margin-top: $navbar-padding;
         }
 }
+.sqs-block-image .sqs-block-content {
+    padding: $grid-padding 0;
+    }
 
 
 

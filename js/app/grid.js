@@ -114,6 +114,8 @@ unbindAnimateGrid = function () {
  */
 onResizer = function () {
     onScroller();
+    onScrollerUp();
+    onScrollerDown();
 },
 
 

@@ -22,6 +22,8 @@ window.onload = function () {
     util.emitter.on( "app--preload-done", function appInit () {
         util.emitter.off( "app--preload-done", appInit );
 
+        util.resizeElems();
+
         dom.body.addClass( "is-active" );
     });
 

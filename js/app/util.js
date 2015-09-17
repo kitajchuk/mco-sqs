@@ -310,8 +310,19 @@ resizeElems = function ( elems ) {
     for ( var i = elems.length; i--; ) {
         var data = elems[ i ].dataset;
 
-        if ( data.resize === "fullscreen" ) {
-            elems[ i ].style.height = px( window.innerHeight );
+        if ( data.resize === "square" ) {
+            elems[ i ].style.height = px( elems[ i ].clientWidth );
+        }
+
+        if ( data.resize === "blog-image" ) {
+            if ( elems[ i ].naturalHeight > elems[ i ].naturalWidth ) {
+                elems[ i ].style.height = px( elems.eq( i ).closest( ".js-blog-item" )[ 0 ].clientHeight * 0.8 );
+                elems[ i ].style.width = "auto";
+
+            } else {
+                elems[ i ].style.height = "auto";
+                elems[ i ].style.width = "100%";
+            }
         }
     }
 },
