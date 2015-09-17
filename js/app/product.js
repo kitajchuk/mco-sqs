@@ -8,6 +8,7 @@
  */
 import "app/dom";
 import "app/util";
+import "app/config";
 
 
 var $_jsProduct = null,
@@ -101,19 +102,22 @@ fixTitle = function () {
 },
 
 
+onPillBoxTimeout = function () {
+    var $imgs = $( "img" ),
+        i = $imgs.length;
+
+    for ( i; i--; ) {
+         $imgs[ i ].src =  $imgs[ i ].src.replace( window.location.href, "" ).replace( "format=100w", "format=500w" ).replace( /^https:|^http:/g, "" );
+    }
+},
+
+
 onPillBoxClick = function () {
     var onInitComm = function () {
         sqs.initCommerce();
 
-        var $imgs = $( "img" ),
-            i = $imgs.length,
-            f = function () {
-                this.src = this.src.replace( window.location.href, "" ).replace( "format=100w", "format=500w" ).replace( /^https:|^http:/g, "" );
-            };
-
-        for ( i; i--; ) {
-            $imgs[ i ].onload = f;
-        }
+        // Load slightly higher res images for /commerce/show-cart page
+        setTimeout( onPillBoxTimeout, config.easeDuration );
 
         util.emitter.off( "app--preload-done", onInitComm );
     };
