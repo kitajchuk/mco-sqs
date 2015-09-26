@@ -81,7 +81,7 @@
     line-height: 1 !important;
     margin: 0 !important;
     outline: 0 !important;
-    padding: 20px 72px !important;
+    padding: $mobile-padding 72px !important;
     transition: background-color $ease-duration $ease !important;
     text-transform: uppercase !important;
     width: auto !important;
@@ -127,7 +127,7 @@
     text-align: center !important;
     margin: 0 !important;
     border: 0 !important;
-    padding: 0 !important;
+    padding: 0 0 0 10px !important;
     border-radius: 0 !important;
     float: none !important;
     -webkit-appearance: none !important;
@@ -137,9 +137,14 @@
         content: "QTY ";
         }
     }
+.sqs-fullpage-shopping-cart-content .cart-container table tr .remove {
+    font-size: 0 !important;
+    height: $icon-size !important;
+    text-align: left !important;
+    }
 .sqs-fullpage-shopping-cart-content .cart-container table tr .remove .remove-item {
     color: $medium-dark !important;
-    font-size: 0 !important;
+    float: none !important;
     opacity: 1 !important;
     margin: 0 !important;
 
@@ -185,11 +190,22 @@
         text-decoration: none !important;
         letter-spacing: 1.5px !important;
         text-transform: uppercase !important;
-        padding-top: 20px !important;
+        padding-top: $mobile-padding !important;
         @include sqs-hack-font-sans();
         @include sqs-hack-text-black();
         }
     }
+
+.sqs-fullpage-shopping-cart-content .cart-container table tr .quantity,
+.sqs-fullpage-shopping-cart-content .cart-container table tr .price,
+.sqs-fullpage-shopping-cart-content .cart-container table tr .price {
+    line-height: 1 !important;
+    }
+
+/*
+.sqs-fullpage-shopping-cart-content .cart-container table tr .item-desc .variant-info {
+    }
+*/
 
 
 /******************************************************************************
@@ -205,7 +221,7 @@
     line-height: 1 !important;
     margin-top: 24px !important;
     outline: 0 !important;
-    padding: 20px 72px !important;
+    padding: $mobile-padding 72px !important;
     transition: background-color $ease-duration $ease !important;
     text-transform: uppercase !important;
     width: 100% !important;
@@ -220,7 +236,7 @@
     display: none !important;
     }
 .sqs-add-to-cart-button div + div {
-    margin-left: 20px !important;
+    margin-left: $mobile-padding !important;
     }
 .sqs-add-to-cart-button-inner {
     display: block !important;
@@ -280,8 +296,8 @@ input::-webkit-inner-spin-button {
     bottom: auto !important;
     left: auto !important;
     position: fixed !important;
-    right: $navbar-padding !important;
-    top: $navbar-padding !important;
+    right: 46px !important;
+    top: 46px !important;
     }
 .sqs-pill-shopping-cart {
     width: auto !important;
@@ -320,18 +336,97 @@ input::-webkit-inner-spin-button {
 
 
 
-@media only screen and ( max-width: $break-mobile-full ) {
-    .sqs-add-to-cart-button {
+// Tablet
+@media only screen and ( max-width: $break-tablet-medium ) {
+    .sqs-fullpage-shopping-cart-content .cart-container table tr .item-desc a {
+        font-size: 16px !important;
+        line-height: 24 / 16 !important;
+        }
+}
+
+
+// 700px: Arbitrary breakpoint that Squarespace uses ?
+@media only screen and ( max-width: 700px ) {
+    #sqs-shopping-cart-wrapper {
         margin-top: 0 !important;
         }
-
-    .absolute-cart-box,
-    .sqs-pill-shopping-cart {
-        right: $mobile-padding !important;
-        top: $mobile-padding !important;
+    .sqs-fullpage-shopping-cart-content .cart-container {
+        padding: $grid-padding !important;
+        }
+    .sqs-fullpage-shopping-cart-content .cart-container table tr .item {
+        }
+    .sqs-fullpage-shopping-cart-content .cart-container table tr .item-image img {
+        max-width: none !important;
+        width: 70% !important;
         }
 
-    .product-quantity-input {
-        margin-bottom: $mobile-padding;
+    .sqs-fullpage-shopping-cart-content .checkout,
+    .sqs-fullpage-shopping-cart-content .cart-container .subtotal {
+        text-align: center !important;
+        width: 100% !important;
+        }
+
+    .sqs-fullpage-shopping-cart-content .checkout {
+        padding: 0 !important;
+        }
+    .sqs-fullpage-shopping-cart-content .cart-container .subtotal {
+        padding: 72px 0 !important;
+        }
+
+
+
+    // block layout mode
+    .sqs-fullpage-shopping-cart-content .cart-container table tr td {
+        border: 0 !important;
+        display: block !important;
+        max-width: none !important;
+        text-align: center !important;
+        width: 100% !important;
+        }
+    .sqs-fullpage-shopping-cart-content .cart-container table tr .quantity,
+    .sqs-fullpage-shopping-cart-content .cart-container table tr .price {
+        display: inline-block !important;
+        padding: $mobile-padding $mobile-padding ($mobile-padding * 2) !important;
+        vertical-align: middle !important;
+        width: 50% !important;
+        }
+    .sqs-fullpage-shopping-cart-content .cart-container table tr .item-desc a {
+        display: block !important;
+        padding: $mobile-padding !important;
+        }
+    .sqs-fullpage-shopping-cart-content .cart-container table tr .price {
+        text-align: left !important;
+        }
+    .sqs-fullpage-shopping-cart-content .cart-container table tr .quantity {
+        text-align: right !important;
+        }
+    .sqs-fullpage-shopping-cart-content .cart-container table tr {
+        border-bottom: 1px solid $border;
+        }
+    .sqs-fullpage-shopping-cart-content .checkout .checkout-button {
+        width: 100% !important;
+        }
+    .sqs-fullpage-shopping-cart-content .cart-container table tr .remove {
+        display: none !important;
+        }
+}
+
+
+
+// Mobile
+@media only screen and ( max-width: $break-mobile-full ) {
+    .absolute-cart-box,
+    .sqs-pill-shopping-cart {
+        right: 26px !important;
+        top: 26px !important;
+        }
+}
+
+
+
+@media only screen and ( max-width: $break-tablet-small ) {
+    .sqs-fullpage-shopping-cart-content .cart-container table tr .item-desc a {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
         }
 }
