@@ -29,9 +29,6 @@ var $_jsProduct = null,
  *
  */
 product = {
-    name: "product",
-
-
     init: function () {
         _pillBox = Y.one( ".sqs-pill-shopping-cart-content" );
         _pillBox.detach( "click" ).on( "click", onPillBoxClick );

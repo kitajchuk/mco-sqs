@@ -80,10 +80,22 @@ preload = {
 
                 return true;
             });
-            _imgLoader.on( "done", function () {
+            _imgLoader
+            .on( "load", onImageLoad )
+            .on( "done", function () {
                 delayedLoad( callback );
             });
         }
+    }
+},
+
+
+onImageLoad = function ( img ) {
+    if ( img.naturalHeight > img.naturalWidth ) {
+        img.className += " image--portrait";
+
+    } else {
+        img.className += " image--landscape";
     }
 },
 
@@ -99,7 +111,9 @@ delayedLoad = function ( callback ) {
     if ( $notVisible.length ) {
         _imgLoader = null;
         _imgLoader = loadImages( $notVisible, isImageLoadable );
-        _imgLoader.on( "done", function () {
+        _imgLoader
+        .on( "load", onImageLoad )
+        .on( "done", function () {
             console.log( "lazyloaded", $notVisible.length, "images" );
         });
     }
