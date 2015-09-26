@@ -40,6 +40,11 @@
     width: 100%;
     }
 
+// Animations elements
+.anim {
+    @include ani-lift-block();
+    }
+
 
 @each $col in $grid-columns {
     .col--#{$col}of#{$grid-length} {
