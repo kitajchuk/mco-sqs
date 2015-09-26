@@ -13,6 +13,7 @@
 .product {
     font-size: 0;
     height: 100vh;
+    margin-top: -$navbar-height;
     min-height: $break-tablet-small;
     position: relative;
     width: 100vw;

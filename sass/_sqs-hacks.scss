@@ -26,6 +26,10 @@
 /******************************************************************************
  * Show Cart Page
 *******************************************************************************/
+#sqs-shopping-cart-wrapper {
+    margin-top: -$navbar-height;
+    position: relative;
+    }
 .sqs-fullpage-shopping-cart-content .cart-container {
     font-size: 0 !important;
     padding: $cart-padding $grid-padding !important;

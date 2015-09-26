@@ -12,10 +12,15 @@
 
 // Covers
 .cover {
-    background-color: $grey;
     height: 100vh;
     position: relative;
     width: 100%;
+    }
+.cover--tease {
+    height: 80vh;
+    }
+.cover--pull {
+    margin-top: -$navbar-height;
     }
 .cover__image {
     bottom: 0;
