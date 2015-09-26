@@ -14,6 +14,7 @@ import "app/navmenu";
 import "app/grid";
 import "app/product";
 import "app/views";
+import "app/article";
 
 
 var PageController = require( "PageController" ),
@@ -40,6 +41,7 @@ router = {
             scrolls,
             preload,
 
+            article,
             grid,
             product,
             views

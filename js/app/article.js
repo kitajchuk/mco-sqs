@@ -1,6 +1,6 @@
 /*!
  *
- * App Controller: grid
+ * App Controller: article
  *
  * A nice description of what this controller does...
  *
@@ -11,8 +11,8 @@ import "app/resizes";
 import { emitter } from "app/util";
 
 
-var $_jsGrid = null,
-    $_jsItems = null,
+var $_jsArticle = null,
+    $_jsAnims = null,
 
     _isActive = false,
 
@@ -22,9 +22,9 @@ var $_jsGrid = null,
  * @public
  *
  */
-grid = {
+article = {
     init: function () {
-        console.log( "grid initialized" );
+        console.log( "article initialized" );
     },
 
 
@@ -35,11 +35,11 @@ grid = {
 
     onload: function () {
         emitter.on( "app--resize", onResizer );
-        emitter.on( "app--resize-small", unbindAnimateGrid );
-        emitter.on( "app--resize-normal", bindAnimateGrid );
+        emitter.on( "app--resize-small", unbindAnimateArticle );
+        emitter.on( "app--resize-normal", bindAnimateArticle );
 
         if ( !resizes.isSmall() ) {
-            bindAnimateGrid();
+            bindAnimateArticle();
         }
     },
 
@@ -50,22 +50,22 @@ grid = {
 
 
     getElements: function () {
-        $_jsGrid = dom.page.find( ".js-grid" );
-        $_jsItems = $_jsGrid.children();
+        $_jsArticle = dom.page.find( ".js-article" );
+        $_jsAnims = $_jsArticle.find( ".js-anim, .sqs-block-content" );
 
-        return ( $_jsGrid.length );
+        return ( $_jsArticle.length );
     },
 
 
     teardown: function () {
-        unbindAnimateGrid();
+        unbindAnimateArticle();
 
         emitter.off( "app--resize", onResizer );
-        emitter.off( "app--resize-small", unbindAnimateGrid );
-        emitter.off( "app--resize-normal", bindAnimateGrid );
+        emitter.off( "app--resize-small", unbindAnimateArticle );
+        emitter.off( "app--resize-normal", bindAnimateArticle );
 
-        $_jsGrid = null;
-        $_jsItems = null;
+        $_jsArticle = null;
+        $_jsAnims = null;
 
         _isActive = false;
     }
@@ -77,14 +77,14 @@ grid = {
  * @private
  *
  */
-bindAnimateGrid = function () {
+bindAnimateArticle = function () {
     emitter.on( "app--scroll", onScroller );
     emitter.on( "app--scroll-up", onScrollerUp );
     emitter.on( "app--scroll-down", onScrollerDown );
 
     onScroller();
 
-    console.log( "bind animate grid" );
+    console.log( "bind animate article" );
 },
 
 
@@ -93,14 +93,14 @@ bindAnimateGrid = function () {
  * @private
  *
  */
-unbindAnimateGrid = function () {
+unbindAnimateArticle = function () {
     emitter.off( "app--scroll", onScroller );
     emitter.off( "app--scroll-up", onScrollerUp );
     emitter.off( "app--scroll-down", onScrollerDown );
 
-    $_jsItems.removeClass( "is-above is-below is-entering is-leaving-bottom is-leaving-top" );
+    $_jsAnims.removeClass( "is-above is-below is-entering is-leaving-bottom is-leaving-top" );
 
-    console.log( "unbind animate grid" );
+    console.log( "unbind animate article" );
 },
 
 
@@ -126,8 +126,8 @@ onScroller = function () {
         $item,
         i;
 
-    for ( i = $_jsItems.length; i--; ) {
-        $item = $_jsItems.eq( i );
+    for ( i = $_jsAnims.length; i--; ) {
+        $item = $_jsAnims.eq( i );
         bounds = $item[ 0 ].getBoundingClientRect();
 
         // In the visible viewport
@@ -158,8 +158,8 @@ onScrollerDown = function () {
         $item,
         i;
 
-    for ( i = $_jsItems.length; i--; ) {
-        $item = $_jsItems.eq( i );
+    for ( i = $_jsAnims.length; i--; ) {
+        $item = $_jsAnims.eq( i );
         bounds = $item[ 0 ].getBoundingClientRect();
 
         // Entering from the bottom
@@ -185,8 +185,8 @@ onScrollerUp = function () {
         $item,
         i;
 
-    for ( i = $_jsItems.length; i--; ) {
-        $item = $_jsItems.eq( i );
+    for ( i = $_jsAnims.length; i--; ) {
+        $item = $_jsAnims.eq( i );
         bounds = $item[ 0 ].getBoundingClientRect();
 
         // Entering from the top
@@ -205,4 +205,4 @@ onScrollerUp = function () {
 /******************************************************************************
  * Export
 *******************************************************************************/
-export default grid;
+export default article;
