@@ -1,5 +1,5 @@
 .is-hoverable {
-    .a, .p a, p a, .ul a, ul a {
+    .a, .p a, p a, .ul a, ul a:not(.nav__a) {
         &:hover {
             color: $dark;
             }
