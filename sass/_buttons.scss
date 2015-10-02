@@ -37,9 +37,10 @@
     background-color: transparent;
     color: $medium-dark;
     opacity: 0;
+    margin-top: -($icon-size / 2);
     padding: 0;
-    position: fixed;
-    top: $navbar-padding;
+    position: absolute;
+    top: 50%;
     transition: opacity $ease-duration $ease,
                 visibility $ease-duration $ease;
     visibility: hidden;
@@ -53,7 +54,10 @@
     }
 .btn--exit {
     left: $navbar-padding;
+    margin-top: 0;
     opacity: 1;
+    position: fixed;
+    top: $navbar-padding;
     visibility: visible;
     }
 
@@ -72,6 +76,7 @@
 // Mobile
 @media only screen and ( max-width: $break-mobile-full ) {
     .btn--navmenu {
+        margin-top: 0;
         top: $mobile-padding;
         }
     .btn--menu {

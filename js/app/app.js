@@ -19,6 +19,15 @@ import "app/util";
 
 
 window.onload = function () {
+    window.Squarespace.onInitialize( Y, function () {
+        var $cart = $( ".absolute-cart-box" );
+
+        dom.navbar.append( $cart );
+
+        $cart.addClass( "is-active" );
+    });
+
+
     util.emitter.on( "app--preload-done", function appInit () {
         util.emitter.off( "app--preload-done", appInit );
 
