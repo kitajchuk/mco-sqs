@@ -57,6 +57,16 @@
 
 
 
+// Typography
+@mixin h5--sqs-h3() {
+    font-size: 12px;
+    line-height: 1.75;
+    @include font-sans();
+    @include text-bold();
+}
+
+
+
 // Animations
 @mixin ani-lift-block() {
     transition: transform $anim-duration $ease,

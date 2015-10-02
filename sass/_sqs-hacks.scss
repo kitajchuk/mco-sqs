@@ -13,9 +13,21 @@
         margin: 0 auto;
         width: 100%;
         }
+    h3 + p,
+    h2 + p,
+    h3 + p {
+        margin-top: $mobile-padding;
+        }
     p + p {
         margin-top: $navbar-padding;
         }
+
+    h3 {
+        @include h5--sqs-h3();
+        }
+}
+.sqs-block-spacer {
+    height: 70px;
 }
 .sqs-block-image .sqs-block-content {
     padding: $grid-padding 0;
@@ -419,6 +431,15 @@ input::-webkit-inner-spin-button {
     .sqs-pill-shopping-cart {
         right: 26px !important;
         top: 26px !important;
+        }
+
+    .sqs-block-content,
+    .sqs-block-content.is-below,
+    .sqs-block-content.is-above,
+    .sqs-block-content.is-leaving-top,
+    .sqs-block-content.is-leaving-bottom {
+        opacity: 1;
+        transform: translate3d( 0, 0, 0 );
         }
 }
 

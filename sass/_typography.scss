@@ -39,22 +39,18 @@
     }
 .h5, h5,
 .h5 p, h5 p {
-    font-size: 12px;
-    line-height: 1.75;
-    @include font-sans();
-    @include text-bold();
+    @include h5--sqs-h3();
     }
 
 
 
-.p, p {
+.p, p, .ul, ul {
     font-size: 18px;
     line-height: 1.55555556;
     @include font-serif();
     @include text-regular();
     }
-.a, .p a, p a {
-    border-bottom: 1px solid $light;
+.a, .p a, p a, .ul a, ul a {
     color: $light;
     @include font-serif();
     @include text-regular();
@@ -63,6 +59,13 @@
 
 
 // Tablet
+@media only screen and ( max-width: $break-laptop-full ) {
+    .p, p, .ul, ul {
+        font-size: 16px;
+        line-height: 24 / 16;
+        }
+}
+
 @media only screen and ( max-width: $break-tablet-medium ) {
     .h1, h1 {
         font-size: 36px;
@@ -76,11 +79,6 @@
     .h4, h4, .h4 p {
         font-size: 14px;
         @include text-bold();
-        }
-
-    .p, p {
-        font-size: 16px;
-        line-height: 24 / 16;
         }
 }
 
@@ -96,7 +94,7 @@
         @include text-medium();
         }
 
-    .p, p {
+    .p, p, .ul, ul {
         font-size: 14px;
         line-height: 1.5;
         }

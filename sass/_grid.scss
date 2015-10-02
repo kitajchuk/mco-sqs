@@ -68,6 +68,12 @@
 .wrapper--v {
     padding: $grid-padding 0;
     }
+.wrapper--vb {
+    padding: 0 0 $grid-padding 0;
+    }
+.wrapper--vt {
+    padding: $grid-padding 0 0;
+    }
 
 
 // Alignment
@@ -112,14 +118,14 @@
     .grid__item.is-below,
     .grid__item.is-above,
     .grid__item.is-leaving-top,
-    .grid__item.is-leaving-bottom {
+    .grid__item.is-leaving-bottom,
+
+    .anim,
+    .anim.is-below,
+    .anim.is-above,
+    .anim.is-leaving-top,
+    .anim.is-leaving-bottom{
         opacity: 1;
         transform: translate3d( 0, 0, 0 );
         }
-
-/*
-    .wrapper:not(.wrapper--h) {
-        padding: $mobile-padding;
-        }
-*/
 }
