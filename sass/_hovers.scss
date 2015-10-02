@@ -1,3 +1,12 @@
 .is-hoverable {
-    
+    .a, .p a, p a, .ul a, ul a {
+        &:hover {
+            color: $dark;
+            }
+    }
+
+
+    .article__cms a:hover {
+        border-bottom-color: $dark;
+        }
 }
