@@ -53,7 +53,7 @@ product = {
 
         fixTitle();
 
-        util.emitter.fire( "app--product-detail-on" );
+        dom.html.addClass( "is-product-detail" );
     },
 
 
@@ -85,7 +85,7 @@ product = {
 
         _isActive = false;
 
-        util.emitter.fire( "app--product-detail-off" );
+        dom.html.removeClass( "is-product-detail" );
     }
 },
 

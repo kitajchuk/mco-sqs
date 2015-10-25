@@ -45,7 +45,8 @@
                 visibility $ease-duration $ease;
     visibility: hidden;
     }
-.btn--menu {
+.btn--menu,
+.btn--grid {
     left: $navbar-padding;
     }
 .btn--mco {
