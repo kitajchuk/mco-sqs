@@ -89,7 +89,7 @@
 
 
 // Tablet
-@media only screen and ( max-width: $break-tablet-full ) {
+@media only screen and ( max-width: $break-tablet-medium ) {
     .navbar .nav__a:not(.nav__a--home) {
         opacity: 0;
         visibility: hidden;
