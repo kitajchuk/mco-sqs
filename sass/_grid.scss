@@ -39,6 +39,9 @@
     max-width: $break-tablet-medium;
     width: 100%;
     }
+.shell--weak {
+    max-width: $block-size;
+    }
 
 // Animations elements
 .anim {

@@ -12,7 +12,7 @@ var $_jsViews = null,
 /**
  *
  * @public
- * @namespace app..views
+ * @namespace app.views
  * @memberof app.
  * @description A nice description of what this module does...
  *
@@ -22,7 +22,7 @@ views = {
      *
      * @public
      * @method init
-     * @memberof app..views
+     * @memberof app.views
      * @description Method runs once when window loads.
      *
      */
@@ -35,7 +35,7 @@ views = {
      *
      * @public
      * @method isActive
-     * @memberof app..views
+     * @memberof app.views
      * @description Method informs PageController of active status.
      * @returns {boolean}
      *
@@ -49,7 +49,7 @@ views = {
      *
      * @public
      * @method onload
-     * @memberof app..views
+     * @memberof app.views
      * @description Method performs onloading actions for this module.
      *
      */
@@ -64,7 +64,7 @@ views = {
      *
      * @public
      * @method unload
-     * @memberof app..views
+     * @memberof app.views
      * @description Method performs unloading actions for this module.
      *
      */
@@ -77,7 +77,7 @@ views = {
      *
      * @public
      * @method teardown
-     * @memberof app..views
+     * @memberof app.views
      * @description Method performs cleanup after this module. Remmoves events, null vars etc...
      *
      */

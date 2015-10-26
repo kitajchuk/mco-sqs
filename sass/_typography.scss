@@ -3,7 +3,6 @@
 .h1, h1 {
     letter-spacing: 1.25px;
     text-transform: uppercase;
-    //@include block-size();
     }
 
 
@@ -28,12 +27,6 @@
     line-height: 1.5;
     @include font-sans();
     @include text-black();
-
-/*
-    & + p {
-        margin-top: 26px;
-        }
-*/
     }
 
 

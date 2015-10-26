@@ -190,19 +190,15 @@ closestValueUp = function ( num, arr ) {
  * @method loadImages
  * @param {object} images Optional collection of images to load
  * @param {function} handler Optional handler for load conditions
- * @param {function} callback Optional callback when loaded
  * @memberof util
  *
  */
-loadImages = function ( images, handler, loadType ) {
+loadImages = function ( images, handler ) {
     // Normalize the handler
     handler = (handler || isImageLoadable);
 
     // Normalize the images
     images = (images || $( ".js-lazy-image" ));
-
-    // Normalize loadType
-    loadType = (loadType || "async");
 
     // Get the right size image for the job
     for ( var i = images.length; i--; ) {
@@ -246,7 +242,7 @@ loadImages = function ( images, handler, loadType ) {
     return new ImageLoader({
         elements: images,
         property: "data-img-src",
-        loadType: loadType,
+        loadType: "async",
         transitionDelay: 0
 
     // Default handle method. Can be overriden.
@@ -446,6 +442,21 @@ shuffle = function ( array ) {
     }
 
     return array;
+},
+
+
+/**
+ *
+ * @method random
+ * @param {number} min The min to look at
+ * @param {number} max The max to look at
+ * @description Returns a random number in a range.
+ * @memberof util
+ * @returns {number}
+ *
+ */
+random = function ( min, max ) {
+    return Math.floor( Math.random() * (max - min + 1) ) + min;
 };
 
 
@@ -471,6 +482,7 @@ export {
     // Random
     px,
     noop,
+    random,
     shuffle,
     resizeElems,
     translate3d,

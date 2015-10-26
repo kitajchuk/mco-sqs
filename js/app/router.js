@@ -15,6 +15,7 @@ import "app/grid";
 import "app/product";
 import "app/views";
 import "app/article";
+import "app/home";
 
 
 var PageController = require( "PageController" ),
@@ -44,7 +45,8 @@ router = {
             article,
             grid,
             product,
-            views
+            views,
+            home
         ]);
 
         _pageController.initPage();

@@ -59,7 +59,7 @@
 
 // Typography
 @mixin block-size() {
-    max-width: 630px;
+    max-width: $block-size;
     margin: 0 auto;
     width: 100%;
 }
