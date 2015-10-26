@@ -58,11 +58,10 @@
 
 
 // Typography
-@mixin h5--sqs-h3() {
-    font-size: 12px;
-    line-height: 1.75;
-    @include font-sans();
-    @include text-bold();
+@mixin block-size() {
+    max-width: 630px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 
