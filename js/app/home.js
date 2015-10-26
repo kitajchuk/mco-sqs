@@ -110,25 +110,6 @@ home = {
 };
 
 
-/*
-imgSrcs = null,
-imgSrc = null,
-$img = null,
-            
-
-if ( /js-random-image/.test( $_images[ i ].className ) ) {
-    $img = $_images.eq( i );
-
-    imgSrcs = $img.data( "imgSrcs" ).split( "|" );
-    imgSrc = imgSrcs[ random( 0, (imgSrcs.length - 1) ) ];
-
-    console.log( imgSrc );
-
-    $img.attr( "data-img-src", imgSrc );
-}
-*/
-
-
 /******************************************************************************
  * Export
 *******************************************************************************/
