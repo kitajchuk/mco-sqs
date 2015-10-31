@@ -45,13 +45,16 @@ product = {
     onload: function () {
         sqs.initCommerce();
 
+        // Exclude current product from the shop grid below it
+        dom.body.find( ".js-shop-item[data-id='" + $_jsProduct.data( "id" ) + "']" ).remove();
+
         $_jsDec.on( "click", onDecClick );
         $_jsInc.on( "click", onIncClick );
 
         $_jsWeight.text( parseFloat( $_jsWeight.text() ) * 16 );
         $_jsInputWrap.append( $_jsDec, $_jsInc );
 
-        fixTitle();
+        fixTitle( $_jsTitle[ 0 ] );
 
         dom.html.addClass( "is-product-detail" );
     },
@@ -90,21 +93,31 @@ product = {
 },
 
 
-fixTitle = function () {
-    var title = $_jsTitle[ 0 ].innerHTML.split( " " ),
+fixTitle = function ( titleEl ) {
+    var title = titleEl.innerHTML.split( " " ),
         top = title.slice( 0, title.length - 2 ),
         bot = title.slice( title.length - 2, title.length );
 
-    $_jsTitle[ 0 ].innerHTML = (top.join( "&nbsp;" ) + "<br />" + bot.join( "&nbsp;" ));
+    titleEl.innerHTML = (top.join( "&nbsp;" ) + "<br />" + bot.join( "&nbsp;" ));
 },
 
 
 onPillBoxTimeout = function () {
     var $imgs = $( "img" ),
+        $titles = $( ".item-desc > a" ),
         i = $imgs.length;
 
     for ( i; i--; ) {
-         $imgs[ i ].src =  $imgs[ i ].src.replace( window.location.href, "" ).replace( "format=100w", "format=500w" ).replace( /^https:|^http:/g, "" );
+         $imgs[ i ].src = $imgs[ i ].src
+                                        .replace( window.location.href, "" )
+                                        .replace( "format=100w", "format=500w" )
+                                        .replace( /^https:|^http:/g, "" );
+    }
+
+    i = $titles.length;
+
+    for ( i; i--; ) {
+        fixTitle( $titles[ i ] );
     }
 },
 

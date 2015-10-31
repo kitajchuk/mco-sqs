@@ -278,12 +278,14 @@
 .product-quantity-input input {
     background-color: $white !important;
     border: 1px solid $border !important;
+    border-radius: 0 !important;
     color: $medium-dark !important;
     display: inline-block !important;
     font-size: 14px !important;
+    height: 60px !important;
     line-height: 1 !important;
     outline: 0 !important;
-    padding: 18px 72px !important;
+    padding: 0 !important;
     text-align: center !important;
     text-transform: uppercase !important;
     width: 100% !important;

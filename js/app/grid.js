@@ -8,7 +8,7 @@
  */
 import "app/dom";
 import "app/resizes";
-import { emitter } from "app/util";
+import { emitter, resizeElems } from "app/util";
 
 
 var $_jsGrid = null,
@@ -37,6 +37,7 @@ grid = {
         emitter.on( "app--resize", onResizer );
         emitter.on( "app--resize-small", unbindAnimateGrid );
         emitter.on( "app--resize-normal", bindAnimateGrid );
+        emitter.on( "app--preload-done", resizeElems );
 
         if ( !resizes.isSmall() ) {
             bindAnimateGrid();
@@ -63,6 +64,7 @@ grid = {
         emitter.off( "app--resize", onResizer );
         emitter.off( "app--resize-small", unbindAnimateGrid );
         emitter.off( "app--resize-normal", bindAnimateGrid );
+        emitter.off( "app--preload-done", resizeElems );
 
         $_jsGrid = null;
         $_jsItems = null;
