@@ -33,6 +33,11 @@
     width: auto;
     }
 
+// Index grid
+.grid__item--index {
+    margin: $grid-padding 0;
+    }
+
 // Shell center
 .shell {
     margin: 0 auto;
