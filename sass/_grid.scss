@@ -18,6 +18,9 @@
     margin-top: $mobile-padding;
     max-width: 300px;
     }
+.grid__secton__label {
+    padding-top: $grid-padding;
+    }
 
 // Blog grid
 .grid--blog {
@@ -46,6 +49,9 @@
     }
 .shell--weak {
     max-width: $block-size;
+    }
+.shell--strong {
+    max-width: $break-laptop-medium;
     }
 
 // Animations elements
