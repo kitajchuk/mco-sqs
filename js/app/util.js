@@ -325,30 +325,6 @@ resizeElems = function ( elems ) {
 
 
 /**
- * Resize arbitary width x height region to fit inside another region.
- * Conserve aspect ratio of the orignal region. Useful when shrinking/enlarging
- * images to fit into a certain area.
- * @url: http://opensourcehacker.com/2011/12/01/calculate-aspect-ratio-conserving-resize-for-images-in-javascript/
- * @method calculateAspectRatioFit
- * @memberof util
- * @param {Number} srcWidth Source area width
- * @param {Number} srcHeight Source area height
- * @param {Number} maxWidth Fittable area maximum available width
- * @param {Number} srcWidth Fittable area maximum available height
- * @return {Object} { width, heigth }
- *
- */
-calculateAspectRatioFit = function( srcWidth, srcHeight, maxWidth, maxHeight ) {
-    var ratio = Math.min( (maxWidth / srcWidth), (maxHeight / srcHeight) );
-
-    return {
-        width: srcWidth * ratio,
-        height: srcHeight * ratio
-    };
-},
-
-
-/**
  *
  * Get the applied transition duration from CSS
  * @method getTransitionDuration
@@ -367,46 +343,6 @@ getTransitionDuration = function ( el ) {
         multiplyBy = isSeconds ? 1000 : 1;
 
     return parseFloat( duration ) * multiplyBy;
-},
-
-
-/**
- *
- * Get the applied transform values from CSS
- * @method getTransformValues
- * @param {object} el The DOMElement
- * @memberof util
- * @returns object
- *
- */
-getTransformValues = function ( el ) {
-    if ( !el ) {
-        return null;
-    }
-
-    var transform = getComputedStyle( el )[ Hammer.prefixed( el.style, "transform" ) ],
-        values = transform.replace( /matrix|3d|\(|\)|\s/g, "" ).split( "," ),
-        ret = {};
-
-    // No Transform
-    if ( values[ 0 ] === "none" ) {
-        ret.x = 0;
-        ret.y = 0;
-        ret.z = 0;
-
-    // Matrix 3D
-    } else if ( values.length === 16 ) {
-        ret.x = parseFloat( values[ 12 ] );
-        ret.y = parseFloat( values[ 13 ] );
-        ret.z = parseFloat( values[ 14 ] );
-
-    } else {
-        ret.x = parseFloat( values[ 4 ] );
-        ret.y = parseFloat( values[ 5 ] );
-        ret.z = 0;
-    }
-
-    return ret;
 },
 
 
@@ -486,9 +422,7 @@ export {
     shuffle,
     resizeElems,
     translate3d,
-    calculateAspectRatioFit,
     getTransitionDuration,
-    getTransformValues,
     closestValue,
     closestValueUp
 };

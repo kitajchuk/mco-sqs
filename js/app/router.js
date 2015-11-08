@@ -14,7 +14,6 @@ import "app/navmenu";
 import "app/grid";
 import "app/product";
 import "app/views";
-import "app/article";
 import "app/home";
 
 
@@ -42,7 +41,6 @@ router = {
             scrolls,
             preload,
 
-            article,
             grid,
             product,
             views,
