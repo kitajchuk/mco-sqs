@@ -1,36 +1,49 @@
-// Setup
-@import "variables";
-@import "mixins";
-@import "reset";
-@import "fonts";
-@import "icons";
+/******************************************************************************
+ * Config
+*******************************************************************************/
+@import "config/variables";
+@import "config/mixins";
 
 
-// Sections
-@import "products";
+
+/******************************************************************************
+ * Core
+*******************************************************************************/
+@import "core/reset";
+@import "core/fonts";
+@import "core/icons";
+@import "core/document";
+@import "core/grid";
+@import "core/pages";
+@import "core/typography";
+@import "core/images";
 
 
-// Modules
-@import "document";
-@import "forms";
-@import "grid";
-@import "images";
-@import "header";
-@import "footer";
-@import "navigation";
-@import "pages";
-@import "posts";
-@import "screens";
-@import "typography";
-@import "buttons";
-@import "modifiers";
-@import "views";
+
+/******************************************************************************
+ * Modules
+*******************************************************************************/
+@import "modules/header";
+@import "modules/footer";
+@import "modules/navigation";
+@import "modules/posts";
+@import "modules/screens";
+@import "modules/buttons";
+@import "modules/views";
+@import "modules/products";
 
 
-// UI States
-@import "states";
-@import "hovers";
+
+/******************************************************************************
+ * Squarespace Hacks
+*******************************************************************************/
+@import "sqs/hacks";
 
 
-// SQS Hacks
-@import "sqs-hacks";
+
+/******************************************************************************
+ * UI State
+*******************************************************************************/
+@import "state/states";
+@import "state/hovers";
+@import "state/modifiers";

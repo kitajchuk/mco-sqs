@@ -1,13 +1,7 @@
-/*!
- *
- * App Module: /dom
- *
- * @namespace dom
- * @memberof app
- *
- *
- */
-var dom = {
+import $ from "js_libs/jquery/dist/jquery";
+
+
+const dom = {
     doc: $( document ),
     html: $( document.documentElement ),
     body: $( document.body ),
