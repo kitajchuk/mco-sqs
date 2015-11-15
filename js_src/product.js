@@ -13,7 +13,7 @@ let $_jsWeight = null;
 let $_jsTitle = null;
 let _pillBox = null;
 
-const $_jsDec = $( "<div class=\"product__dec\"><span class=\"icon icon--minus icon--void\"></span></div>" );
+const $_jsDec = $( "<div class=\"product__dec\"><span class=\"icon icon--minus\"></span></div>" );
 const $_jsInc = $( "<div class=\"product__inc\"><span class=\"icon icon--plus\"></span></div>" );
 
 
@@ -126,24 +126,10 @@ const onPillBoxClick = function () {
 };
 
 
-const voidDecIcon = function ( val ) {
-    const $ic = $_jsDec.find( ".icon" );
-
-    if ( val > 1 ) {
-        $ic.removeClass( "icon--void" );
-
-    } else {
-        $ic.addClass( "icon--void" );
-    }
-};
-
-
 const onIncClick = function () {
     let val = $_jsInput.val();
 
     val++;
-
-    voidDecIcon( val );
 
     $_jsInput.val( Math.max( 1, val ) );
 };
@@ -153,8 +139,6 @@ const onDecClick = function () {
     let val = $_jsInput.val();
 
     val--;
-
-    voidDecIcon( val );
 
     $_jsInput.val( Math.max( 1, val ) );
 };

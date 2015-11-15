@@ -1,5 +1,6 @@
 import config from "./config";
 import * as util from "./util";
+import debounce from "properjs-debounce";
 
 
 let _isSmallOn = false;
@@ -9,6 +10,7 @@ let _isSmall = (window.innerWidth <= config.mobileWidth);
 const resizes = {
     init () {
         util.resizer.on( "resize", onResizer );
+        util.resizer.on( "resize", onDebounced );
         util.emitter.on( "app--do-resize", onResizer );
 
         onResizer();
@@ -29,9 +31,14 @@ const resizes = {
 };
 
 
-const onResizer = function () {
+const onDebounced = debounce(function () {
     util.resizeElems();
+    util.updateImages();
 
+}, 300 );
+
+
+const onResizer = function () {
     _isSmall = (window.innerWidth <= config.mobileWidth);
 
     if ( _isSmall && !_isSmallOn ) {

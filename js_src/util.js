@@ -63,6 +63,17 @@ const getClosestValue = function ( arr, closestTo ) {
 };
 
 
+const updateImages = function () {
+/*
+    const $loaded = $( "[data-imageloader]" );
+
+    $loaded.removeAttr( "data-imageloader" );
+
+    loadImages( $loaded, noop );
+*/
+};
+
+
 const loadImages = function ( images, handler, useVariant ) {
     const map = function ( vnt ) {
         return parseInt( vnt, 10 );
@@ -209,6 +220,7 @@ export {
 
     // Loading
     loadImages,
+    updateImages,
     isElementLoadable,
     isElementInViewport,
 

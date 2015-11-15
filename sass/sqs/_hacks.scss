@@ -23,8 +23,8 @@
         margin-top: ($navbar-padding / 2);
         }
 }
-.sqs-block-spacer {
-    height: 70px;
+.sqs-block-spacer .sqs-block-content {
+    height: 70px !important;
 }
 .sqs-block-image .sqs-block-content {
     padding: $grid-padding 0;
@@ -221,7 +221,7 @@
  * Add To Cart Button
 *******************************************************************************/
 .sqs-add-to-cart-button {
-    background-color: $medium !important;
+    background-color: $medium-dark !important;
     border: 0 !important;
     color: $white !important;
     cursor: pointer !important;
@@ -257,7 +257,7 @@
 
 .is-hoverable {
     .sqs-add-to-cart-button:hover {
-        background-color: $medium-dark !important;
+        background-color: $medium !important;
         }
 }
 

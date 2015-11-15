@@ -9,6 +9,7 @@ import views from "./views";
 import home from "./home";
 import scrolls from "./scrolls";
 import PageController from "properjs-pagecontroller";
+import debounce from "properjs-debounce";
 
 
 const _pageDuration = util.getTransitionDuration( dom.page[ 0 ] );
@@ -41,9 +42,23 @@ const router = {
         this.controller.on( "page-controller-router-transition-in", changePageIn );
 
         captureLinks();
+        setPageMinHeight();
+
+        util.emitter.on( "app--resize", onDebounceResize );
 
         console.log( "router initialized" );
     }
+};
+
+
+const onDebounceResize = debounce(function () {
+    setPageMinHeight();
+
+}, 300 );
+
+
+const setPageMinHeight = function () {
+    dom.page[ 0 ].style.minHeight = util.px( window.innerHeight - dom.footerbar[ 0 ].clientHeight );
 };
 
 
@@ -67,6 +82,7 @@ const onPreloadDone = function () {
     scrolls.topout( 0 );
 
     setTimeout(() => {
+        setPageMinHeight();
         dom.html.removeClass( "is-routing" );
         dom.page.removeClass( "is-reactive is-inactive" );
 
