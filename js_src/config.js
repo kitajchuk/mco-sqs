@@ -19,7 +19,8 @@ const config = {
             userSelectString: false
         }
     }),
-    homeImageKey: "mco--home-image"
+    homeImageKey: "mco--home-image",
+    resizeSelector: ".js-resize"
 };
 
 

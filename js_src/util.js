@@ -135,7 +135,7 @@ const disableTouchMove = function ( enable ) {
 
 
 const resizeElems = function ( elems ) {
-    elems = (elems || $( ".js-resize" ));
+    elems = (elems || $( config.resizeSelector ));
 
     let i = elems.length;
 
