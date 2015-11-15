@@ -9,17 +9,17 @@ let $_jsItems = null;
 
 
 const grid = {
-    init: function () {
+    init () {
         console.log( "grid initialized" );
     },
 
 
-    isActive: function () {
+    isActive () {
         return (this.getElements() > 0);
     },
 
 
-    onload: function () {
+    onload () {
         util.emitter.on( "app--resize", onResizer );
         util.emitter.on( "app--resize-small", unbindAnimateGrid );
         util.emitter.on( "app--resize-normal", bindAnimateGrid );
@@ -31,12 +31,12 @@ const grid = {
     },
 
 
-    unload: function () {
+    unload () {
         this.teardown();
     },
 
 
-    getElements: function () {
+    getElements () {
         $_jsGrid = dom.page.find( ".js-grid" );
         $_jsItems = $_jsGrid.children();
 
@@ -44,7 +44,7 @@ const grid = {
     },
 
 
-    teardown: function () {
+    teardown () {
         unbindAnimateGrid();
 
         util.emitter.off( "app--resize", onResizer );

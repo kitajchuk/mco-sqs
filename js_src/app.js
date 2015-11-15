@@ -9,23 +9,29 @@ import scrolls from "./scrolls";
 import * as util from "./util";
 
 
+const appInit = function () {
+    util.emitter.off( "app--preload-done", appInit );
+
+    util.resizeElems();
+
+    dom.body.addClass( "is-active" );
+};
+
+
+const sqsInit = function () {
+    const $cart = $( ".absolute-cart-box" );
+
+    dom.navbar.append( $cart );
+
+    $cart.addClass( "is-active" );
+};
+
+
 window.onload = function () {
-    window.Squarespace.onInitialize( Y, function () {
-        const $cart = $( ".absolute-cart-box" );
-
-        dom.navbar.append( $cart );
-
-        $cart.addClass( "is-active" );
-    });
+    window.Squarespace.onInitialize( Y, sqsInit );
 
 
-    util.emitter.on( "app--preload-done", function appInit () {
-        util.emitter.off( "app--preload-done", appInit );
-
-        util.resizeElems();
-
-        dom.body.addClass( "is-active" );
-    });
+    util.emitter.on( "app--preload-done", appInit );
 
 
     // Global router initializer

@@ -2,19 +2,19 @@ import dom from "./dom";
 
 
 const detect = {
-    init: function () {
+    init () {
         checkTouch();
 
         console.log( "detect initialized" );
     },
 
 
-    isTouch: function () {
+    isTouch () {
         return ("ontouchstart" in window) || (window.DocumentTouch && document instanceof window.DocumentTouch);
     },
 
 
-    teardown: function () {
+    teardown () {
         dom.html.removeClass( "is-touchable is-hoverable" );
     }
 };

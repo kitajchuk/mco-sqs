@@ -7,7 +7,7 @@ let _isSmall = (window.innerWidth <= config.mobileWidth);
 
 
 const resizes = {
-    init: function () {
+    init () {
         util.resizer.on( "resize", onResizer );
         util.emitter.on( "app--do-resize", onResizer );
 
@@ -17,12 +17,12 @@ const resizes = {
     },
 
 
-    isSmall: function () {
+    isSmall () {
         return _isSmall;
     },
 
 
-    teardown: function () {
+    teardown () {
         util.resizer.off( "resize", onResizer );
         util.emitter.off( "app--do-resize", onResizer );
     }

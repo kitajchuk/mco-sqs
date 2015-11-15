@@ -9,29 +9,29 @@ let $_jsViews = null;
 
 
 const views = {
-    init: function () {
+    init () {
         console.log( "views initialized" );
     },
 
 
-    isActive: function () {
+    isActive () {
         return (this.getElements() > 0);
     },
 
 
-    onload: function () {
+    onload () {
         loadViews();
 
         util.emitter.on( "app--resize", onResize );
     },
 
 
-    unload: function () {
+    unload () {
         this.teardown();
     },
 
 
-    teardown: function () {
+    teardown () {
         stopViews();
 
         $_jsViews = null;
@@ -40,7 +40,7 @@ const views = {
     },
 
 
-    getElements: function () {
+    getElements () {
         $_jsViews = dom.page.find( ".js-views" );
 
         return ($_jsViews.length);
@@ -95,7 +95,7 @@ const onTapView = function () {
 
     $view.data({
         index: data.index,
-        timeout: setTimeout(function () {
+        timeout: setTimeout(() => {
             $curr.removeClass( "is-exiting" );
             $next.removeClass( "is-entering" ).addClass( "is-active" );
 
@@ -143,10 +143,10 @@ const loadView = function ( $view ) {
         index: 0,
         timeout: null,
         duration: util.getTransitionDuration( $boxes[ 0 ] ),
-        hammered: hammered,
-        $navs: $navs,
-        $boxes: $boxes,
-        $box: $box
+        hammered,
+        $navs,
+        $boxes,
+        $box
     });
 
     hammered.on( "tap", ".js-views-nav", onTapView );

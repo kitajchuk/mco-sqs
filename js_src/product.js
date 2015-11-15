@@ -18,7 +18,7 @@ const $_jsInc = $( "<div class=\"product__inc\"><span class=\"icon icon--plus\">
 
 
 const product = {
-    init: function () {
+    init () {
         _pillBox = Y.one( ".sqs-pill-shopping-cart-content" );
         _pillBox.detach( "click" ).on( "click", onPillBoxClick );
 
@@ -26,12 +26,12 @@ const product = {
     },
 
 
-    isActive: function () {
+    isActive () {
         return (this.getElements() > 0);
     },
 
 
-    onload: function () {
+    onload () {
         sqs.initCommerce();
 
         // Exclude current product from the shop grid below it
@@ -49,12 +49,12 @@ const product = {
     },
 
 
-    unload: function () {
+    unload () {
         this.teardown();
     },
 
 
-    getElements: function () {
+    getElements () {
         $_jsProduct = dom.body.find( ".js-product" );
         $_jsInputWrap = $_jsProduct.find( ".product-quantity-input" );
         $_jsInput = $_jsInputWrap.find( "input" );
@@ -65,7 +65,7 @@ const product = {
     },
 
 
-    teardown: function () {
+    teardown () {
         $_jsProduct = null;
         $_jsInputWrap = null;
         $_jsInput = null;

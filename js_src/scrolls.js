@@ -9,7 +9,7 @@ const _idleout = 300;
 
 
 const scrolls = {
-    init: function () {
+    init () {
         util.scroller.on( "scroll", onScroller );
         util.scroller.on( "scrollup", onScrollerUp );
         util.scroller.on( "scrolldown", onScrollerDown );
@@ -25,7 +25,7 @@ const scrolls = {
     },
 
 
-    topout: function ( top ) {
+    topout ( top ) {
         top = top || 0;
 
         window.scrollTo( 0, top );
@@ -53,7 +53,7 @@ const suppressEvents = function ( scrollPos ) {
         util.emitter.fire( "app--scroll-start" );
     }
 
-    _timeout = setTimeout(function () {
+    _timeout = setTimeout(() => {
         if ( scrollPos === util.scroller.getScrollY() ) {
             _isNones = false;
 

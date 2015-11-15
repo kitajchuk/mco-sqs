@@ -13,7 +13,7 @@ let _isActive = false;
 
 
 const navmenu = {
-    init: function () {
+    init () {
         dom.navmenu.detach();
 
         _hammers.listIcon = new Hammered( dom.navbar[ 0 ], config.defaultHammerOptions );
@@ -31,7 +31,7 @@ const navmenu = {
     },
 
 
-    close: function () {
+    close () {
         closeNavmenu();
     }
 };
@@ -43,7 +43,7 @@ const closeNavmenu = function () {
     util.disableTouchMove( false );
     util.disableMouseWheel( false );
 
-    setTimeout(function () {
+    setTimeout(() => {
         dom.navmenu.detach();
 
     }, _transitionTime );
@@ -72,7 +72,7 @@ const onToggleNavmenu = function () {
 
         $_jsNavmenuParent.append( dom.navmenu );
 
-        setTimeout(function () {
+        setTimeout(() => {
             dom.html.addClass( "is-navmenu-open" );
 
         }, 100 );

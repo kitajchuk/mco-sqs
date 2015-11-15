@@ -7,7 +7,7 @@ const $_jsMco = dom.footerbar.find( ".js-footerbar-mco" );
 
 
 const footerbar = {
-    init: function () {
+    init () {
         util.emitter.on( "app--resize", onResizer );
 
         $_jsMco.data({

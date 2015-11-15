@@ -20,7 +20,7 @@ const router = {
     }),
 
 
-    init: function () {
+    init () {
         this.controller.setConfig([
             "*"
         ]);
@@ -35,21 +35,10 @@ const router = {
 
         this.controller.initPage();
 
-        this.controller.on( "page-controller-router-samepage", function () {
-            navmenu.close();
-        });
-
-        this.controller.on( "page-controller-router-transition-out", function () {
-            changePageOut();
-        });
-
-        this.controller.on( "page-controller-router-refresh-document", function ( html ) {
-            changeContent( html );
-        });
-
-        this.controller.on( "page-controller-router-transition-in", function ( data ) {
-            changePageIn( data );
-        });
+        this.controller.on( "page-controller-router-samepage", () => navmenu.close() );
+        this.controller.on( "page-controller-router-transition-out", changePageOut );
+        this.controller.on( "page-controller-router-refresh-document", changeContent );
+        this.controller.on( "page-controller-router-transition-in", changePageIn );
 
         captureLinks();
 
@@ -60,12 +49,12 @@ const router = {
 
 const captureLinks = function () {
     // Suppress #hash
-    dom.body.on( "click", "[href^='#']", function ( e ) {
+    dom.body.on( "click", "[href^='#']", ( e ) => {
         e.preventDefault();
     });
 
 
-    dom.body.on( "click", ".absolute-cart-box", function ( e ) {
+    dom.body.on( "click", ".absolute-cart-box", ( e ) => {
         e.preventDefault();
         e.stopPropagation();
         e.stopImmediatePropagation();
@@ -77,7 +66,7 @@ const captureLinks = function () {
 const onPreloadDone = function () {
     scrolls.topout( 0 );
 
-    setTimeout(function () {
+    setTimeout(() => {
         dom.html.removeClass( "is-routing" );
         dom.page.removeClass( "is-reactive is-inactive" );
 
