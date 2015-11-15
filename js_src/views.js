@@ -1,58 +1,24 @@
-import "app/dom";
-import "app/util";
-import "app/config";
+import $ from "js_libs/jquery/dist/jquery";
+import dom from "./dom";
+import * as util from "./util";
+import config from "./config";
+import Hammered from "properjs-hammered";
 
 
-var $_jsViews = null,
+let $_jsViews = null;
 
 
-    Hammered = require( "Hammered" ),
-
-
-/**
- *
- * @public
- * @namespace app.views
- * @memberof app.
- * @description A nice description of what this module does...
- *
- */
-views = {
-    /**
-     *
-     * @public
-     * @method init
-     * @memberof app.views
-     * @description Method runs once when window loads.
-     *
-     */
+const views = {
     init: function () {
         console.log( "views initialized" );
     },
 
 
-    /**
-     *
-     * @public
-     * @method isActive
-     * @memberof app.views
-     * @description Method informs PageController of active status.
-     * @returns {boolean}
-     *
-     */
     isActive: function () {
         return (this.getElements() > 0);
     },
 
 
-    /**
-     *
-     * @public
-     * @method onload
-     * @memberof app.views
-     * @description Method performs onloading actions for this module.
-     *
-     */
     onload: function () {
         loadViews();
 
@@ -60,27 +26,11 @@ views = {
     },
 
 
-    /**
-     *
-     * @public
-     * @method unload
-     * @memberof app.views
-     * @description Method performs unloading actions for this module.
-     *
-     */
     unload: function () {
         this.teardown();
     },
 
 
-    /**
-     *
-     * @public
-     * @method teardown
-     * @memberof app.views
-     * @description Method performs cleanup after this module. Remmoves events, null vars etc...
-     *
-     */
     teardown: function () {
         stopViews();
 
@@ -95,31 +45,33 @@ views = {
 
         return ($_jsViews.length);
     }
-},
+};
 
 
-onResize = function () {
-    var i;
+const onResize = function () {
+    let i = $_jsViews.length;
 
-    for ( i = $_jsViews.length; i--; ) {
+    for ( i; i--; ) {
         resizeView( $_jsViews.eq( i ) );
     }
-},
+};
 
 
-onTapView = function () {
-    var $nav = $( this ),
-        $view = $nav.closest( ".js-views" ),
-        $next = null,
-        $curr = null,
-        data = $view.data();
+const onTapView = function () {
+    const $nav = $( this );
+    const $view = $nav.closest( ".js-views" );
+    let $next = null;
+    let $curr = null;
+    const data = $view.data();
 
     try {
         clearTimeout( data.timeout );
 
         data.$boxes.removeClass( "is-entering is-exiting is-active" );
 
-    } catch ( error ) {}
+    } catch ( error ) {
+        throw error;
+    }
 
     // Get the curr box
     $curr = data.$boxes.eq( data.index );
@@ -149,39 +101,39 @@ onTapView = function () {
 
         }, data.duration )
     });
-},
+};
 
 
-resizeView = function ( $view ) {
-    var data = $view.data();
+const resizeView = function ( $view ) {
+    const data = $view.data();
 
     data.$box[ 0 ].style.height = util.px( data.$boxes.filter( ".is-active" )[ 0 ].clientHeight );
-},
+};
 
 
-stopView = function ( $view ) {
-    var data = $view.data();
+const stopView = function ( $view ) {
+    const data = $view.data();
 
     data.hammered.off( "tap", onTapView );
 
     $view.removeData();
-},
+};
 
 
-stopViews = function () {
-    var i;
+const stopViews = function () {
+    let i = $_jsViews.length;
 
-    for ( i = $_jsViews.length; i--; ) {
+    for ( i; i--; ) {
         stopView( $_jsViews.eq( i ) );
     }
-},
+};
 
 
-loadView = function ( $view ) {
-    var $navs = $view.find( ".js-views-nav" ),
-        $boxes = $view.find( ".js-views-box" ),
-        $box = $view.find( ".js-views-boxes" ),
-        hammered = new Hammered( $view[ 0 ], config.hammerDefaults );
+const loadView = function ( $view ) {
+    const $navs = $view.find( ".js-views-nav" );
+    const $boxes = $view.find( ".js-views-box" );
+    const $box = $view.find( ".js-views-boxes" );
+    const hammered = new Hammered( $view[ 0 ], config.defaultHammerOptions );
 
     $navs.first().addClass( "is-active" );
     $boxes.first().addClass( "is-active" );
@@ -198,13 +150,13 @@ loadView = function ( $view ) {
     });
 
     hammered.on( "tap", ".js-views-nav", onTapView );
-},
+};
 
 
-loadViews = function () {
-    var i;
+const loadViews = function () {
+    let i = $_jsViews.length;
 
-    for ( i = $_jsViews.length; i--; ) {
+    for ( i; i--; ) {
         loadView( $_jsViews.eq( i ) );
     }
 };

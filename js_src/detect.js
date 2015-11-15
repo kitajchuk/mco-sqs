@@ -1,20 +1,7 @@
-/*!
- *
- * App Controller: detect
- *
- * A nice description of what this controller does...
- *
- *
- */
-import "app/dom";
+import dom from "./dom";
 
 
-/**
- *
- * @public
- *
- */
-var detect = {
+const detect = {
     init: function () {
         checkTouch();
 
@@ -23,23 +10,17 @@ var detect = {
 
 
     isTouch: function () {
-        return ("ontouchstart" in window) || (window.DocumentTouch && document instanceof DocumentTouch);
+        return ("ontouchstart" in window) || (window.DocumentTouch && document instanceof window.DocumentTouch);
     },
 
 
     teardown: function () {
         dom.html.removeClass( "is-touchable is-hoverable" );
     }
-},
+};
 
 
-/**
- *
- * @private
- * @reference: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/touchevents.js
- *
- */
-checkTouch = function () {
+const checkTouch = function () {
     if ( detect.isTouch() ) {
         dom.html.addClass( "is-touchable" );
 

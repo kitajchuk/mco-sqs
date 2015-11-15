@@ -1,43 +1,28 @@
-/*!
- *
- * App Controller: grid
- *
- * A nice description of what this controller does...
- *
- *
- */
-import "app/dom";
-import "app/resizes";
-import { emitter, resizeElems } from "app/util";
+import dom from "./dom";
+import resizes from "./resizes";
+import * as util from "./util";
 
 
-var $_jsGrid = null,
-    $_jsItems = null,
-
-    _isActive = false,
+let $_jsGrid = null;
+let $_jsItems = null;
 
 
-/**
- *
- * @public
- *
- */
-grid = {
+const grid = {
     init: function () {
         console.log( "grid initialized" );
     },
 
 
     isActive: function () {
-        return (_isActive = this.getElements() > 0);
+        return (this.getElements() > 0);
     },
 
 
     onload: function () {
-        emitter.on( "app--resize", onResizer );
-        emitter.on( "app--resize-small", unbindAnimateGrid );
-        emitter.on( "app--resize-normal", bindAnimateGrid );
-        emitter.on( "app--preload-done", resizeElems );
+        util.emitter.on( "app--resize", onResizer );
+        util.emitter.on( "app--resize-small", unbindAnimateGrid );
+        util.emitter.on( "app--resize-normal", bindAnimateGrid );
+        util.emitter.on( "app--preload-done", util.resizeElems );
 
         if ( !resizes.isSmall() ) {
             bindAnimateGrid();
@@ -61,74 +46,52 @@ grid = {
     teardown: function () {
         unbindAnimateGrid();
 
-        emitter.off( "app--resize", onResizer );
-        emitter.off( "app--resize-small", unbindAnimateGrid );
-        emitter.off( "app--resize-normal", bindAnimateGrid );
-        emitter.off( "app--preload-done", resizeElems );
+        util.emitter.off( "app--resize", onResizer );
+        util.emitter.off( "app--resize-small", unbindAnimateGrid );
+        util.emitter.off( "app--resize-normal", bindAnimateGrid );
+        util.emitter.off( "app--preload-done", util.resizeElems );
 
         $_jsGrid = null;
         $_jsItems = null;
-
-        _isActive = false;
     }
-},
+};
 
 
-/**
- *
- * @private
- *
- */
-bindAnimateGrid = function () {
-    emitter.on( "app--scroll", onScroller );
-    emitter.on( "app--scroll-up", onScrollerUp );
-    emitter.on( "app--scroll-down", onScrollerDown );
+const bindAnimateGrid = function () {
+    util.emitter.on( "app--scroll", onScroller );
+    util.emitter.on( "app--scroll-up", onScrollerUp );
+    util.emitter.on( "app--scroll-down", onScrollerDown );
 
     onScroller();
 
     console.log( "bind animate grid" );
-},
+};
 
 
-/**
- *
- * @private
- *
- */
-unbindAnimateGrid = function () {
-    emitter.off( "app--scroll", onScroller );
-    emitter.off( "app--scroll-up", onScrollerUp );
-    emitter.off( "app--scroll-down", onScrollerDown );
+const unbindAnimateGrid = function () {
+    util.emitter.off( "app--scroll", onScroller );
+    util.emitter.off( "app--scroll-up", onScrollerUp );
+    util.emitter.off( "app--scroll-down", onScrollerDown );
 
     $_jsItems.removeClass( "is-above is-below is-entering is-leaving-bottom is-leaving-top" );
 
     console.log( "unbind animate grid" );
-},
+};
 
 
-/**
- *
- * @private
- *
- */
-onResizer = function () {
+const onResizer = function () {
     onScroller();
     onScrollerUp();
     onScrollerDown();
-},
+};
 
 
-/**
- *
- * @private
- *
- */
-onScroller = function () {
-    var bounds,
-        $item,
-        i;
+const onScroller = function () {
+    let bounds = null;
+    let $item = null;
+    let i = $_jsItems.length;
 
-    for ( i = $_jsItems.length; i--; ) {
+    for ( i; i--; ) {
         $item = $_jsItems.eq( i );
         bounds = $item[ 0 ].getBoundingClientRect();
 
@@ -147,20 +110,15 @@ onScroller = function () {
             $item.addClass( "is-below" ).removeClass( "is-above is-entering is-leaving-bottom is-leaving-top" );
         }
     }
-},
+};
 
 
-/**
- *
- * @private
- *
- */
-onScrollerDown = function () {
-    var bounds,
-        $item,
-        i;
+const onScrollerDown = function () {
+    let bounds = null;
+    let $item = null;
+    let i = $_jsItems.length;
 
-    for ( i = $_jsItems.length; i--; ) {
+    for ( i; i--; ) {
         $item = $_jsItems.eq( i );
         bounds = $item[ 0 ].getBoundingClientRect();
 
@@ -174,20 +132,15 @@ onScrollerDown = function () {
             $item.addClass( "is-leaving-top" ).removeClass( "is-above is-below is-entering is-leaving-bottom" );
         }
     }
-},
+};
 
 
-/**
- *
- * @private
- *
- */
-onScrollerUp = function () {
-    var bounds,
-        $item,
-        i;
+const onScrollerUp = function () {
+    let bounds = null;
+    let $item = null;
+    let i = $_jsItems.length;
 
-    for ( i = $_jsItems.length; i--; ) {
+    for ( i; i--; ) {
         $item = $_jsItems.eq( i );
         bounds = $item[ 0 ].getBoundingClientRect();
 

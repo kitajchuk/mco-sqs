@@ -1,26 +1,17 @@
-/*!
- *
- * App basic javascript
- *
- * A nice description of what this file does...
- *
- *
- */
-import "node_modules/squarespace-yui-block-initializers/sqs";
-import "jquery/dist/jquery";
-import "node_modules/hammerjs/hammer";
-import "app/resizes";
-import "app/router";
-import "app/detect";
-import "app/navmenu";
-import "app/footerbar";
-import "app/dom";
-import "app/util";
+import $ from "js_libs/jquery/dist/jquery";
+import resizes from "./resizes";
+import router from "./router";
+import detect from "./detect";
+import navmenu from "./navmenu";
+import footerbar from "./footerbar";
+import dom from "./dom";
+import scrolls from "./scrolls";
+import * as util from "./util";
 
 
 window.onload = function () {
     window.Squarespace.onInitialize( Y, function () {
-        var $cart = $( ".absolute-cart-box" );
+        const $cart = $( ".absolute-cart-box" );
 
         dom.navbar.append( $cart );
 
@@ -42,6 +33,10 @@ window.onload = function () {
 
     // Global detection initializer
     detect.init();
+
+
+    // Global scrolls element initializer
+    scrolls.init();
 
 
     // Global resize element initializer

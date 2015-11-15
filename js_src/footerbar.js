@@ -1,22 +1,14 @@
-/*!
- *
- * App Controller: footerbar
- *
- * A nice description of what this controller does...
- *
- *
- */
-import "app/dom";
-import "app/resizes";
-import { emitter } from "app/util";
+import dom from "./dom";
+import resizes from "./resizes";
+import * as util from "./util";
 
 
-var $_jsMco = dom.footerbar.find( ".js-footerbar-mco" ),
+const $_jsMco = dom.footerbar.find( ".js-footerbar-mco" );
 
 
-footerbar = {
+const footerbar = {
     init: function () {
-        emitter.on( "app--resize", onResizer );
+        util.emitter.on( "app--resize", onResizer );
 
         $_jsMco.data({
             $prev: $_jsMco.prev(),
@@ -27,10 +19,10 @@ footerbar = {
 
         console.log( "footerbar initialized" );
     }
-},
+};
 
 
-onResizer = function () {
+const onResizer = function () {
     if ( resizes.isSmall() ) {
         $_jsMco.prependTo( $_jsMco.data( "$parent" ) );
 
