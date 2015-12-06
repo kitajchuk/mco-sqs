@@ -63,18 +63,35 @@ const getClosestValue = function ( arr, closestTo ) {
 };
 
 
-const updateImages = function () {
-/*
-    const $loaded = $( "[data-imageloader]" );
+const getElementsInView = function ( $nodes ) {
+    let i = $nodes.length;
+    const $ret = $( [] );
 
-    $loaded.removeAttr( "data-imageloader" );
+    for ( i; i--; ) {
+        if ( isElementLoadable( $nodes[ i ] ) ) {
+            $ret.push( $nodes[ i ] );
+        }
+    }
 
-    loadImages( $loaded, noop );
-*/
+    return $ret;
+};
+
+
+const updateImages = function ( images ) {
+    images = (images || $( `[${config.imageLoaderAttr}]` ));
+
+    console.log( images.length );
+
+    if ( images.length ) {
+        images.removeAttr( config.imageLoaderAttr );
+
+        loadImages( images, noop );
+    }
 };
 
 
 const loadImages = function ( images, handler, useVariant ) {
+    const rQuery = /\?(.*)$/;
     const map = function ( vnt ) {
         return parseInt( vnt, 10 );
     };
@@ -83,6 +100,7 @@ const loadImages = function ( images, handler, useVariant ) {
     let vars = null;
     let width = null;
     let variant = null;
+    let source = null;
     let i = null;
 
     // Normalize the handler
@@ -92,7 +110,9 @@ const loadImages = function ( images, handler, useVariant ) {
     images = (images || $( config.lazyImageSelector ));
 
     // Normalize the `useVariant` flag
-    useVariant = (useVariant || false);
+    if ( !useVariant && useVariant !== false ) {
+        useVariant = true;
+    }
 
     // Get the right size image from Squarespace
     // http://developers.squarespace.com/using-the-imageloader/
@@ -103,16 +123,17 @@ const loadImages = function ( images, handler, useVariant ) {
     for ( i; i--; ) {
         $img = images.eq( i );
         data = $img.data();
-        width = ($img.parent()[ 0 ].clientWidth || config.sqsMaxImgWidth);
+        width = ($img.parent()[ 0 ].clientWidth || window.innerWidth || config.sqsMaxImgWidth);
+        source = data.imgSrc.replace( rQuery, "" );
 
         if ( useVariant && data.variants ) {
             vars = data.variants.split( "," ).map( map );
             variant = getClosestValue( vars, width );
 
-            $img.attr( config.lazyImageAttr, `${data.imgSrc}?format=${variant}w` );
+            $img.attr( config.lazyImageAttr, `${source}?format=${variant}w` );
 
         } else {
-            $img.attr( config.lazyImageAttr, `${data.imgSrc}?format=original` );
+            $img.attr( config.lazyImageAttr, `${source}?format=original` );
         }
     }
 
@@ -235,5 +256,6 @@ export {
     shuffle,
     resizeElems,
     translate3d,
-    getTransitionDuration
+    getTransitionDuration,
+    getElementsInView
 };

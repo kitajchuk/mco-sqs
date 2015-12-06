@@ -8,6 +8,7 @@ import product from "./product";
 import views from "./views";
 import home from "./home";
 import scrolls from "./scrolls";
+import article from "./article";
 import PageController from "properjs-pagecontroller";
 import debounce from "properjs-debounce";
 
@@ -31,7 +32,8 @@ const router = {
             grid,
             product,
             views,
-            home
+            home,
+            article
         ]);
 
         this.controller.initPage();

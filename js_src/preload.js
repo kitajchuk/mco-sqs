@@ -1,4 +1,3 @@
-import $ from "js_libs/jquery/dist/jquery";
 import dom from "./dom";
 import * as util from "./util";
 import config from "./config";
@@ -85,17 +84,9 @@ const preload = {
      */
     doPreload ( $images, callback ) {
         $_images = ($images || dom.page.find( config.lazyImageSelector ));
-        $_visible = $( [] );
+        $_visible = util.getElementsInView( $_images );
 
         let done = 0;
-        let i = 0;
-        const len = $_images.length;
-
-        for ( i; i < len; i++ ) {
-            if ( util.isElementLoadable( $_images[ i ] ) ) {
-                $_visible.push( $_images[ i ] );
-            }
-        }
 
         if ( !$_visible.length ) {
             delayedLoad( callback );

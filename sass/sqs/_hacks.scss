@@ -16,12 +16,15 @@
         }
     h3 + p,
     h2 + p,
-    h3 + p {
+    h3 + p,
+    h3 + ul {
         margin-top: ($mobile-padding / 2);
         }
+/*
     p + p {
         margin-top: ($navbar-padding / 2);
         }
+*/
 }
 .sqs-block-spacer .sqs-block-content {
     height: 70px !important;
@@ -32,6 +35,10 @@
 
 .page > .sqs-layout {
     padding: $grid-padding;
+    }
+
+.sqs-block-image img {
+    display: inline-block !important;
     }
 
 

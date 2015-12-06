@@ -52,7 +52,7 @@
     max-width: $block-size;
     }
 .shell--strong {
-    max-width: $break-laptop-medium;
+    max-width: $break-tablet-full;
     }
 
 // Animations elements
@@ -63,12 +63,15 @@
 
 .column {
     display: inline-block;
+    padding: $grid-padding 0;
     vertical-align: middle;
+    width: 33.33333%;
     }
 .column--text {
     max-width: 340px;
-    padding: ($grid-padding / 2);
-    width: 33.33333%;
+    }
+.column--place {
+    max-width: 420px;
     }
 
 @each $col in $grid-columns {
@@ -115,20 +118,46 @@
 
 
 
+// Large Format
+@media only screen and ( min-width: $break-laptop-full ) {
+    .wrapper {
+        padding: ($grid-padding / 1.5);
+        }
+    .wrapper--h {
+        padding: 0 ($grid-padding / 1.5);
+        }
+    .wrapper--v {
+        padding: ($grid-padding / 1.5) 0;
+        }
+    .wrapper--vb {
+        padding: 0 0 ($grid-padding / 1.5) 0;
+        }
+    .wrapper--vt {
+        padding: ($grid-padding / 1.5) 0 0;
+        }
+}
+
+
+
 // Laptop
 @media only screen and ( max-width: $break-laptop-full ) {
     .grid__item {
         width: 33.33333%;
         }
 }
-@media only screen and ( max-width: $break-tablet-medium ) {
-    .grid__item {
+
+
+
+// Tablet
+@media only screen and ( max-width: $break-tablet-full ) {
+    .column {
+        //max-width: 260px;
+        max-width: 50%;
         width: 50%;
         }
 }
-@media only screen and ( max-width: $break-tablet-small ) {
-    .column {
-        max-width: 260px;
+@media only screen and ( max-width: $break-tablet-medium ) {
+    .grid__item {
         width: 50%;
         }
 }

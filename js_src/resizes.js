@@ -1,19 +1,22 @@
 import config from "./config";
 import * as util from "./util";
 import debounce from "properjs-debounce";
+import throttle from "properjs-throttle";
 
 
+const _throttled = 50;
+const _debounced = 300;
 let _isSmallOn = false;
 let _isSmall = (window.innerWidth <= config.mobileWidth);
 
 
 const resizes = {
     init () {
-        util.resizer.on( "resize", onResizer );
-        util.resizer.on( "resize", onDebounced );
-        util.emitter.on( "app--do-resize", onResizer );
+        util.resizer.on( "resize", throttle( onThrottle, _throttled ) );
 
-        onResizer();
+        // Hook into resize of `width` only for this handler
+        // @bug: iOS window size changes when Safari's chrome switches between full and minimal-ui.
+        util.resizer.on( "resizewidth", debounce( onDebounce, _debounced ) );
 
         console.log( "resizes initialized" );
     },
@@ -21,24 +24,17 @@ const resizes = {
 
     isSmall () {
         return _isSmall;
-    },
-
-
-    teardown () {
-        util.resizer.off( "resize", onResizer );
-        util.emitter.off( "app--do-resize", onResizer );
     }
 };
 
 
-const onDebounced = debounce(function () {
+const onDebounce = function () {
     util.resizeElems();
     util.updateImages();
+};
 
-}, 300 );
 
-
-const onResizer = function () {
+const onThrottle = function () {
     _isSmall = (window.innerWidth <= config.mobileWidth);
 
     if ( _isSmall && !_isSmallOn ) {

@@ -1,5 +1,6 @@
 import dom from "./dom";
 import product from "./product";
+import article from "./article";
 import * as util from "./util";
 import router from "./router";
 import config from "./config";
@@ -60,7 +61,11 @@ const onShopNavbar = function ( e ) {
 const onToggleNavmenu = function () {
     if ( product.isActive() ) {
         router.controller.getRouter().trigger( "/shop/" );
+        return;
+    }
 
+    if ( article.isActive() ) {
+        router.controller.getRouter().trigger( "/journal/" );
         return;
     }
 

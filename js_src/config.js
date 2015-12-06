@@ -8,6 +8,7 @@ const config = {
     sqsMaxImgWidth: 2500,
     lazyImageSelector: ".js-lazy-image",
     lazyImageAttr: "data-img-src",
+    imageLoaderAttr: "data-imageloader",
     defaultHammerOptions: (detect.isTouch() ? null : {
         // Disable cssProps for non-touch experiences
         cssProps: {
