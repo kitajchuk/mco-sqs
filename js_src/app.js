@@ -14,7 +14,8 @@ const appInit = function () {
 
     util.resizeElems();
 
-    dom.body.addClass( "is-active" );
+    dom.html.removeClass( "is-clipped" );
+    dom.body.removeClass( "is-clipped" ).addClass( "is-active" );
 };
 
 

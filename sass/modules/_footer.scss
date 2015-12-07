@@ -1,2 +1,7 @@
-.footer {
+.footerbar {
+    transition: opacity $anim-duration $ease-in;
+
+    &.is-inactive {
+        opacity: 0;
+        }
     }

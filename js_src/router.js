@@ -87,6 +87,7 @@ const onPreloadDone = function () {
         setPageMinHeight();
         dom.html.removeClass( "is-routing" );
         dom.page.removeClass( "is-reactive is-inactive" );
+        dom.footerbar.removeClass( "is-inactive" );
 
     }, _pageDuration );
 
@@ -99,6 +100,7 @@ const changePageOut = function () {
 
     dom.html.addClass( "is-routing" );
     dom.page.removeClass( "is-reactive" ).addClass( "is-inactive" );
+    dom.footerbar.addClass( "is-inactive" );
 
     util.emitter.on( "app--preload-done", onPreloadDone );
 };
