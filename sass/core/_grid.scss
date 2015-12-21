@@ -32,9 +32,12 @@
     padding: 0 $grid-item-padding;
     }
 .grid__image--blog {
-    max-height: 80%;
-    max-width: 100%;
-    width: auto;
+    }
+.grid__image--blog.image--portrait {
+    width: 50%;
+    }
+.grid__image--blog.image--landscape {
+    width: 80%;
     }
 
 // Index grid

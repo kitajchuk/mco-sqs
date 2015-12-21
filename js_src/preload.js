@@ -153,7 +153,11 @@ const delayedLoad = function ( callback ) {
         _imgLoader = util.loadImages( $notVisible, util.isElementLoadable, true );
         _imgLoader
             .on( "load", onImageLoad )
-            .on( "done", () => console.log( "lazyloaded", $notVisible.length, "images" ) );
+            .on( "done", () => {
+                console.log( "lazyloaded", $notVisible.length, "images" );
+
+                util.emitter.fire( "app--lazyload-done" );
+            });
     }
 
     util.emitter.fire( "app--preload-done" );

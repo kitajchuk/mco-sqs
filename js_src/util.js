@@ -166,32 +166,6 @@ const disableTouchMove = function ( enable ) {
 };
 
 
-const resizeElems = function ( elems ) {
-    elems = (elems || $( config.resizeSelector ));
-
-    let i = elems.length;
-
-    for ( i; i--; ) {
-        const data = elems[ i ].dataset;
-
-        if ( data.resize === "square" ) {
-            elems[ i ].style.height = px( elems[ i ].clientWidth );
-        }
-
-        if ( data.resize === "blog-image" ) {
-            if ( elems[ i ].naturalHeight > elems[ i ].naturalWidth ) {
-                elems[ i ].style.height = px( elems.eq( i ).closest( ".js-blog-item" )[ 0 ].clientHeight * 0.8 );
-                elems[ i ].style.width = "auto";
-
-            } else {
-                elems[ i ].style.height = "auto";
-                elems[ i ].style.width = "100%";
-            }
-        }
-    }
-};
-
-
 const getTransitionDuration = function ( el ) {
     if ( !el ) {
         return 0;
@@ -254,7 +228,6 @@ export {
     noop,
     random,
     shuffle,
-    resizeElems,
     translate3d,
     getTransitionDuration,
     getElementsInView

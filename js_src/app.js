@@ -12,8 +12,6 @@ import * as util from "./util";
 const appInit = function () {
     util.emitter.off( "app--preload-done", appInit );
 
-    util.resizeElems();
-
     dom.html.removeClass( "is-clipped" );
     dom.body.removeClass( "is-clipped" ).addClass( "is-active" );
 };

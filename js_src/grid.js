@@ -1,4 +1,3 @@
-import $ from "js_libs/jquery/dist/jquery";
 import dom from "./dom";
 import resizes from "./resizes";
 import * as util from "./util";
@@ -23,7 +22,6 @@ const grid = {
         util.emitter.on( "app--resize", onResizer );
         util.emitter.on( "app--resize-small", unbindAnimateGrid );
         util.emitter.on( "app--resize-normal", bindAnimateGrid );
-        util.emitter.on( "app--preload-done", onPreloadDone );
 
         if ( !resizes.isSmall() ) {
             bindAnimateGrid();
@@ -50,17 +48,10 @@ const grid = {
         util.emitter.off( "app--resize", onResizer );
         util.emitter.off( "app--resize-small", unbindAnimateGrid );
         util.emitter.off( "app--resize-normal", bindAnimateGrid );
-        util.emitter.off( "app--preload-done", onPreloadDone );
 
         $_jsGrid = null;
         $_jsItems = null;
     }
-};
-
-
-const onPreloadDone = function () {
-    util.resizeElems( $( "[data-resize='square']" ) );
-    util.resizeElems( $( "[data-resize='blog-image']" ) );
 };
 
 

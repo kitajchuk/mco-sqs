@@ -29,7 +29,6 @@ const resizes = {
 
 
 const onDebounce = function () {
-    util.resizeElems();
     util.updateImages();
 };
 
