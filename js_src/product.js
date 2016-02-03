@@ -4,6 +4,7 @@ import dom from "./dom";
 import * as util from "./util";
 import config from "./config";
 import router from "./router";
+import log from "./log";
 
 
 let $_jsProduct = null;
@@ -22,7 +23,7 @@ const product = {
         _pillBox = Y.one( ".sqs-pill-shopping-cart-content" );
         _pillBox.detach( "click" ).on( "click", onPillBoxClick );
 
-        console.log( "product initialized" );
+        log( "product initialized" );
     },
 
 

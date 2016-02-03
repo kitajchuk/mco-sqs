@@ -5,6 +5,7 @@ import * as util from "./util";
 import router from "./router";
 import config from "./config";
 import Hammered from "properjs-hammered";
+import log from "./log";
 
 
 const $_jsNavmenuParent = dom.navmenu.parent();
@@ -28,7 +29,7 @@ const navmenu = {
 
         dom.body.on( "click", ".js-navbar-shop", onShopNavbar );
 
-        console.log( "navmenu initialized" );
+        log( "navmenu initialized" );
     },
 
 
@@ -54,7 +55,7 @@ const closeNavmenu = function () {
 const onShopNavbar = function ( e ) {
     e.preventDefault();
 
-    console.log( "shop nav" );
+    log( "shop nav" );
 };
 
 

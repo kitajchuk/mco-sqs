@@ -12,7 +12,6 @@
         "modules": true
     },
     "globals": {
-        // Javascript libraries
         // Squarespace specific
         "Y": true,
         "Static": true,
@@ -176,7 +175,7 @@
             "always"
         ],
         "consistent-this": [
-            2,
+            1,
             "self"
         ],
         "eol-last": 0,
@@ -269,7 +268,7 @@
             "consistent-as-needed"
         ],
         "quotes": [
-            2,
+            1,
             "double"
         ],
         "semi-spacing": [

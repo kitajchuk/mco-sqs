@@ -1,5 +1,6 @@
 import dom from "./dom";
 import sqs from "squarespace-yui-block-initializers";
+import log from "./log";
 
 
 let $_jsElement = null;
@@ -22,7 +23,7 @@ const article = {
      *
      */
     init () {
-        console.log( "article initialized" );
+        log( "article initialized" );
     },
 
 

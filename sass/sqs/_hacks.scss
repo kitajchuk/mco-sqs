@@ -14,12 +14,14 @@
     h3 {
         @include block-size();
         }
+/*
     h3 + p,
     h2 + p,
     h3 + p,
     h3 + ul {
         margin-top: ($mobile-padding / 2);
         }
+*/
 /*
     p + p {
         margin-top: ($navbar-padding / 2);

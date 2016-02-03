@@ -80,8 +80,6 @@ const getElementsInView = function ( $nodes ) {
 const updateImages = function ( images ) {
     images = (images || $( `[${config.imageLoaderAttr}]` ));
 
-    console.log( images.length );
-
     if ( images.length ) {
         images.removeAttr( config.imageLoaderAttr );
 

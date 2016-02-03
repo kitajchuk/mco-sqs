@@ -1,6 +1,7 @@
 import dom from "./dom";
 import detect from "./detect";
 import * as util from "./util";
+import log from "./log";
 
 
 let _timeout = null;
@@ -21,7 +22,7 @@ const scrolls = {
 
         this.topout();
 
-        console.log( "scrolls initialized" );
+        log( "scrolls initialized" );
     },
 
 

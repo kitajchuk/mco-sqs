@@ -2,6 +2,7 @@ import config from "./config";
 import * as util from "./util";
 import debounce from "properjs-debounce";
 import throttle from "properjs-throttle";
+import log from "./log";
 
 
 const _throttled = 50;
@@ -18,7 +19,7 @@ const resizes = {
         // @bug: iOS window size changes when Safari's chrome switches between full and minimal-ui.
         util.resizer.on( "resizewidth", debounce( onDebounce, _debounced ) );
 
-        console.log( "resizes initialized" );
+        log( "resizes initialized" );
     },
 
 

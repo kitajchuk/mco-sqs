@@ -1,6 +1,8 @@
 import dom from "./dom";
 import * as util from "./util";
 import config from "./config";
+import log from "./log";
+import Store from "./Store";
 
 
 let $_jsHome = null;
@@ -9,7 +11,7 @@ let $_jsHomeImg = null;
 
 const home = {
     init () {
-        console.log( "home initialized" );
+        log( "home initialized" );
     },
 
 
@@ -20,7 +22,7 @@ const home = {
 
     onload () {
         const imgSrcs = util.shuffle( $_jsHomeImg.data( "imgSrcs" ).split( "," ) );
-        let imgSrc = localStorage.getItem( config.homeImageKey );
+        let imgSrc = this.getImageSource( imgSrcs );
         let i = imgSrcs.length;
 
         if ( imgSrcs.length === 1 ) {
@@ -31,7 +33,7 @@ const home = {
                 if ( imgSrcs[ i ] !== imgSrc ) {
                     imgSrc = imgSrcs[ i ];
 
-                    localStorage.setItem( config.homeImageKey, imgSrc );
+                    this.setImageSource( imgSrc );
 
                     break;
                 }
@@ -60,6 +62,24 @@ const home = {
         $_jsHomeImg = $_jsHome.find( ".js-home-image" );
 
         return ($_jsHome.length);
+    },
+
+
+    getImageSource ( imgSrcs ) {
+        let ret = imgSrcs[ 0 ];
+
+        if ( Store.isStorageSupported ) {
+            ret = window.localStorage.getItem( "mco-home-image" );
+        }
+
+        return ret;
+    },
+
+
+    setImageSource ( imgSrc ) {
+        if ( Store.isStorageSupported ) {
+            window.localStorage.setItem( "mco-home-image", imgSrc );
+        }
     }
 };
 

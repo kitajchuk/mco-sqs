@@ -6,7 +6,9 @@ import navmenu from "./navmenu";
 import footerbar from "./footerbar";
 import dom from "./dom";
 import scrolls from "./scrolls";
+import cache from "./cache";
 import * as util from "./util";
+import Store from "./Store";
 
 
 const appInit = function () {
@@ -54,4 +56,8 @@ window.onload = function () {
 
     // Primary footerbar initializer
     footerbar.init();
+
+
+    // Global { app }
+    window.app = { cache, Store };
 };

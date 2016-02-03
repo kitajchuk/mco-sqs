@@ -1,6 +1,7 @@
 import dom from "./dom";
 import * as util from "./util";
 import config from "./config";
+import log from "./log";
 
 
 let $_images = null;
@@ -25,7 +26,7 @@ const preload = {
      *
      */
     init () {
-        console.log( "preload initialized" );
+        log( "preload initialized" );
 
         util.emitter.on( "app--pushed-route", this.doPreload );
     },
@@ -92,7 +93,7 @@ const preload = {
             delayedLoad( callback );
 
         } else {
-            console.log( "preload will load", $_visible.length, "out of", $_images.length, "images" );
+            log( "preload will load", $_visible.length, "out of", $_images.length, "images" );
 
             _imgLoader = util.loadImages( $_visible, () => {
                 done++;
@@ -108,7 +109,7 @@ const preload = {
             _imgLoader
                 .on( "load", onImageLoad )
                 .on( "done", () => {
-                    console.log( "preloaded", $_visible.length, "images" );
+                    log( "preloaded", $_visible.length, "images" );
 
                     delayedLoad( callback );
                 });
@@ -154,7 +155,7 @@ const delayedLoad = function ( callback ) {
         _imgLoader
             .on( "load", onImageLoad )
             .on( "done", () => {
-                console.log( "lazyloaded", $notVisible.length, "images" );
+                log( "lazyloaded", $notVisible.length, "images" );
 
                 util.emitter.fire( "app--lazyload-done" );
             });

@@ -3,6 +3,7 @@ import dom from "./dom";
 import * as util from "./util";
 import config from "./config";
 import Hammered from "properjs-hammered";
+import log from "./log";
 
 
 let $_jsViews = null;
@@ -10,7 +11,7 @@ let $_jsViews = null;
 
 const views = {
     init () {
-        console.log( "views initialized" );
+        log( "views initialized" );
     },
 
 

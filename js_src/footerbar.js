@@ -1,6 +1,7 @@
 import dom from "./dom";
 import resizes from "./resizes";
 import * as util from "./util";
+import log from "./log";
 
 
 const $_jsMco = dom.footerbar.find( ".js-footerbar-mco" );
@@ -17,7 +18,7 @@ const footerbar = {
 
         onResizer();
 
-        console.log( "footerbar initialized" );
+        log( "footerbar initialized" );
     }
 };
 

@@ -1,6 +1,7 @@
 import dom from "./dom";
 import resizes from "./resizes";
 import * as util from "./util";
+import log from "./log";
 
 
 let $_jsGrid = null;
@@ -9,7 +10,7 @@ let $_jsItems = null;
 
 const grid = {
     init () {
-        console.log( "grid initialized" );
+        log( "grid initialized" );
     },
 
 
@@ -62,7 +63,7 @@ const bindAnimateGrid = function () {
 
     onScroller();
 
-    console.log( "bind animate grid" );
+    log( "bind animate grid" );
 };
 
 
@@ -73,7 +74,7 @@ const unbindAnimateGrid = function () {
 
     $_jsItems.removeClass( "is-above is-below is-entering is-leaving-bottom is-leaving-top" );
 
-    console.log( "unbind animate grid" );
+    log( "unbind animate grid" );
 };
 
 
