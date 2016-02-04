@@ -201,6 +201,14 @@ const random = function ( min, max ) {
     return Math.floor( Math.random() * (max - min + 1) ) + min;
 };
 
+const fixTitle = function ( titleEl ) {
+    const title = titleEl.innerHTML.split( " " );
+    const top = title.slice( 0, title.length - 2 );
+    const bot = title.slice( title.length - 2, title.length );
+
+    titleEl.innerHTML = `${top.join( "&nbsp;" )}<br />${bot.join( "&nbsp;" )}`;
+};
+
 
 /******************************************************************************
  * Export
@@ -226,6 +234,7 @@ export {
     noop,
     random,
     shuffle,
+    fixTitle,
     translate3d,
     getTransitionDuration,
     getElementsInView

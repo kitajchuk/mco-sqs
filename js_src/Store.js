@@ -83,8 +83,8 @@ class Store {
      *
      */
     save () {
-        if ( !this._opts.enableStorage ) {
-            log( "Cache Storage disabled - Not writing to LocalStorage" );
+        if ( !this._opts.enableStorage || !Store.isStorageSupported ) {
+            log( "Cache Storage disabled - Not writing to SessionStorage" );
             return;
         }
 

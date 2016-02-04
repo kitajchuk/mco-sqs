@@ -1,4 +1,3 @@
-import $ from "js_libs/jquery/dist/jquery";
 import resizes from "./resizes";
 import router from "./router";
 import detect from "./detect";
@@ -6,9 +5,8 @@ import navmenu from "./navmenu";
 import footerbar from "./footerbar";
 import dom from "./dom";
 import scrolls from "./scrolls";
-import cache from "./cache";
 import * as util from "./util";
-import Store from "./Store";
+import cart from "./cart";
 
 
 const appInit = function () {
@@ -19,24 +17,17 @@ const appInit = function () {
 };
 
 
-const sqsInit = function () {
-    const $cart = $( ".absolute-cart-box" );
-
-    dom.navbar.append( $cart );
-
-    $cart.addClass( "is-active" );
-};
-
-
 window.onload = function () {
-    window.Squarespace.onInitialize( Y, sqsInit );
-
-
     util.emitter.on( "app--preload-done", appInit );
+
+
+    // Global cart initializer
+    cart.init();
 
 
     // Global router initializer
     router.init();
+
 
     // Global detection initializer
     detect.init();
@@ -59,5 +50,5 @@ window.onload = function () {
 
 
     // Global { app }
-    window.app = { cache, Store };
+    window.app = { cart };
 };
