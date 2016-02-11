@@ -8,7 +8,7 @@ let _initialized = false;
 
 // Session Storage
 let _cache = {};
-const _access = "mco-cache";
+const _access = "instrument-cache";
 const _session = window.sessionStorage;
 
 
@@ -179,12 +179,21 @@ class Store {
 
 
 
+/**
+ *
+ * @public
+ * @static
+ * @member isStorageSupported
+ * @memberof Store
+ * @description Boolean to test local/session storage support
+ *
+ */
 Store.isStorageSupported = (function () {
     let ret = true;
 
     try {
-        _session.setItem( "mco-test", 1 );
-        _session.removeItem( "mco-test" );
+        _session.setItem( "instrument-test", 1 );
+        _session.removeItem( "instrument-test" );
 
     } catch ( err ) {
         ret = false;

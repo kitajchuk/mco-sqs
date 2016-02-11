@@ -1,7 +1,4 @@
-import dom from "./dom";
-import resizes from "./resizes";
-import * as util from "./util";
-import log from "./log";
+import * as core from "./core";
 
 
 let $_jsGrid = null;
@@ -10,7 +7,7 @@ let $_jsItems = null;
 
 const grid = {
     init () {
-        log( "grid initialized" );
+        core.log( "grid initialized" );
     },
 
 
@@ -20,13 +17,12 @@ const grid = {
 
 
     onload () {
-        util.emitter.on( "app--resize", onResizer );
-        util.emitter.on( "app--resize-small", unbindAnimateGrid );
-        util.emitter.on( "app--resize-normal", bindAnimateGrid );
+        core.emitter.on( "app--resize", onResizer );
+        core.emitter.on( "app--scroll", onScroller );
+        core.emitter.on( "app--scroll-up", onScrollerUp );
+        core.emitter.on( "app--scroll-down", onScrollerDown );
 
-        if ( !resizes.isSmall() ) {
-            bindAnimateGrid();
-        }
+        onScroller();
     },
 
 
@@ -36,7 +32,7 @@ const grid = {
 
 
     getElements () {
-        $_jsGrid = dom.page.find( ".js-grid" );
+        $_jsGrid = core.dom.page.find( ".js-grid" );
         $_jsItems = $_jsGrid.children();
 
         return ( $_jsGrid.length );
@@ -44,37 +40,11 @@ const grid = {
 
 
     teardown () {
-        unbindAnimateGrid();
-
-        util.emitter.off( "app--resize", onResizer );
-        util.emitter.off( "app--resize-small", unbindAnimateGrid );
-        util.emitter.off( "app--resize-normal", bindAnimateGrid );
+        core.emitter.off( "app--resize", onResizer );
 
         $_jsGrid = null;
         $_jsItems = null;
     }
-};
-
-
-const bindAnimateGrid = function () {
-    util.emitter.on( "app--scroll", onScroller );
-    util.emitter.on( "app--scroll-up", onScrollerUp );
-    util.emitter.on( "app--scroll-down", onScrollerDown );
-
-    onScroller();
-
-    log( "bind animate grid" );
-};
-
-
-const unbindAnimateGrid = function () {
-    util.emitter.off( "app--scroll", onScroller );
-    util.emitter.off( "app--scroll-up", onScrollerUp );
-    util.emitter.off( "app--scroll-down", onScrollerDown );
-
-    $_jsItems.removeClass( "is-above is-below is-entering is-leaving-bottom is-leaving-top" );
-
-    log( "unbind animate grid" );
 };
 
 

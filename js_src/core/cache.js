@@ -4,7 +4,9 @@ import Store from "./Store";
 /**
  *
  * @public
- * @module cache
+ * @namespace cache
+ * @memberof core
+ * @see {@link Store}
  * @description Return Singleton instances of the cache Store.
  *
  */

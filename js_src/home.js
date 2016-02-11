@@ -1,8 +1,5 @@
-import dom from "./dom";
-import * as util from "./util";
-import config from "./config";
-import log from "./log";
-import Store from "./Store";
+import * as core from "./core";
+import Store from "./core/Store";
 
 
 let $_jsHome = null;
@@ -11,7 +8,7 @@ let $_jsHomeImg = null;
 
 const home = {
     init () {
-        log( "home initialized" );
+        core.log( "home initialized" );
     },
 
 
@@ -21,7 +18,7 @@ const home = {
 
 
     onload () {
-        const imgSrcs = util.shuffle( $_jsHomeImg.data( "imgSrcs" ).split( "," ) );
+        const imgSrcs = core.util.shuffle( $_jsHomeImg.data( "imgSrcs" ).split( "," ) );
         let imgSrc = this.getImageSource( imgSrcs );
         let i = imgSrcs.length;
 
@@ -40,9 +37,9 @@ const home = {
             }
         }
 
-        $_jsHomeImg.attr( config.lazyImageAttr, imgSrc );
+        $_jsHomeImg.attr( core.config.lazyImageAttr, imgSrc );
 
-        util.loadImages( $_jsHomeImg, util.noop );
+        core.util.loadImages( $_jsHomeImg, core.util.noop );
     },
 
 
@@ -58,7 +55,7 @@ const home = {
 
 
     getElements () {
-        $_jsHome = dom.page.find( ".js-home" );
+        $_jsHome = core.dom.page.find( ".js-home" );
         $_jsHomeImg = $_jsHome.find( ".js-home-image" );
 
         return ($_jsHome.length);

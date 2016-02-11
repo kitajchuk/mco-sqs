@@ -1,8 +1,6 @@
 import $ from "js_libs/jquery/dist/jquery";
 import sqs from "squarespace-yui-block-initializers";
-import dom from "./dom";
-import * as util from "./util";
-import log from "./log";
+import * as core from "./core";
 
 
 let $_jsProduct = null;
@@ -17,7 +15,7 @@ const $_jsInc = $( "<div class=\"product__inc\"><span class=\"icon icon--plus\">
 
 const product = {
     init () {
-        log( "product initialized" );
+        core.log( "product initialized" );
     },
 
 
@@ -30,7 +28,7 @@ const product = {
         sqs.initCommerce();
 
         // Exclude current product from the shop grid below it
-        dom.body.find( `.js-shop-item[data-id=${$_jsProduct.data( "id" )}]` ).remove();
+        core.dom.body.find( `.js-shop-item[data-id=${$_jsProduct.data( "id" )}]` ).remove();
 
         $_jsDec.on( "click", onDecClick );
         $_jsInc.on( "click", onIncClick );
@@ -38,9 +36,9 @@ const product = {
         $_jsWeight.text( parseFloat( $_jsWeight.text() ) * 16 );
         $_jsInputWrap.append( $_jsDec, $_jsInc );
 
-        util.fixTitle( $_jsTitle[ 0 ] );
+        core.util.fixTitle( $_jsTitle[ 0 ] );
 
-        dom.html.addClass( "is-product-detail" );
+        core.dom.html.addClass( "is-product-detail" );
     },
 
 
@@ -50,7 +48,7 @@ const product = {
 
 
     getElements () {
-        $_jsProduct = dom.body.find( ".js-product" );
+        $_jsProduct = core.dom.body.find( ".js-product" );
         $_jsInputWrap = $_jsProduct.find( ".product-quantity-input" );
         $_jsInput = $_jsInputWrap.find( "input" );
         $_jsWeight = $_jsProduct.find( ".js-weight" );
@@ -70,7 +68,7 @@ const product = {
         $_jsDec.off( "click", onDecClick );
         $_jsInc.off( "click", onIncClick );
 
-        dom.html.removeClass( "is-product-detail" );
+        core.dom.html.removeClass( "is-product-detail" );
     }
 };
 

@@ -1,7 +1,8 @@
 /**
  *
  * @public
- * @module env
+ * @namespace env
+ * @memberof core
  * @description Set the app environment.
  *
  */
@@ -9,7 +10,7 @@ const env = {
     /**
      *
      * @member DEV
-     * @memberof env
+     * @memberof core.env
      * @description The `production` development ref.
      *
      */
@@ -19,7 +20,7 @@ const env = {
     /**
      *
      * @member PROD
-     * @memberof env
+     * @memberof core.env
      * @description The `production` environment ref.
      *
      */
@@ -29,20 +30,20 @@ const env = {
     /**
      *
      * @method get
-     * @memberof env
+     * @memberof core.env
      * @description Returns the active code `environment`.
      * @returns {boolean}
      *
      */
     get () {
-        return (/localhost|squarespace/g.test( document.domain ) ? this.DEV : this.PROD);
+        return (/^localhost|squarespace\.com$|^[0-9]{0,3}\.[0-9]{0,3}\.[0-9]{0,3}\.[0-9]{0,3}/g.test( document.domain ) ? this.DEV : this.PROD);
     },
 
 
     /**
      *
      * @method isConfig
-     * @memberof env
+     * @memberof core.env
      * @description Determine whether we are in Squarespace /config land or not.
      * @returns {boolean}
      *

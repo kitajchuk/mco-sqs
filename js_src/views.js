@@ -1,9 +1,6 @@
 import $ from "js_libs/jquery/dist/jquery";
-import dom from "./dom";
-import * as util from "./util";
-import config from "./config";
 import Hammered from "properjs-hammered";
-import log from "./log";
+import * as core from "./core";
 
 
 let $_jsViews = null;
@@ -11,7 +8,7 @@ let $_jsViews = null;
 
 const views = {
     init () {
-        log( "views initialized" );
+        core.log( "views initialized" );
     },
 
 
@@ -23,7 +20,7 @@ const views = {
     onload () {
         loadViews();
 
-        util.emitter.on( "app--resize", onResize );
+        core.emitter.on( "app--resize", onResize );
     },
 
 
@@ -37,12 +34,12 @@ const views = {
 
         $_jsViews = null;
 
-        util.emitter.off( "app--resize", onResize );
+        core.emitter.off( "app--resize", onResize );
     },
 
 
     getElements () {
-        $_jsViews = dom.page.find( ".js-views" );
+        $_jsViews = core.dom.page.find( ".js-views" );
 
         return ($_jsViews.length);
     }
@@ -92,7 +89,7 @@ const onTapView = function () {
     $next.addClass( "is-entering" );
 
     // Tweak view box height
-    data.$box[ 0 ].style.height = util.px( $next[ 0 ].clientHeight );
+    data.$box[ 0 ].style.height = core.util.px( $next[ 0 ].clientHeight );
 
     $view.data({
         index: data.index,
@@ -108,7 +105,7 @@ const onTapView = function () {
 const resizeView = function ( $view ) {
     const data = $view.data();
 
-    data.$box[ 0 ].style.height = util.px( data.$boxes.filter( ".is-active" )[ 0 ].clientHeight );
+    data.$box[ 0 ].style.height = core.util.px( data.$boxes.filter( ".is-active" )[ 0 ].clientHeight );
 };
 
 
@@ -134,16 +131,16 @@ const loadView = function ( $view ) {
     const $navs = $view.find( ".js-views-nav" );
     const $boxes = $view.find( ".js-views-box" );
     const $box = $view.find( ".js-views-boxes" );
-    const hammered = new Hammered( $view[ 0 ], config.defaultHammerOptions );
+    const hammered = new Hammered( $view[ 0 ], core.config.defaultHammerOptions );
 
     $navs.first().addClass( "is-active" );
     $boxes.first().addClass( "is-active" );
-    $box[ 0 ].style.height = util.px( $boxes.first()[ 0 ].clientHeight );
+    $box[ 0 ].style.height = core.util.px( $boxes.first()[ 0 ].clientHeight );
 
     $view.data({
         index: 0,
         timeout: null,
-        duration: util.getTransitionDuration( $boxes[ 0 ] ),
+        duration: core.util.getTransitionDuration( $boxes[ 0 ] ),
         hammered,
         $navs,
         $boxes,

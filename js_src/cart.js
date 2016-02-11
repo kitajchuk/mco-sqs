@@ -1,11 +1,12 @@
+// Cart QTY triggers re-render and images are 100w again... ?
+
 import $ from "js_libs/jquery/dist/jquery";
 import sqs from "squarespace-yui-block-initializers";
-import * as util from "./util";
 import router from "./router";
-import dom from "./dom";
+import * as core from "./core";
 
 
-let $_jsCart = null;
+let $_jsCartIcon = null;
 let _pillBox = null;
 
 
@@ -17,20 +18,24 @@ const cart = {
 
 
 const onSqsInit = function () {
+    const $cartCheckout = core.dom.page.find( "#sqs-shopping-cart-wrapper" );
+
     _pillBox = Y.one( ".sqs-pill-shopping-cart-content" );
     _pillBox.detach( "click" ).on( "click", onPillBoxClick );
 
-    $_jsCart = $( ".absolute-cart-box" );
+    $_jsCartIcon = $( ".absolute-cart-box" );
 
-    dom.navbar.append( $_jsCart );
+    core.dom.navbar.append( $_jsCartIcon );
 
-    $_jsCart.addClass( "is-active" );
+    $_jsCartIcon.addClass( "is-active" );
+
+    if ( $cartCheckout.length ) {
+        setTimeout( processCheckout, 500 );
+    }
 };
 
 
-const handleShowCart = function () {
-    dom.page.removeClass( "is-inactive" );
-
+const processCheckout = function () {
     const $imgs = $( "img" );
     const $titles = $( ".item-desc > a" );
     let i = $imgs.length;
@@ -45,23 +50,34 @@ const handleShowCart = function () {
     i = $titles.length;
 
     for ( i; i--; ) {
-        util.fixTitle( $titles[ i ] );
+        core.util.fixTitle( $titles[ i ] );
     }
 };
 
 
-const onPillBoxClick = function () {
-    util.disableMouseWheel( true );
-    util.disableTouchMove( true );
+const handleShowCart = function () {
+    processCheckout();
 
-    dom.page.addClass( "is-inactive" );
-    dom.footerbar.addClass( "is-inactive" );
+    core.util.disableMouseWheel( false );
+    core.util.disableTouchMove( false );
+
+    core.dom.page.removeClass( "is-inactive" );
+    core.dom.footerbar.removeClass( "is-inactive" );
+};
+
+
+const onPillBoxClick = function () {
+    core.util.disableMouseWheel( true );
+    core.util.disableTouchMove( true );
+
+    core.dom.page.addClass( "is-inactive" );
+    core.dom.footerbar.addClass( "is-inactive" );
 
     router.push( "/commerce/show-cart/", ( data ) => {
         const $doc = $( data.response );
         const $cart = $doc.find( "#sqs-shopping-cart-wrapper" );
 
-        dom.page.html( $cart );
+        core.dom.page.html( $cart );
 
         sqs.initCommerce();
 

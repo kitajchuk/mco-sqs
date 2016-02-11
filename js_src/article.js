@@ -1,6 +1,5 @@
-import dom from "./dom";
+import * as core from "./core";
 import sqs from "squarespace-yui-block-initializers";
-import log from "./log";
 
 
 let $_jsElement = null;
@@ -23,7 +22,7 @@ const article = {
      *
      */
     init () {
-        log( "article initialized" );
+        core.log( "article initialized" );
     },
 
 
@@ -54,7 +53,7 @@ const article = {
         sqs.initVideo();
         sqs.initAudio();
 
-        dom.html.addClass( "is-article-detail" );
+        core.dom.html.addClass( "is-article-detail" );
     },
 
 
@@ -82,7 +81,7 @@ const article = {
     teardown () {
         $_jsElement = null;
 
-        dom.html.removeClass( "is-article-detail" );
+        core.dom.html.removeClass( "is-article-detail" );
     },
 
 
@@ -96,7 +95,7 @@ const article = {
      *
      */
     getElements () {
-        $_jsElement = dom.page.find( ".js-article" );
+        $_jsElement = core.dom.page.find( ".js-article" );
 
         return ( $_jsElement.length );
     }

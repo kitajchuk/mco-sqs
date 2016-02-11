@@ -1,38 +1,52 @@
+import * as core from "./core";
 import $ from "js_libs/jquery/dist/jquery";
-import * as util from "./util";
-import dom from "./dom";
-import preload from "./preload";
+import PageController from "properjs-pagecontroller";
 import navmenu from "./navmenu";
 import grid from "./grid";
 import product from "./product";
 import views from "./views";
 import home from "./home";
-import scrolls from "./scrolls";
 import article from "./article";
-import PageController from "properjs-pagecontroller";
-import debounce from "properjs-debounce";
-import cache from "./cache";
-import log from "./log";
 
 
-const _pageDuration = util.getTransitionDuration( dom.page[ 0 ] );
-
-
+/**
+ *
+ * @public
+ * @namespace router
+ * @description Handles async web app routing for nice transitions.
+ *
+ */
 const router = {
+    /**
+     *
+     * @public
+     * @method init
+     * @memberof router
+     * @description Initialize the router module.
+     *
+     */
     init () {
-        this.captureLinks();
-        this.setPageMinHeight();
-        this.makePageController();
+        this.pageDuration = core.util.getTransitionDuration( core.dom.page[ 0 ] );
+        this.bindEmptyHashLinks();
+        this.createPageController();
 
-        util.emitter.on( "app--resize", onDebounceResize );
+        core.emitter.on( "app--resize-debounced", this.setPageMinHeight );
 
-        log( "router initialized" );
+        core.log( "router initialized" );
     },
 
 
-    makePageController () {
+    /**
+     *
+     * @public
+     * @method createPageController
+     * @memberof router
+     * @description Create the PageController instance.
+     *
+     */
+    createPageController () {
         this.controller = new PageController({
-            transitionTime: _pageDuration
+            transitionTime: this.pageDuration
         });
 
         this.controller.setConfig([
@@ -40,11 +54,12 @@ const router = {
         ]);
 
         this.controller.setModules([
-            preload,
+            core.images,
+
             grid,
-            product,
-            views,
             home,
+            views,
+            product,
             article
         ]);
 
@@ -53,22 +68,42 @@ const router = {
         this.controller.on( "page-controller-router-refresh-document", this.changeContent.bind( this ) );
         this.controller.on( "page-controller-router-transition-in", this.changePageIn.bind( this ) );
         this.controller.on( "page-controller-initialized-page", ( html ) => {
-            this.cachePage( dom.html, $( html ).filter( ".js-page" )[ 0 ].innerHTML );
-            this.cacheStaticContext( window.Static.SQUARESPACE_CONTEXT );
+            this.setPageMinHeight();
+            this.cachePage( core.dom.html, $( html ).filter( ".js-page" )[ 0 ].innerHTML );
         });
 
         this.controller.initPage();
     },
 
 
-    captureLinks () {
-        // Suppress #hash
-        dom.body.on( "click", "[href^='#']", ( e ) => {
-            e.preventDefault();
+    /**
+     *
+     * @public
+     * @method cachePage
+     * @param {jQuery} $object The node for use
+     * @param {string} response The XHR responseText
+     * @memberof router
+     * @description Cache the DOM content for a page once its parsed out.
+     *
+     */
+    cachePage ( $object, response ) {
+        core.cache.set( core.util.getPageKey(), {
+            $object,
+            response
         });
+    },
 
-
-        dom.body.on( "click", ".absolute-cart-box", ( e ) => {
+    /**
+     *
+     * @public
+     * @method bindEmptyHashLinks
+     * @memberof router
+     * @description Suppress #hash links.
+     *
+     */
+    bindEmptyHashLinks () {
+        core.dom.body.on( "click", "[href^='#']", ( e ) => e.preventDefault() );
+        core.dom.body.on( "click", ".absolute-cart-box", ( e ) => {
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
@@ -77,165 +112,147 @@ const router = {
     },
 
 
-    cachePage ( $object, response ) {
-        cache.set( this.getPageKey(), {
-            $object,
-            response
-        });
-    },
-
-
-    setPageMinHeight () {
-        dom.page[ 0 ].style.minHeight = util.px( window.innerHeight - dom.footerbar[ 0 ].clientHeight );
-    },
-
-
-    cacheStaticContext ( json ) {
-        cache.set( `${this.getPageKey()}-context`, json );
-    },
-
-
-    getPageKey () {
-        return ((window.location.pathname === "/" ? "homepage" : window.location.pathname) + window.location.search);
-    },
-
-    bindCaptureLinks () {
-        dom.body.on( "click", "[href^='#']", ( e ) => e.preventDefault() );
-    },
-
-
+    /**
+     *
+     * @public
+     * @method route
+     * @param {string} path The uri to route to
+     * @memberof router
+     * @description Trigger app to route a specific page. [Reference]{@link https://github.com/ProperJS/Router/blob/master/Router.js#L222}
+     *
+     */
     route ( path ) {
         this.controller.getRouter().trigger( path );
     },
 
 
+    /**
+     *
+     * @public
+     * @method push
+     * @param {string} path The uri to route to
+     * @param {function} cb Optional callback to fire
+     * @memberof router
+     * @description Trigger a silent route with a supplied callback.
+     *
+     */
     push ( path, cb ) {
-        this.controller.routeSilently( path, (cb || util.noop) );
+        this.controller.routeSilently( path, (cb || core.util.noop) );
     },
 
 
-    track ( type, data ) {
-        log( "router:track:View", type, data );
-
-        Y.Squarespace.Analytics.view( type, data );
-    },
-
-
-    pushTrack ( html, $doc ) {
-        let ctx = null;
-
-        $doc = ($doc || $( html ));
-
-        ctx = this.getStaticContext( html );
-
-        if ( ctx ) {
-            this.track( (ctx.item ? "item" : "collection"), (ctx.item || ctx.collection) );
-        }
-
-        this.setDocumentTitle( $doc.filter( "title" ).text() );
-    },
-
-
+    /**
+     *
+     * @public
+     * @method onPreloadDone
+     * @memberof router
+     * @description Finish routing sequence when image pre-loading is done.
+     *
+     */
     onPreloadDone () {
-        router.setPageMinHeight();
+        core.util.disableMouseWheel( false );
+        core.util.disableTouchMove( false );
 
-        util.disableMouseWheel( false );
-        util.disableTouchMove( false );
+        core.dom.html.removeClass( "is-routing" );
+        core.dom.page.removeClass( "is-reactive is-inactive" );
+        core.dom.footerbar.removeClass( "is-inactive" );
 
-        dom.html.removeClass( "is-routing" );
-        dom.page.removeClass( "is-reactive is-inactive" );
-        dom.footerbar.removeClass( "is-inactive" );
+        core.scrolls.topout( 0 );
+        core.scrolls.clearStates();
 
-        scrolls.topout( 0 );
+        setTimeout( () => {
+            core.emitter.fire( "app--intro-art" );
 
-        util.emitter.off( "app--preload-done", this.onPreloadDone );
+        }, this.pageDuration );
+
+        core.emitter.off( "app--preload-done", this.onPreloadDone );
     },
 
 
-    getStaticContext ( resHTML ) {
-        // Match the { data } in Static.SQUARESPACE_CONTEXT
-        let ctx = cache.get( `${this.getPageKey()}-context` );
+    /**
+     *
+     * @public
+     * @method changePageOut
+     * @memberof router
+     * @description Trigger transition-out animation.
+     *
+     */
+    changePageOut () {
+        core.util.disableMouseWheel( true );
+        core.util.disableTouchMove( true );
 
-        if ( !ctx ) {
-            ctx = resHTML.match( /Static\.SQUARESPACE_CONTEXT\s=\s(.*?)\};/ );
+        core.dom.html.addClass( "is-routing" );
+        core.dom.page.removeClass( "is-reactive" ).addClass( "is-inactive" );
+        core.dom.footerbar.addClass( "is-inactive" );
 
-            if ( ctx && ctx[ 1 ] ) {
-                ctx = ctx[ 1 ];
-
-                // Put the ending {object} bracket back in there :-(
-                ctx = `${ctx}}`;
-
-                // Parse the string as a valid piece of JSON content
-                try {
-                    ctx = JSON.parse( ctx );
-
-                } catch ( error ) {
-                    throw error;
-                }
-
-                // Cache context locally
-                this.cacheStaticContext( ctx );
-
-            } else {
-                ctx = false;
-            }
-        }
-
-        return ctx;
+        core.emitter.on( "app--preload-done", this.onPreloadDone );
     },
 
 
-    changePageOut ( /* data */ ) {
-        util.disableMouseWheel( true );
-        util.disableTouchMove( true );
-
-        dom.html.addClass( "is-routing" );
-        dom.page.removeClass( "is-reactive" ).addClass( "is-inactive" );
-        dom.footerbar.addClass( "is-inactive" );
-
-        util.emitter.on( "app--preload-done", this.onPreloadDone );
-    },
-
-
+    /**
+     *
+     * @public
+     * @method changeContent
+     * @param {string} html The responseText as an HTML string
+     * @memberof router
+     * @description Swap the new content into the DOM.
+     *
+     */
     changeContent ( html ) {
         let $object = null;
         let response = null;
-        const cached = cache.get( this.getPageKey() );
+        let doc = null;
+        const cached = core.cache.get( core.util.getPageKey() );
 
         if ( cached ) {
             $object = cached.$object;
             response = cached.response;
 
         } else {
-            $object = $( html ).filter( "title, div, main, section, header, footer, span" );
-            response = $object.filter( ".js-page" )[ 0 ].innerHTML;
+            doc = document.createElement( "html" );
+            doc.innerHTML = html;
+            $object = $( doc );
+            response = $object.find( ".js-page" )[ 0 ].innerHTML;
 
             this.cachePage( $object, response );
         }
 
-        dom.page[ 0 ].innerHTML = response;
+        core.dom.page[ 0 ].innerHTML = response;
 
-        this.pushTrack( html, $object );
+        core.emitter.fire( "app--analytics-push", html, $object );
 
-        util.emitter.fire( "app--cleanup" );
+        core.emitter.fire( "app--cleanup" );
     },
 
 
-    changePageIn ( /* data */ ) {
-        dom.page.addClass( "is-reactive" );
+    /**
+     *
+     * @public
+     * @method changePageIn
+     * @memberof router
+     * @description Trigger transition-in animation.
+     *
+     */
+    changePageIn () {
+        this.setPageMinHeight();
+
+        core.dom.page.addClass( "is-reactive" );
     },
 
 
-    setDocumentTitle ( title ) {
-        document.title = title;
+    /**
+     *
+     * @private
+     * @method setPageMinHeight
+     * @memberof router
+     * @description Update page paddingTop
+     *
+     */
+    setPageMinHeight () {
+        core.dom.page[ 0 ].style.minHeight = core.util.px( window.innerHeight - core.dom.footerbar[ 0 ].clientHeight );
     }
 };
 
-
-const onDebounceResize = debounce(function () {
-    router.setPageMinHeight();
-
-}, 300 );
 
 
 /******************************************************************************

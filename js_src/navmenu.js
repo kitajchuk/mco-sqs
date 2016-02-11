@@ -1,35 +1,32 @@
-import dom from "./dom";
 import product from "./product";
 import article from "./article";
-import * as util from "./util";
 import router from "./router";
-import config from "./config";
 import Hammered from "properjs-hammered";
-import log from "./log";
+import * as core from "./core";
 
 
-const $_jsNavmenuParent = dom.navmenu.parent();
-const _transitionTime = util.getTransitionDuration( dom.navmenu[ 0 ] );
+const $_jsNavmenuParent = core.dom.navmenu.parent();
+const _transitionTime = core.util.getTransitionDuration( core.dom.navmenu[ 0 ] );
 const _hammers = {};
 let _isActive = false;
 
 
 const navmenu = {
     init () {
-        dom.navmenu.detach();
+        core.dom.navmenu.detach();
 
-        _hammers.listIcon = new Hammered( dom.navbar[ 0 ], config.defaultHammerOptions );
+        _hammers.listIcon = new Hammered( core.dom.navbar[ 0 ], core.config.defaultHammerOptions );
         _hammers.listIcon.on( "tap", ".js-controller--navmenu", onToggleNavmenu );
 
-        _hammers.navMenu = new Hammered( dom.navmenu[ 0 ], config.defaultHammerOptions );
+        _hammers.navMenu = new Hammered( core.dom.navmenu[ 0 ], core.config.defaultHammerOptions );
         _hammers.navMenu.on( "tap", ".js-navmenu", onToggleNavmenu );
 
-        _hammers.gridIcon = new Hammered( dom.navbar[ 0 ], config.defaultHammerOptions );
+        _hammers.gridIcon = new Hammered( core.dom.navbar[ 0 ], core.config.defaultHammerOptions );
         _hammers.gridIcon.on( "tap", ".js-controller--grid", onToggleNavmenu );
 
-        dom.body.on( "click", ".js-navbar-shop", onShopNavbar );
+        core.dom.body.on( "click", ".js-navbar-shop", onShopNavbar );
 
-        log( "navmenu initialized" );
+        core.log( "navmenu initialized" );
     },
 
 
@@ -40,13 +37,13 @@ const navmenu = {
 
 
 const closeNavmenu = function () {
-    dom.html.removeClass( "is-navmenu-open" );
+    core.dom.html.removeClass( "is-navmenu-open" );
 
-    util.disableTouchMove( false );
-    util.disableMouseWheel( false );
+    core.util.disableTouchMove( false );
+    core.util.disableMouseWheel( false );
 
     setTimeout(() => {
-        dom.navmenu.detach();
+        core.dom.navmenu.detach();
 
     }, _transitionTime );
 };
@@ -55,7 +52,7 @@ const closeNavmenu = function () {
 const onShopNavbar = function ( e ) {
     e.preventDefault();
 
-    log( "shop nav" );
+    core.log( "shop nav" );
 };
 
 
@@ -73,13 +70,13 @@ const onToggleNavmenu = function () {
     _isActive = !_isActive;
 
     if ( _isActive ) {
-        util.disableTouchMove( true );
-        util.disableMouseWheel( true );
+        core.util.disableTouchMove( true );
+        core.util.disableMouseWheel( true );
 
-        $_jsNavmenuParent.append( dom.navmenu );
+        $_jsNavmenuParent.append( core.dom.navmenu );
 
         setTimeout(() => {
-            dom.html.addClass( "is-navmenu-open" );
+            core.dom.html.addClass( "is-navmenu-open" );
 
         }, 100 );
 

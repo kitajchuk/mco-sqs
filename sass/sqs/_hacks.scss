@@ -63,7 +63,7 @@
     }
 .sqs-fullpage-shopping-cart-content .cart-container {
     font-size: 0 !important;
-    padding: $cart-padding $grid-padding !important;
+    padding: $cart-padding $grid-padding ($cart-padding / 2) !important;
     }
 .sqs-fullpage-shopping-cart-content > h2 {
     display: none !important;

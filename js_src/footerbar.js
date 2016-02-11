@@ -1,15 +1,12 @@
-import dom from "./dom";
-import resizes from "./resizes";
-import * as util from "./util";
-import log from "./log";
+import * as core from "./core";
 
 
-const $_jsMco = dom.footerbar.find( ".js-footerbar-mco" );
+const $_jsMco = core.dom.footerbar.find( ".js-footerbar-mco" );
 
 
 const footerbar = {
     init () {
-        util.emitter.on( "app--resize", onResizer );
+        core.emitter.on( "app--resize", onResizer );
 
         $_jsMco.data({
             $prev: $_jsMco.prev(),
@@ -18,13 +15,13 @@ const footerbar = {
 
         onResizer();
 
-        log( "footerbar initialized" );
+        core.log( "footerbar initialized" );
     }
 };
 
 
 const onResizer = function () {
-    if ( resizes.isSmall() ) {
+    if ( core.resizes.isSmall() ) {
         $_jsMco.prependTo( $_jsMco.data( "$parent" ) );
 
     } else {

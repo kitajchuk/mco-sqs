@@ -180,21 +180,6 @@
         }
     .grid__item {
         padding: 0;
-        transition: none;
         width: 100%;
-        }
-    .grid__item,
-    .grid__item.is-below,
-    .grid__item.is-above,
-    .grid__item.is-leaving-top,
-    .grid__item.is-leaving-bottom,
-
-    .anim,
-    .anim.is-below,
-    .anim.is-above,
-    .anim.is-leaving-top,
-    .anim.is-leaving-bottom{
-        opacity: 1;
-        transform: translate3d( 0, 0, 0 );
         }
 }
