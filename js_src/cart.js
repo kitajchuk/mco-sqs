@@ -4,6 +4,7 @@ import $ from "js_libs/jquery/dist/jquery";
 import sqs from "squarespace-yui-block-initializers";
 import router from "./router";
 import * as core from "./core";
+import product from "./product";
 
 
 let $_jsCartIcon = null;
@@ -72,6 +73,10 @@ const onPillBoxClick = function () {
 
     core.dom.page.addClass( "is-inactive" );
     core.dom.footerbar.addClass( "is-inactive" );
+
+    if ( product.isActive() ) {
+        product.teardown();
+    }
 
     router.push( "/commerce/show-cart/", ( data ) => {
         const $doc = $( data.response );
