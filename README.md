@@ -4,4 +4,4 @@ midnight-collective-squarespace
 > Online store for MCO apothecary.
 
 
-[shopmidnightcollective.com](http://shopmidnightcollective.com/).
+[shopmidnightcollective.com](http://shopmidnightcollective.com/)
